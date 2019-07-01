@@ -1,0 +1,537 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../SLIDE-MAIN/slide-main}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \titlepage
+\title[KevinW@OUC]{\hei {\huge Java EE企业应用系统设计}\\  
+HTTP会话跟踪技术}
+\author[王晓东]{王晓东\\
+  \href{mailto:wangxiaodong@ouc.edu.cn}{\footnotesize wangxiaodong@ouc.edu.cn}}
+\institute[中国海洋大学]{\small 中国海洋大学}
+\date{\today}
+\titlegraphic{\vspace{-6em}\includegraphics[height=6cm]{static/ouc.pdf}\vspace{-6em}}
+%%%%%
+\begin{document}
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSection[]{                              % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{\textbf{\hei 接下来…}}
+    \tableofcontents[currentsection]
+  }
+}  %
+
+\AtBeginSubsection[]                            % 在每个子段落之前
+{
+  \frame<handout:0>                             % handout:0 表示只在手稿中出现
+  {
+    \frametitle{\textit{\hei 接下来…}}\small
+    \tableofcontents[current,currentsubsection] % 显示在目录中加亮的当前章节
+  }
+}
+ \frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{参考书目}
+\begin{enumerate}
+\item 吕海东，张坤 编著，Java EE企业级应用开发实例教程，清华大学出版社，2010年8月
+\end{enumerate}  
+\end{frame}
+
+% \begin{frame}
+% \frametitle{本章学习目标}
+% \begin{enumerate}
+% \item 
+% \end{enumerate}  
+% \end{frame}
+
+\section*{大纲}
+\frame{\frametitle{大纲} \tableofcontents}
+
+\section{会话基本概念}
+
+\begin{frame}
+\frametitle{什么是会话} 
+\begin{itemize}
+\item 在Web应用中把客户端浏览器开始请求Web服务器，访问不同Web文档进行请求/响应，到结束访问的一系列过程称为会话，即一次会话（Session）。
+\item 当用户访问第一个Java Web组件时，Java EE Web服务器自动为用户创建一个会话对象。
+\end{itemize}
+
+{\kai 例如，当当网进行图书浏览、购买、完成结算的全过程可能是一次会话；登录126邮箱，完成浏览收件箱、编写邮件、发送邮件可以是一次会话。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话跟踪} 
+
+\begin{block}{会话跟踪}
+Web应用需要在用户访问的一个会话内，让Web服务器保存客户的信息（如客户的账号或客户的购物
+筐），称为会话跟踪。即Web服务器能使用某种技术保存客户的信息，在一个会话内，当客户在次访问
+时，服务器能够定位是先前的同一个客户。
+\end{block}
+
+{\kai\Blue 由于Web应用采用HTTP协议，而HTTP协议是无状态、不持续的协议，所以需要独立于HTTP协议的会话跟踪技术，用于记录会话的状态信息。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Java EE Web会话跟踪方法} 
+
+\begin{enumerate}\kai
+\item {\hei\Red 重写URL} 将客户端的信息附加在请求URL地址的参数中，Web服务器取得参数信息，完成客户端信息的保存。
+\item {\hei\Red 隐藏表单字段} 将要保存的客户信息，如用户登录账号使用隐藏表单字段发送到服务器端，完成Web服务器保持客户状态信息。
+\item {\bf\Red Cookie} 使用Java EE API提供的Cookie对象，可以将客户信息保存在Cookie中，完成会话跟踪功能。
+\item {\hei\Red HttpSession对象} Java EE API专门提供了HttpSession会话对象保存客户的信息来实现会话跟踪。 
+\end{enumerate}
+\end{frame}
+
+\section{URL重写}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URL重写的实现} 
+\begin{itemize}
+\item 在进行HTTP请求时，可以在URL地址后直接附加请求参数，把客户端的数据传输到Web服务器端。
+\item Web服务器通过HttpServletRequest请求对象取得这些URL地址后面附加的请求参数。
+\item 这种URL地址后附加参数的方式称为{\hei URL重写}。
+\end{itemize}
+
+\xyy{URL重新示例}
+
+\begin{xmlCode}
+<a href="../product/main.do?userid=9001&category=11">产品管理</a>
+\end{xmlCode}
+
+此例中，将客户ID附加在地址栏上，以?name=value形式附加在URL后，多个参数使用\&符号进行间隔。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URL重写的实现} 
+
+Web服务器端使用请求对象取得URL后附加的客户端参数数据。
+\begin{javaCode}
+String userid = request.getParameter("userid"); // 取得用户 ID 参数数据
+\end{javaCode}
+
+为保证Web应用在能在以后持续的请求/响应中实现会话跟踪，必须保证每次请求都要在URI地址中加
+入userid=9001参数，如下为Servlet重定向请求的附件参数：
+\begin{javaCode}
+response.sendRedirect("../product/view.do?productid=1201&userid=" + userid);
+\end{javaCode}
+进而实现会话跟踪。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URL重写的缺点} 
+
+\begin{itemize}
+\item URL地址过长；
+\item 不同浏览器对URL传递参数的限制；
+\item 安全性缺陷；
+\item 编程繁杂。
+\end{itemize}
+\end{frame}
+
+\section{隐藏域表单元素}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{隐藏域表单的实现} 
+
+将会话数据被放在隐藏表单元素中，随表单的提交而发送到Web服务器，实现会话跟踪技术。 
+
+\xyy{实现技术代码}
+
+\begin{xmlCode}
+<form action="../product/main.do" method="post">
+  <input type="hidden" name="userid" value="9001" />
+  <input type="submit" value="提交" />
+</form>  
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{隐藏域表单的缺点} 
+\begin{itemize}
+\item 安全性差\\
+虽然使用隐藏域表单和POST表单提交模式，防止了会话数据在浏览器地址栏显示，但用户可以在浏览器中使用页面查看源代码方式看到保存的会话信息，如用户登录账号和密码。
+\item 编程复杂\\
+如果需要保存的会话数据很多，就需要非常多的隐藏文本域元素，导致提交数据过大，影响Web应用的请求/响应性能，另外如果每个页面都有大堆的文本域对象，导致编程任务繁杂。
+\item 无法在超链接模式下工作\\
+如果使用隐藏表单实现会话跟踪，则要求整个Web应用的各个文档之间跳转必须使用表单提交模式，无法使用超链接方式，违反Web应用的用户习惯。
+\end{itemize}
+\end{frame}
+
+\section{Cookie}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{什么是Cookie} 
+
+\begin{itemize}\kai\small
+\item Cookie在Java EE之前就已经存在，是由Netscape浏览器引入的，用于在客户端保存服务器端数据，实现一种简单有效的客户/服务器的信息交换模式。
+\item Cookie是Web服务器保存在客户端的小的文本文件，存储许多name/value对，可以保存如登录帐号、用户喜好等会话数据。
+\item Cookie由Web服务器创建，由Web服务器在进行HTTP响应时，将Cookie保存在HTTP响应头中并发送给浏览器，浏览器收到HTTP响应头，解析出Cookie，将它保存在客户的本地隐藏文件中。
+\item 客户浏览器每次向Web服务器发出HTTP请求时，自动将Cookie保存在请求头中，随请求体一起发送到服务器，这个过程不需要人工参与。
+\item Web服务器可以从请求对象中取出Cookie，进而得到Cookie中保存的名称/值对，从而实现会话跟踪。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Java EE规范Cookie API} 
+
+Java EE API提供{\bf javax.servlet.http.Cookie}类来表达一个Cookie对象，并分别在：
+
+\begin{itemize}
+\item HttpServletResponse接口中定义了保存Cookie到浏览器的方法。
+\item HttpServletRequest接口中定义了取得客户端保存的Cookie对象的方法。
+\end{itemize}
+
+\wxd{Cookie对象的创建}
+
+使用Cookie类的构造方法：public Cookie(String name, String value);
+\begin{javaCode}
+Cookie cookie01 = new Cookie("userid", "9001");
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Cookie的主要方法} 
+\wxd{get方法}
+\begin{enumerate}
+\item public String getName()
+\item public String getValue()
+\item public int getMaxAge()
+\item public String getPath()
+\item public int getVersion()
+\item public String getDomain()
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Cookie的主要方法} 
+\wxd{set方法}
+\begin{enumerate}
+\item public void setValue(String newValue)
+\item {\Blue\bf public void setMaxAge(int expiry)}
+\item public void setDomain(String pattern)
+\item public void setPath(String uri)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{将Cookie保存到客户端}
+\begin{enumerate}
+\item 创建Cookie对象
+\begin{javaCode}
+String userid = request.getParameter("userid"); // 取得登录 ID
+Cookie cookie01 = new Cookie("userid", useid); // 保存到Cookie中
+\end{javaCode}
+
+\item 设置Cookie属性
+\begin{javaCode}
+cookie01.setMaxAge(7 * 24 * 60 * 60);    
+\end{javaCode}
+
+\item 发送Cookie到客户端 public void addCookie(Cookie cookie);
+\begin{javaCode}
+response.addCookie(cookie01);    
+\end{javaCode}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,fragile] % [fragile]参数使得能够插入代码
+\frametitle{Web服务器读取客户端保存的Cookie}
+
+HttpServletRequest接口中定义如下方法用于读取客户端保存的Cookie。
+\begin{verbatim}
+public Cookie[] getCookies();
+\end{verbatim}
+
+\begin{javaCode}
+Cookie[] cookies = request.getCookies();
+for (int i = 0; i < cookies.length; i++) {
+  if (cookies[i].getName().equals("userid")) {
+    String name=cookies[i].getValue();
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Cookie的缺点}
+
+\begin{itemize}\kai
+\item 存储方式单一
+\item 存储位置限制
+\item 大小受浏览器限制
+\item 可用性限制
+\item 安全性限制（可以采用手动Cookie加解密）。
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Java EE会话对象}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的概念}
+\begin{itemize}
+\item Java EE规范提出了一种服务器实现会话跟踪的机制，即HttpSession接口，实现该接口的对象称为Session对象。
+\item Session对象保存在Web服务器上，每次会话过程创建一个，为用户保存各自的会话信息提供全面的支持。
+\item Web开发人员要注意不要将过多的数据存放在会话对象内，如只在一个请求期间内需要传递的数据，就不要存储在会话对象中，而应该保存在{\Red\hei 请求对象}中。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的类型和取得} 
+
+Java EE会话对象的类型是接口{\Blue\bf javax.servlet.http.HttpSession}。Java EE API在请求对
+象类型HttpServletRequest中定义了取得会话对象方法：
+
+\begin{itemize}
+\item {\bf public HttpSession getSession()}\\
+\begin{itemize}
+\item 如果Web服务器内没有此客户的会话对象，则Web容器创建新的回话对象并返回。
+\item 如果已经存在会话对象，则直接返回此对象的引用。
+\end{itemize}
+\begin{javaCode}
+HttpSession session = request.getSession();  // 取得或创建新的会话对象
+\end{javaCode}
+
+\item {\bf public HttpSession getSession(boolean create)}\\
+\begin{itemize}
+\item boolean参数为true时，同无参数的getSession方法；
+\item boolean参数为false时，如存在会话对象则返回对象引用，如无会话对象则返回null，Web容器不会创建会话对象。
+\end{itemize}
+\begin{javaCode}
+HttpSession session = request.getSession(false);  // 仅取得会话对象
+\end{javaCode}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public void setAttribute(String name, Object value)}
+
+将数据存入会话对象，以name/value模式进存储，但value的类型为通用的{\bf Object}类型，可以将任何Java对象保存到会话对象中。
+{\kai 例如，使用容器类型Collection、List、Set或Map可以非常容易的实现电子商务网站购物车的存取功能，实现使用Cookie无法实现的功能。}
+
+\begin{javaCode}
+HttpSession session = request.getSession();
+Collection shopcart = new ArrayList();
+Session.setAttribute("shopcart", shopcart);
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public Object getAttribute(String name)}
+
+取出保存在会话中指定名称属性的值对象，需要根据保存时使用的类型进行{\hei\Blue 强制类型转换}，即UNBOX拆箱功能。
+
+\begin{javaCode}
+Collection shopcart = (Collection) session.getAttribute("shortcart");
+\end{javaCode}
+
+\wxd{public void removeValue(String name)}
+
+清除会话对象中某个属性对象。
+
+\begin{javaCode}
+session.removeAttribute("shopcart");
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public Enumeration getAttributeNames()}
+
+取得会话对象中保存的所有属性名称列表，返回一个枚举器类型对象。
+\begin{javaCode}
+Enumeration enume = session.getAttributeNames();
+while (enume.hasMoreElements()) {
+  String name = (String) enume.nextElment();
+  out.println(name);
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public void setMaxInactiveInterval(int interval)}
+
+设置会话对象的失效期限，即2次请求直接的时间间隔，以秒为单位。
+\begin{javaCode}
+session.setMaxInactiveInterval(15 * 60);
+\end{javaCode}
+
+\wxd{public int getMaxInactiveInterval()}
+
+取得会话的有效间隔时间，返回整数，表示间隔的秒数。
+\begin{javaCode}
+int maxtimes = session.getMaxInactiveInterval();
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public void invalidate()}
+
+立即迫使会话对象失效，将当前的会话对象销毁，同时清除会话对象内的所有属性，该方法一般用在注销处理的Servlet中。
+\begin{javaCode}
+session.invalidate();
+\end{javaCode}
+
+\wxd{public boolean isNew()}
+
+测试取得的会话对象是否是刚刚创建的，true表示刚刚创建，false表示会话对象已经存在。
+
+\wxd{public long getCreateTime()}
+
+取得会话对象的创建时间，返回long类型数据，表示从1970.1.1.0时开始到创建时间所间隔的毫秒数。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的功能和方法} 
+
+\wxd{public String getId()}
+
+取得会话对象的ID，是唯一性的字符串代码。
+
+{\kai\Blue 由于HTTP协议的无状态性，为了使用Web容器能识别不同客户而确定各自的会话对象，Web容器需要将会话ID保存到客户端。当客户进行HTTP请求时，需要发送此ID给服务器，Web服务器根据此ID定位服务器内部的会话对象，实现指定客户的会话跟踪。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的生命周期} 
+
+会话对象的生命周期比请求对象和响应对象的生命周期要长久，可以跨越多次不同的Web组件JSP和Servlet的请求和响应，因此会话对象可以作为不同JSP和Servlet之间的数据共享区，保存不同页面需要访问的数据，如用户的登录帐号和名字等信息。
+
+\begin{enumerate}
+\item {\hei 创建} JSP / Servlet有所不同。
+\item {\hei 活动} 一个会话有效期内的所有请求，将共享一个会话对象。
+\item {\hei 销毁} 
+  \begin{itemize}
+  \item 客户端浏览器所保存的SessionID被销毁时
+  \item 服务器端执行会话对象的invalidate()方法时
+  \item 客户端请求间隔时间超时
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码 
+\frametitle{会话ID的保存方式} 
+
+默认情况下，会话的ID值会{\Red\hei 自动发送到客户端的Cookie中进行保存}。
+
+{\kai 每次HTTP请求时，所有Cookie会自动保存在请求对象中，和请求对象一起发送到Web服务器。Web服务器从Cookie中得到SessionID，进而定位服务器内的HttpSession会话对象，实现Web引用的会话跟踪功能。}
+
+除了Cookie方式外，还包括URL重写方式。
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_session.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Cookie方式} 
+
+HttpSession对象创建后，其{\hei SessionID会自动选择Cookie作为存储地}，如果客户浏览器没有禁
+止Cookie的读写，SessionID写入Cookie是不需要编程的，此项任务由Web容器自动完成。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URL重写方式} 
+
+使用URL重写方式来保存和传递SessionID值，避免客户端浏览器的Cookie读写可能被禁止的情况。包含{\hei\Red 自动重定向和超链接重定向}。
+
+\wxd{自动重定向}
+
+当使用{\hei\Red 响应对象}的sendRedirect方法实现自动重定向时，为保证地址URL中包含会话ID值，需要使用特定方式重写URL。
+
+Java Web响应对象提供将SessionID保存到URL的方法：
+
+\begin{javaCode}
+public String encodeRedirectURL(String url);  
+\end{javaCode}
+
+实现代码示例如下：
+\begin{javaCode}
+String url = response.encodeRedirectURL("main.jsp");
+response.sendRedirect(url);
+\end{javaCode}
+
+浏览器中URL显示如下：
+\begin{shCode}
+http://localhost:8080/MyFirstServlet/main.jsp;jsessionid=9FC729167DD922E3D978DC39EC2C19AA  
+\end{shCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URL重写方式} 
+\wxd{超链接重定向}
+
+使用超链接方式重定向导航时，也需要将导航目标地址进行URL重写，将SessionID封装到URL中，传递到目标页面。
+\begin{javaCode}
+public String encodeURL(String url);
+\end{javaCode}
+
+实现代码示例如下：
+\begin{javaCode}
+String url = response.encodeURL("main.jsp");
+PrintWriter out = response.getWriter();
+...
+out.println("<a href='" + url + "'>商城主页</a>");
+... 
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的应用案例} 
+\wxd{保存用户的登录ID}
+
+\begin{javaCode}
+void doPost(HttpServletRequest request, HttpServletResponse response) {
+  String userId = request.getParameter("userId");
+  String password = request.getParameter("password");
+  User user = BeanFactory.get("USER");
+  if (user.validate(userId, password) {
+    HttpSession session = request.getSession();  //取得会话对象
+    session.setAttribute("userId", userId);  //保存到会话对象
+  } else {
+    response.sendRedirect("../login.jsp");
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{会话对象的应用案例} 
+\wxd{会话对象销毁（编程一般在注销功能中）}
+
+\begin{javaCode}
+public class LogoutAction extends HttpServlet {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    HttpSession session = request.getSession();
+    session.invalidate(); //清除此会话对象
+    response.sendRedirect("login.jsp"); //跳转到登录页面
+  }
+}
+\end{javaCode}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}
+%% \centering
+%% \includegraphics[width=0.6\textwidth]{fig01.png}
+%% \end{figure}
+% TKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\centering
+{\Huge \textcolor{blue}{THE END}} \\
+\vspace{5mm}
+{\Large wangxiaodong@ouc.edu.cn} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

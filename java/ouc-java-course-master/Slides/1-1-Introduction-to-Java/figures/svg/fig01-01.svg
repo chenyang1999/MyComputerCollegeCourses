@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="766.65204"
+   height="567.75568"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="fig01-01.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         id="path3785"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path3779"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-2"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3785-2"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3785-1"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="165.37385"
+     inkscape:cy="115.45036"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1880"
+     inkscape:window-height="1036"
+     inkscape:window-x="40"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(43.2915,-11.905061)">
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.365333,549.74125 20.20305,0"
+       id="path4483-4-5-8-2-6-0-8-4"
+       inkscape:connector-curvature="0" />
+    <image
+       y="519.77496"
+       x="47.511848"
+       id="image4345"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAADCAYAAAB8mEQQAAAABHNCSVQICAgIfAhkiAAAABxJREFU CJljvLtY8D8DFQG/RkYcEzUNhAGaGAoANSsDk0hmS+8AAAAASUVORK5CYII= "
+       preserveAspectRatio="none"
+       height="3"
+       width="21" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="6.9339275"
+       y="526.77533"
+       id="text4479-6-7-3-6-4-7-2-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95-9-3-7"
+         x="6.9339275"
+         y="526.77533"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">2011.7.28</tspan></text>
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,66.453298 20.203051,0"
+       id="path4483"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,150.4533 20.203051,0"
+       id="path4483-4"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,190.39748 20.203051,0"
+       id="path4483-4-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,244.0574 20.203051,0"
+       id="path4483-4-5-8"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,282.65804 20.203051,0"
+       id="path4483-4-5-8-2"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.477176,313.65802 20.203045,0"
+       id="path4483-4-5-8-2-7"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.47717,347.3723 20.203051,0"
+       id="path4483-4-5-8-2-6"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.477171,405.45209 20.20305,0"
+       id="path4483-4-5-8-2-6-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.477171,431.13905 20.20305,0"
+       id="path4483-4-5-8-2-6-0-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.477171,458.99619 20.20305,0"
+       id="path4483-4-5-8-2-6-0-06"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dda311;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 47.477171,490.42476 20.20305,0"
+       id="path4483-4-5-8-2-6-0-8"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#aaeeff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-15"
+       width="128.94418"
+       height="21.437281"
+       x="594.41638"
+       y="229.87633" />
+    <path
+       style="fill:none;stroke:#869bc5;stroke-width:3.14917016;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+       d="m 67.680221,11.905061 0,563.585019"
+       id="path2985"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="24.827408"
+       y="71.77166"
+       id="text4479"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481"
+         x="24.827408"
+         y="71.77166"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1991</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="23.100845"
+       y="156.56094"
+       id="text4479-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0"
+         x="23.100845"
+         y="156.56094"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1992</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#374845;fill-opacity:1;stroke:none"
+       x="192.62328"
+       y="70.381546"
+       id="text4485-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-2"
+         x="192.62328"
+         y="70.381546"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#374845">由Patrick Naughton和<tspan
+   style="font-weight:bold;font-size:14px;-inkscape-font-specification:'微软雅黑 Bold';fill:#374845"
+   id="tspan3066">James Gosling</tspan>主持</tspan><tspan
+         sodipodi:role="line"
+         x="192.62328"
+         y="87.881546"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#374845"
+         id="tspan3062">目标是设计一种“轻型”的计算机语言以运行在联网的小型家电上，要求其运行</tspan><tspan
+         sodipodi:role="line"
+         x="192.62328"
+         y="105.38155"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#374845"
+         id="tspan3064">和开销足够小并能在不同厂商的处理器上运行（跨平台）</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="0.022720337"
+       y="195.46545"
+       id="text4479-6-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1"
+         x="0.022720337"
+         y="195.46545"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">90年代中期</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 411.82967,57.607034 25.0725,-19.426851 113.92755,0"
+       id="path4652"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="386.88843"
+       y="-3.2472272"
+       id="text4675"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4677"
+         x="386.88843"
+         y="-3.2472272" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="493.87814"
+       y="30.356142"
+       id="text4489-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4491-7"
+         x="493.87814"
+         y="30.356142"
+         style="font-size:16px;fill:#550000">Java语言之父</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="16.764908"
+       y="249.37576"
+       id="text4479-6-7-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9"
+         x="16.764908"
+         y="249.37576"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1995.5</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="55.734657" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.52728"
+       y="71.570488"
+       id="text4485"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487"
+         x="125.52728"
+         y="71.570488"
+         style="font-size:16px;fill:#ffffff">Green项目</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="18.218033"
+       y="287.97641"
+       id="text4479-6-7-3-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7"
+         x="18.218033"
+         y="287.97641"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1996.1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="16.49147"
+       y="318.97638"
+       id="text4479-6-7-3-6-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-9"
+         x="16.49147"
+         y="318.97638"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1997.2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="11.80397"
+       y="352.69067"
+       id="text4479-6-7-3-6-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95"
+         x="11.80397"
+         y="352.69067"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">1998.12</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#6f918a;fill-opacity:1;stroke:none"
+       x="192.6096"
+       y="140.60771"
+       id="text4485-5-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="192.6096"
+         y="140.60771"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#6f918a"
+         id="tspan3064-5">Green所设计的语言命名为Oak（后改名为Java），并推出第一种家庭娱乐设备。</tspan><tspan
+         sodipodi:role="line"
+         x="192.6096"
+         y="158.10771"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#6f918a"
+         id="tspan3107">但家电厂商此时对这种跨平台编程技术并不感兴趣</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 533.54835,146.44283 25.0725,29.42685 113.92755,0"
+       id="path4652-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="614.5473"
+       y="168.93973"
+       id="text4489-7-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4491-7-3"
+         x="614.5473"
+         y="168.93973"
+         style="font-size:16px;fill:#550000">需求不足</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#d40055;fill-opacity:1;stroke:none"
+       x="192.67796"
+       y="194.44922"
+       id="text4485-5-7-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-2-3-4"
+         x="192.67796"
+         y="194.44922"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#d40055">互联网的蓬勃发展，由于异构性的大量存在，</tspan><tspan
+         sodipodi:role="line"
+         x="192.67796"
+         y="211.94922"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#d40055"
+         id="tspan3169">跨平台编程技术受到追捧</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.99999976px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;"
+       x="191.91234"
+       y="246.59933"
+       id="text4485-5-7-0-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4328">Sun在SunWorld'95宣布Java技术诞生，发布HotJava浏览器。</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="658.86798"
+       y="245.47583"
+       id="text3197"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3199"
+         x="658.86798"
+         y="245.47583"
+         style="font-size:14px">一次编写、随处运行</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="191.91234"
+       y="284.17859"
+       id="text4485-5-7-0-5-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="191.91234"
+         y="284.17859"
+         style="font-size:14px;text-align:start;text-anchor:start;fill:#333333"
+         id="tspan3169-0-9">Sun发布Java的第1版。并开始提供和维护完备的Java开发工具集和代码库。</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="233.33876" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.24603"
+       y="250.00662"
+       id="text4485-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41"
+         x="125.24603"
+         y="250.00662"
+         style="font-size:16px;fill:#ffffff">Java</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0"
+       width="56.801327"
+       height="15.722995"
+       x="665.91681"
+       y="262.19254" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="694.21588"
+       y="276.00327"
+       id="text4485-6-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4"
+         x="694.21588"
+         y="276.00327"
+         style="font-size:16px;fill:#ffffff">JDK</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0-1"
+       width="56.801327"
+       height="15.722995"
+       x="665.91681"
+       y="285.76398" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="694.59479"
+       y="299.57471"
+       id="text4485-6-3-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4-5"
+         x="694.59479"
+         y="299.57471"
+         style="font-size:16px;fill:#ffffff">JRE</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-06"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="271.93939" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.14056"
+       y="288.73618"
+       id="text4485-6-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-1"
+         x="125.14056"
+         y="288.73618"
+         style="font-size:16px;fill:#ffffff">Java1</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-1"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="302.93939" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.14056"
+       y="319.73615"
+       id="text4485-6-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-0"
+         x="125.14056"
+         y="319.73615"
+         style="font-size:16px;fill:#ffffff">Java1.1</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="336.65366" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.19916"
+       y="353.45041"
+       id="text4485-6-63"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3"
+         x="125.19916"
+         y="353.45041"
+         style="font-size:16px;fill:#ffffff">Java1.2</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#2ca089;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1"
+       width="93.944183"
+       height="21.437281"
+       x="191.50487"
+       y="336.65366" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="239.25037"
+       y="353.42307"
+       id="text4485-6-63-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1"
+         x="239.25037"
+         y="353.42307"
+         style="font-size:16px;fill:#ffffff">Java2</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#0088aa;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0-1-9"
+       width="56.801327"
+       height="15.722995"
+       x="296.79056"
+       y="333.86618" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="325.46857"
+       y="347.77847"
+       id="text4485-6-3-4-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4-5-4"
+         x="325.46857"
+         y="347.77847"
+         style="font-size:16px;fill:#ffffff">J2SE</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#0088aa;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0-1-9-3"
+       width="56.801327"
+       height="15.722995"
+       x="296.79056"
+       y="353.43762" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="325.46857"
+       y="367.34991"
+       id="text4485-6-3-4-9-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4-5-4-9"
+         x="325.46857"
+         y="367.34991"
+         style="font-size:16px;fill:#ffffff">J2ME</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#0088aa;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0-1-9-4"
+       width="56.801327"
+       height="15.722995"
+       x="296.79056"
+       y="372.72333" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="325.46857"
+       y="386.63562"
+       id="text4485-6-3-4-9-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4-5-4-6"
+         x="325.46857"
+         y="386.63562"
+         style="font-size:16px;fill:#ffffff">J2EE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="361.24661"
+       y="346.63589"
+       id="text3492"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3494"
+         x="361.24661"
+         y="346.63589"
+         style="text-align:start;text-anchor:start;fill:#333333">标准版，开发适用于PC上运行的程序</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="501.23291"
+       y="366.22101"
+       id="text3496"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3498"
+         x="501.23291"
+         y="366.22101">微缩版，开发适用于手机等嵌入式设备的程序</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="473.34232"
+       y="385.49304"
+       id="text3500"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3502"
+         x="473.34232"
+         y="385.49304">企业版，开发适用于服务器端的程序</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="191.77562"
+       y="320.20731"
+       id="text3492-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3494-3"
+         x="191.77562"
+         y="320.20731"
+         style="text-align:start;text-anchor:start;fill:#333333">引入内部类和即时编译（Just-In-Time, JIT）技术</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-0-1-8"
+       width="85.085594"
+       height="15.722995"
+       x="638.25903"
+       y="332.03406" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="681.07916"
+       y="345.84482"
+       id="text4485-6-3-4-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-4-5-0"
+         x="681.07916"
+         y="345.84482"
+         style="font-size:16px;fill:#ffffff">引入Swing</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="16.764908"
+       y="410.74652"
+       id="text4479-6-7-3-6-4-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95-9"
+         x="16.764908"
+         y="410.74652"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">2000.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="16.49147"
+       y="436.43347"
+       id="text4479-6-7-3-6-4-7-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95-9-0"
+         x="16.49147"
+         y="436.43347"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">2002.2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="11.05397"
+       y="464.31454"
+       id="text4479-6-7-3-6-4-7-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95-9-7"
+         x="11.05397"
+         y="464.31454"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">2004.10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#004455;fill-opacity:1;stroke:none"
+       x="13.530533"
+       y="495.74313"
+       id="text4479-6-7-3-6-4-7-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4481-0-1-9-7-95-9-3"
+         x="13.530533"
+         y="495.74313"
+         style="font-style:italic;font-size:14px;-inkscape-font-specification:'微软雅黑 Italic';fill:#004455">2006.11</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3630"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="translate(-75.094467,-42.432848)"><flowRegion
+         id="flowRegion3632"><rect
+           id="rect3634"
+           width="115.71429"
+           height="485.71429"
+           x="-45.714287"
+           y="63.446247" /></flowRegion><flowPara
+         id="flowPara3636" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3638"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="translate(-75.094467,-42.432848)"><flowRegion
+         id="flowRegion3640"><rect
+           id="rect3642"
+           width="192.14285"
+           height="35.714287"
+           x="2.8571429"
+           y="453.44626" /></flowRegion><flowPara
+         id="flowPara3644" /></flowRoot>    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#2ca089;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="394.73346" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.24994"
+       y="411.53021"
+       id="text4485-6-63-2-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7"
+         x="125.24994"
+         y="411.53021"
+         style="font-size:16px;fill:#ffffff">J2SE1.3</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#2ca089;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4-0"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="420.42041" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="124.94135"
+       y="437.21716"
+       id="text4485-6-63-2-0-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7-7"
+         x="124.94135"
+         y="437.21716"
+         style="font-size:16px;fill:#ffffff">J2SE1.4</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#2ca089;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4-4"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="448.27756" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="125.21869"
+       y="465.07431"
+       id="text4485-6-63-2-0-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7-74"
+         x="125.21869"
+         y="465.07431"
+         style="font-size:16px;fill:#ffffff">J2SE1.5</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#5aa02c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4-4-1"
+       width="93.944183"
+       height="21.437281"
+       x="191.50487"
+       y="448.27756" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="239.25037"
+       y="465.04697"
+       id="text4485-6-63-2-0-5-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7-74-1"
+         x="239.25037"
+         y="465.04697"
+         style="font-size:16px;fill:#ffffff">J2SE5.0</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#5aa02c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4-4-1-3"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="479.70612" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="124.99993"
+       y="496.47556"
+       id="text4485-6-63-2-0-5-2-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7-74-1-4"
+         x="124.99993"
+         y="496.47556"
+         style="font-size:16px;fill:#ffffff">JavaSE6.0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none"
+       x="304.67798"
+       y="409.56732"
+       id="text3753"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3755"
+         x="304.67798"
+         y="409.56732">支持XML，采用新的虚拟机Hotspot</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none"
+       x="191.77562"
+       y="436.04724"
+       id="text3757"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3759"
+         x="191.77562"
+         y="436.04724">引入Assert语言特性</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none"
+       x="298.90555"
+       y="463.85654"
+       id="text3761"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3763"
+         x="298.90555"
+         y="463.85654">增加范型、for-each循环、可变数目参数、注解、自动装箱和拆箱</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none"
+       x="192.73265"
+       y="495.34665"
+       id="text3765"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3767"
+         x="192.73265"
+         y="495.34665">将Java2 重新做回Java，性能、易用性前所未有的提高</tspan></text>
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#d40000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"
+       id="rect4762-64-3-1-4-4-1-3-6"
+       width="93.944183"
+       height="21.437281"
+       x="77.781746"
+       y="-532.1756"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#3f38c8;fill-opacity:1;stroke:none"
+       x="123.98978"
+       y="527.50775"
+       id="text4485-6-63-2-0-5-2-6-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487-41-3-1-7-74-1-4-7"
+         x="123.98978"
+         y="527.50775"
+         style="font-size:16px;fill:#ffffff">Java 7</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none"
+       x="193.23672"
+       y="527.80743"
+       id="text3765-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3767-8"
+         x="193.23672"
+         y="527.80743">Oracle正式发布Java 7，也是Sun被Oracle收购以来发行的第一个Java版本</tspan></text>
+    <image
+       y="541.08459"
+       x="77.217453"
+       id="image4325"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAWCAYAAABJ2StvAAAABHNCSVQICAgIfAhkiAAAAF9JREFU aIHt0DsNACAQwNDjM5JgEJGIQQwbuKADfQqaphVxQk/l1k6mI37leIjjIY6HOB7ieIjjIY6HOB7i eIjjIY6HOB7ieIjjIY6HOB7ieIjjIY6H1D7GpCN+k0rZFx8zBZDKUrw/AAAAAElFTkSuQmCC "
+       preserveAspectRatio="none"
+       height="22"
+       width="94.505074"
+       style="fill:#406d47;fill-opacity:1;fill-rule:nonzero" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="101.44839"
+       y="556.12524"
+       id="text4432"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4434"
+         x="101.44839"
+         y="556.12524"
+         style="font-size:15px;fill:#ffffff;fill-opacity:1">Java 8</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="192.40274"
+       y="560.16583"
+       id="text4478"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4480"
+         x="192.40274"
+         y="560.16583"
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:'Hiragino Kaku Gothic StdN';-inkscape-font-specification:'Hiragino Kaku Gothic StdN, Ultra-Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#d246c6;fill-opacity:1">Lambda, Stream API, Optional Class</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-44.478024"
+       y="555.11511"
+       id="text4503"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4505"
+         x="-44.478024"
+         y="555.11511"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#a818d4;fill-opacity:1">2014.3.19</tspan></text>
+  </g>
+</svg>

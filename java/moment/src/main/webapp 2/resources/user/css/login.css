@@ -1,0 +1,141 @@
+body{
+    background: url("../img/loginbg.jpg") no-repeat;
+    overflow: hidden;
+}
+.font_wei {
+    font-family: "微软雅黑";
+    font-weight: 100;
+}
+.font_12{
+    font-size: 12px;
+}
+.font_14{
+    font-size: 14px;
+}
+.font_18{
+    font-size: 18px;
+}
+.clear {
+    clear: both;
+}
+.color_grey{
+    color: #959595;
+}
+
+
+/*浮层*/
+#blackbox{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #0a163b;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1001;
+    -moz-opacity:0.8;
+    opacity:.80;
+    filter:alpha(opacity=80);
+}
+
+
+
+/* 登录框 */
+.emptybox,.loginbox{
+    width:588px;
+    height: 350px;
+    position: absolute;
+    left: 389px;
+    top: 222px;
+    border-radius: 2px;
+}
+.emptybox{
+    opacity:0.6;
+    filter:alpha(opacity=60);
+    background-color: #0a163b;
+}
+.loginbox .logo{
+    margin-top: -40px;
+    margin-left: 149px;
+}
+.login_form{
+    width: 290px;
+    margin: 30px auto 0 auto;
+}
+.login_form label{
+    color: white;
+}
+.login_form .textinput{
+    height: 38px;
+    background-color: transparent;
+    border-color: #ad6a23;
+    color: white;
+}
+.forget_text{
+    line-height: 32px;
+    float: right;
+    color: #b37529;
+}
+.btn_input{
+   background-color:#ecc587;
+    color: white;
+    border: none;
+}
+.checkbox_input{
+    background-color: transparent;
+    border-color: #ad6a23;
+    color: #ad6a23;
+}
+
+
+/* 注册页 */
+#register_box{
+    width: 400px;
+    height: 100%;
+    position: absolute;
+    right:-400px;
+    top: 0;
+    z-index: 1002;
+    background-color: #f6f9f9;
+}
+.register_content{
+    margin: 15px 20px;
+    background-color: #ffffff;
+    border: 1px solid #eff0f3;
+    padding: 10px 20px 20px;
+}
+.register_head{
+    background: url("../img/jiantou.png") no-repeat;
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+}
+.register_head a{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+}
+.register_head p{
+    color: #edc488;
+    width:200px;
+    font-size: 22px;
+    font-weight: 400;
+}
+.register_form{
+    margin-top: 40px;
+}
+.register_text{
+    background-color: transparent;
+    border-color: #eabd77;
+    color: black;
+}
+.register_btn{
+    background-color:#eabd77;
+    color: white;
+    border: none;
+}
+#account_error,#pwd_error{
+    display: none;
+}
+

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="822.24298"
+   height="384.38565"
+   id="svg4984"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="fig02.svg">
+  <defs
+     id="defs4986">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         id="path3900"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3900-4"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3900-9"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-2"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3900-5"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3900-6"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-26"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3900-67"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="550.32035"
+     inkscape:cy="149.87918"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="711"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata4989">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(49.199219,-318.09012)">
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="245.71429"
+       y="338.07645"
+       id="text4992"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4994"
+         x="245.71429"
+         y="338.07645"
+         style="fill:#0000ff">FileInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="363.07645"
+         id="tspan4996"
+         style="fill:#0000ff">ObjectInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="388.07645"
+         id="tspan4998"
+         style="fill:#0000ff">PipedInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="413.07645"
+         id="tspan5004"
+         style="fill:#0000ff">SequenceInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="438.07645"
+         id="tspan5008"
+         style="fill:#0000ff">FilterInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="463.07645"
+         id="tspan5012"
+         style="fill:#0000ff">StringBufferInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="488.07645"
+         id="tspan5016"
+         style="fill:#0000ff">ByteArrayInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="513.07642"
+         id="tspan5018"
+         style="fill:#0000ff" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="26.285717"
+       y="333.47098"
+       id="text5020"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5022"
+         x="26.285717"
+         y="333.47098"
+         style="font-weight:bold;-inkscape-font-specification:'微软雅黑 Bold'">InputStream</tspan></text>
+    <g
+       id="g5184"
+       transform="translate(-25.428571,147.14286)"
+       style="fill:#008000">
+      <text
+         sodipodi:linespacing="125%"
+         id="text5024"
+         y="295.2193"
+         x="562.85712"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+         xml:space="preserve"><tspan
+           y="295.2193"
+           x="562.85712"
+           id="tspan5026"
+           sodipodi:role="line">DataInputStream</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5028"
+         y="319.13541"
+         x="562.85712"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+         xml:space="preserve"><tspan
+           y="319.13541"
+           x="562.85712"
+           id="tspan5030"
+           sodipodi:role="line">PushbackInputStream</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5032"
+         y="342.866"
+         x="562.85712"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+         xml:space="preserve"><tspan
+           y="342.866"
+           x="562.85712"
+           id="tspan5034"
+           sodipodi:role="line">BufferedInputStream</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5036"
+         y="366.36218"
+         x="562.85712"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+         xml:space="preserve"><tspan
+           y="366.36218"
+           x="562.85712"
+           id="tspan5038"
+           sodipodi:role="line">LineNumberInputStream</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="m 240.22018,328.28512 -78.57143,0"
+       id="path5194"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="m 531.53866,433.78335 -108.57143,0"
+       id="path5194-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="245.71429"
+       y="570.64795"
+       id="text5912"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5914"
+         x="245.71429"
+         y="570.64795" /><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="595.64795"
+         id="tspan5916"
+         style="fill:#0000ff">FileOutputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="620.64795"
+         id="tspan5954"
+         style="fill:#0000ff">ObjectOutputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="645.64795"
+         id="tspan5922"
+         style="fill:#0000ff">FilterInputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="670.64795"
+         id="tspan5928"
+         style="fill:#0000ff">PipedOutputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="695.64795"
+         id="tspan5930"
+         style="fill:#0000ff">ByteArrayOutputStream</tspan><tspan
+         sodipodi:role="line"
+         x="245.71429"
+         y="720.64795"
+         id="tspan5932"
+         style="fill:#0000ff" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="32.857143"
+       y="583.79077"
+       id="text5934"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5936"
+         x="32.857143"
+         y="583.79077"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="8.3560295"
+       y="593.505"
+       id="text5938"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5940"
+         x="8.3560295"
+         y="593.505"
+         style="font-weight:bold;-inkscape-font-specification:'微软雅黑 Bold'">OutputStream</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="537.42853"
+       y="647.50507"
+       id="text5942"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5944"
+         x="537.42853"
+         y="647.50507"
+         style="fill:#008000">DataOutputStream</tspan><tspan
+         sodipodi:role="line"
+         x="537.42853"
+         y="672.50507"
+         id="tspan5964"
+         style="fill:#008000">PrintStream</tspan><tspan
+         sodipodi:role="line"
+         x="537.42853"
+         y="697.50507"
+         id="tspan5966"
+         style="fill:#008000">BufferedOutputStream</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="607.14288"
+       y="642.36218"
+       id="text5946"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5948"
+         x="607.14288"
+         y="642.36218" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="564.28571"
+       y="723.79077"
+       id="text5950"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5952"
+         x="564.28571"
+         y="723.79077" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="m 240.22018,588.31914 -78.57143,0"
+       id="path5194-9"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="m 531.53866,640.66711 -100,0"
+       id="path5194-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:'微软雅黑';-inkscape-font-specification:'微软雅黑'"
+       x="-50"
+       y="465.21933"
+       id="text6003"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6005"
+         x="-50"
+         y="465.21933"
+         style="font-weight:bold;-inkscape-font-specification:'微软雅黑 Bold'">Object</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="M 30.749628,343.73099 -2.1075123,438.0167"
+       id="path5194-91"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="M 30.785924,573.1033 -2.0712263,478.81759"
+       id="path5194-91-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

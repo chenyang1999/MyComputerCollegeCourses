@@ -1,0 +1,642 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../SLIDE-MAIN/slide-main}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \titlepage
+\title[KevinW@OUC]{\hei {\huge Java EE企业应用系统开发}\\  
+  MVC}
+\author[王晓东]{王晓东\\
+  \href{mailto:wangxiaodong@ouc.edu.cn}{\footnotesize wangxiaodong@ouc.edu.cn}}
+\institute[中国海洋大学]{\small 中国海洋大学}
+\date{\today}
+\titlegraphic{\vspace{-6em}\includegraphics[height=6cm]{static/ouc.pdf}\vspace{-6em}}
+%%%%%
+\begin{document}
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSection[]{                              % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{\textbf{\hei 接下来…}}
+    \tableofcontents[currentsection]
+  }
+}  %
+
+\AtBeginSubsection[]                            % 在每个子段落之前
+{
+  \frame<handout:0>                             % handout:0 表示只在手稿中出现
+  {
+    \frametitle{\textit{\hei 接下来…}}\small
+    \tableofcontents[current,currentsubsection] % 显示在目录中加亮的当前章节
+  }
+}
+ \frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{References}
+\begin{enumerate}
+\item http://struts2.group.iteye.com/group/wiki/?category\_id=44
+\item 轻量级Java EE企业应用实战
+\end{enumerate}  
+\end{frame}
+
+%\begin{frame}
+%\frametitle{本章学习目标}
+%\begin{enumerate}
+%\item 
+%\end{enumerate}  
+%\end{frame}
+
+\section*{大纲}
+\frame{\frametitle{大纲} \tableofcontents }
+
+\section{}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{为什么要学习框架？}
+\begin{itemize}
+\item Struts2
+\item Spring
+\item Hibernate
+\end{itemize}
+
+{\Blue 为什么要学习框架？框架到底给我带来了什么？}
+\end{frame}
+
+\section{Java Web应用的开发演化}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{JSP方式}
+
+JSP在HTML代码里写Java代码完成业务逻辑。
+
+\begin{xmlCode}
+<%
+     String name = request.getParameter("name");
+     String password = request.getParameter("password");
+
+     UserHandler userHandler = new UserHandler();
+     if(userHandler.authenticate(name, password)) {
+%>
+<p>Congratulations, login successfully. </p>
+<%
+      } else {
+%>
+<p>Sorry, login failed.</p>
+<%
+      }
+%>
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{JSP方式}
+
+\wxd{仅有的一点优势}\kai
+\begin{enumerate}
+\item 无需额外的配置文件，无需框架的帮助，即可完成逻辑。
+\item 简单易上手。
+\end{enumerate}
+
+\wxd{劣势}
+\begin{enumerate}[<+-| alert@+>]\kai
+\item Java代码由于混杂在一个HTML环境中而显得混乱不堪，可读性非常差。一个JSP文件有时候会变
+  成几十K，甚至上百K，经常难以定位逻辑代码的所在。
+\item 编写代码时非常困惑，不知道代码到底应该写在哪里，也不知道别人是不是已经曾经实现过类
+  似的功能，到哪里去引用。
+\item 突然之间，某个需求发生了变化。于是，每个人蒙头开始全程替换，还要小心翼翼的，生怕把
+  别人的逻辑改了。
+\item 逻辑处理程序需要自己来维护生命周期，对于类似数据库事务、日志等众多模块无法统一支
+  持。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{需求的变化}
+
+在这个时候，如果有一种方式，它能够将页面上的那些Java代码抽取出来，让页面上尽量少出现Java代码，该有多好。
+
+{\Blue\hei 于是许多人开始使用servlet来处理那些业务逻辑。 }
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Servlet方式}
+
+\begin{javaCode}
+public class LoginServlet extends HttpServlet {
+  
+  /* (non-Javadoc)
+  * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, 
+  javax.servlet.http.HttpServletResponse)
+  */
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+  throws ServletException, IOException {
+    String message = null;
+    RequestDispatcher dispatcher = req.getRequestDispatcher("/result.jsp");
+    String name = req.getParameter("name");
+    String password = req.getParameter("password");
+    
+    UserHandler userHandler = new UserHandler();
+    if(userHandler.authenticate(name, password)) {
+      message = "恭喜你，登录成功";
+    } else {
+      message = "对不起，登录失败";
+    }
+    
+    req.setAttribute("message", message);
+    dispatcher.forward(req, resp);
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Servlet方式}
+
+同时，我们需要在web.xml中为这个servlet配置url的请求映射关系。 
+
+\begin{xmlCode}
+<servlet>
+  <servlet-name>Login</servlet-name>
+  <servlet-class>com.demo2do.servlet.LoginServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+  <servlet-name>Login</servlet-name>
+  <url-pattern>/Login</url-pattern>
+</servlet-mapping>
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{框架方式}
+
+时代进一步发展，人们发现简单的JSP和Servlet已经很难满足人们懒惰的要求了。于是，人们开始试图总结一些公用的Java类，来解决Web开发过程中碰到的问题。这时，横空出世了一个框架，叫做Struts。它非常先进地实现了{\hei\Red MVC模式}，成为了广大程序员的福音。 
+
+在一定程度上，Struts能够解决Web开发中的职责分配问题，使得显示与逻辑分开。不过开始的在很长一段时间里，学习使用Struts的程序员往往无法清晰的明白我们到底需要Web框架帮我们做什么，我们到底需要它完成点什么功能。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{那么我们需要什么？}
+
+在回顾写代码的历史之后，回头来看看，我们到底需要什么？ 
+
+无论是使用JSP，还是使用Struts1，或是Struts2，我们至少都需要一些必须的元素（如果没有这些元
+素，或许我还真不知道这个程序会写成什么样子）：
+
+\begin{enumerate}[<+-| alert@+>]
+\item {\hei 数据 }\only<1>{在这个例子中，就是name和password。他们共同构成了程序数据的核心
+    载体。事实上，我们往往会有一个User类来封装name和password，这样会使得我们的程序更加OO。
+    无论怎么说，数据会穿插在这个程序的各处，成为程序运行的核心。 }
+\item {\hei 页面展示 }\only<2>{在这个例子中，就是login.jsp。没有这个页面，一切的请求、验
+    证和错误展示也无从谈起。在页面上，我们需要利用HTML，把我们需要展现的数据都呈现出来。
+    同时我们也需要完成一定的页面逻辑，例如，错误展示，分支判断等。 }
+\item {\hei 处理具体业务的场所 }\only<3>{不同阶段，处理具体业务的场所就不太一样。原来
+      用JSP和Servlet，后来用Struts1或者Struts2的Action。 }
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{MVC}
+
+上面的这些必须出现的元素，在不同的时代被赋予了不同的表现形式，有的受到时代的束缚，其表现
+形式非常落后，有的已经不再使用。但是拨开这些外在的表现形式，我们就可以发现，这就是我们已
+经熟悉的MVC。
+
+\begin{itemize}
+\item 数据 \ding{235} Model 
+\item 页面展示 \ding{235} View 
+\item 处理具体业务的场所 \ding{235} Control 
+\end{itemize}
+
+{\hei 框架不重要。只要能够深刻理解MVC的概念，框架只是几个jar包而已。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{MVC}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{fig02.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{MVC的特点}\kai
+\begin{enumerate}
+\item 多个视图可以对应一个模型，可以减少代码的复制，在模型发生改变时，易于维护。
+\item 模型返回的数据与显示逻辑分离。模型数据可以应用任何显示技术，例如，使用JSP、Velocity模板或者直接产生Excel。
+\item 应用被分为三层，降低各层耦合，提高了可扩展性。
+\item 控制层把不同模型和视图组合在一起，完成不同的请求，控制层包含了用户请求权限的概念。
+\item MVC符合软件工程化管理的思想，不同层各司其职，有利于通过工程化和工具化产生管理程序代码。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{MVC}
+
+数据是动的，数据在View和Control层一旦运动起来，就会产生许多的问题：
+\begin{itemize}[<+-| alert@+>]\kai\small
+\item 数据从View层传递到Control层，如何使得一个个扁平的字符串，转化成一个个生龙活虎的Java对象。
+\item 数据从View层传递到Control层，如何方便的进行数据格式和内容的校验？ 
+\item 数据从Control层传递到View层，一个个生龙活虎的Java对象，又如何在页面上以各种各样的形式展现出来 。
+\item 如果你试图将数据请求从View层发送到Control层，你如何才能知道你要调用的究竟是哪个类，
+  哪个方法？一个Http的请求，又如何与Control层的Java代码建立起关系来？
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{框架}
+
+框架是为了解决一个又一个在Web开发中所遇到的问题而诞生的。不同的框架，都是为了解决不同的问
+题，但是对于程序员而言，他们仅仅是jar包而已。框架的优缺点的评论，也完全取决于其对问题解决
+程度和解决方式的优雅性的评论。所以，{\hei\Blue 千万不要为了学习框架而学习框架，而是要为了解决问题而
+学习框架，这才是一个程序员的正确学习之道 。}
+\end{frame}
+
+\section{Struts 2的安装}
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{为Web应用增加Struts 2支持}
+\begin{enumerate}%\setcounter{enumi}{1-1} % n-1，从n开始
+\item 下载安装Struts 2，登录http://struts.apache.org/download.cgi，下载最新Struts 2的完整版（Full Distribution）。
+  当前版本为：struts-2.3.15.1-all.zip。
+\end{enumerate}
+\begin{shCode}
+[18:10]xiaodong@Wang:~/Installed/struts-2.3.15.1[0]
+> ls
+ANTLR-LICENSE.txt       OGNL-LICENSE.txt        apps
+CLASSWORLDS-LICENSE.txt OVAL-LICENSE.txt        docs
+FREEMARKER-LICENSE.txt  SITEMESH-LICENSE.txt    lib
+LICENSE.txt             XPP3-LICENSE.txt        src
+NOTICE.txt              XSTREAM-LICENSE.txt
+\end{shCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{为Web应用增加Struts 2支持}
+\begin{enumerate}\setcounter{enumi}{1} % n-1，从n开始
+\item 将Struts 2的lib目录下
+  的{\Red\bf commons-fileupload-*.jar、commons-io-*.jar、freemarker-*.jar、javassist-*.jar、
+  ognl-*.jar、struts2-core-*.jar、xwork-core-*.jar}必须类库复制到{\bf\Red Web应用的WEB-INF/lib路径
+  下}。如果需要在DOS或Shell窗口下手动编译Strut 2相关程序，还需要
+  将struts2-core-*.jar和xwork-core-*.jar添加到系统的CLASSPATH环境变量。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{为Web应用增加Struts 2支持}
+\begin{enumerate}\setcounter{enumi}{2} % n-1，从n开始
+\item 编辑Web应用的web.xml配置文件，配置Strut 2的核心过滤器（Filter）。
+\begin{xmlCode}\footnotesize
+<?xml version="1.0" encoding="GBK"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+id="WebApp_ID" version="3.0">
+
+	<!-- 定义 Struts2 的核心 Filter -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.
+                StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<!-- 让Struts2 的核心 Filter 拦截所有请求 -->
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>   
+\end{xmlCode}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{为Web应用增加Struts 2支持}
+\begin{enumerate}\setcounter{enumi}{3} % n-1，从n开始
+\item 使用Struts 2的功能需要一个struts.xml配置文件，默认放在Web应用的类加载路径下（通常是WEB-INF/classes）。
+\end{enumerate}
+经过上述步骤，我们可以在一个Web应用中使用Struts 2的基本功能。
+\end{frame}
+
+\section{在Eclipse中使用Struts 2}
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建并配置项目}
+
+在Eclipse中创建动态Web项目：Struts2Demo，按照上述步骤配置该项目。主要包括添加依赖的Struts 2类
+库，在web.xml中加入并配置核心过滤器。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+下面将为Strut2Demo应用增加一个简单的登录处理流程，以简要介绍Struts 2的开发步骤。
+
+\wxd{编写JSP页面}
+
+File: Struts2Demo/WebContent/login.jsp
+
+\begin{xmlCode}
+<%@page language="java" contentType="text/html; charset=GBK"
+pageEncoding="GBK"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title><s:text name="loginPage"/></title>
+  </head>
+  <body>
+    <s:form action="login">
+    <s:textfield name="username" key="user"/>
+    <s:textfield name="password" key="pass"/>
+    <s:submit key="login"/>
+    </s:form>
+  </body>
+</html>  
+\end{xmlCode}
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+上述login.jsp页面使用Struts 2标签库（后续介绍）定义了一个表单和三个简单表单域。几乎所有的MVC框架都会使用标签库，用以帮助开发者更加简单、更加规范的编写视图组件（例如JSP页面）。
+
+提供welcome.jsp页面和error.jsp页面，作为登录成功、登录失败后的提示页面。
+
+File: Struts2Demo/WebContent/welcome.jsp
+
+{\footnotesize\Blue
+\begin{verbatim}
+...
+<body>
+  <s:text name="succTip">
+    <s:param>${sessionScope.user}</s:param>
+  /s:text><br/>
+</body>
+...
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+File: Struts2Demo/WebContent/error.jsp
+{\footnotesize\Blue
+\begin{verbatim}
+...
+<body>
+  <s:text name="failTip"/>
+</body>
+...
+\end{verbatim}}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+为了让Struts 2运行起来，还必须为Struts 2框架提供一个配置文件：struts.xml。
+
+File: Struts2Demo/{\Red src}/struts.xml
+
+\begin{xmlCode}
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<!-- 指定 Struts 2 配置文件的根元素 -->
+<struts>
+  <!-- 指定全局国际化资源文件 -->
+  <constant name="struts.custom.i18n.resources" value="mess"/>
+  <!-- 指定国际化编码所使用的字符集 -->	
+  <constant name="struts.i18n.encoding" value="GBK"/>
+</struts>  
+\end{xmlCode}
+
+{\kai\Blue 注意：在Eclipse的管理下，当Eclipse生成、部署Web项目时，会自动将src路径下除了*.java外所有的文件都复制到Web应用的WEB-INF/classes路径下，所以可以如上述创建struts.xml文件。}
+
+\end{frame}
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+上述struts.xml文件中制定了国际化资源文件的base名为mess，所以需要为该应用提供一个messa\_zh\_CN.properties文件。
+
+File: Struts2Demo/src/mess.properties
+
+\begin{xmlCode}
+loginPage = 登录页面
+errorPage = 错误页面
+succPage = 成功页面
+failTip = 对不起，您不能登录！
+succTip = 欢迎， {0} ，您已经登录！
+user = 用户名
+pass = 密码
+login = 登录
+\end{xmlCode}
+
+必须用native2ascii命令处理该国际化资源文件。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+前面定义了login.jsp页面中登录表单时指定改表单的action为login，所以必须定义一个Struts
+2的Action，通常该继承ActionSupport基类。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+File: Struts2Demo/src/ouc/j2ee/action/LoginAction.java
+
+\begin{javaCode}
+... ...
+public class LoginAction extends ActionSupport {
+  // 定义封装请求参数的 username 和 password 属性
+  private String username;
+  private String password;
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+  public String getPassword() {
+    return password;
+  }
+  public void setPassword(String password) {
+    this.password = password;
+  }
+  // 定义处理用户请求的 execute 方法
+  public String execute() throws Exception {
+    // 当username 为 oucj2ee，password 为 oucj2ee 时即登录成功
+    if (getUsername().equals("oucj2ee") && getPassword().equals("oucj2ee")) {
+      ActionContext.getContext().getSession().put("user", getUsername());
+      return SUCCESS;
+    } else {
+      return ERROR;
+    }
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{增加登录处理}
+
+增加struts.xml配置文件。
+\begin{xmlCode}
+... ...
+<struts>
+  <!-- 指定全局国际化资源文件 -->
+  <constant name="struts.custom.i18n.resources" value="mess"/>
+  <!-- 指定国际化编码所使用的字符集 -->	
+  <constant name="struts.i18n.encoding" value="GBK"/>
+  <!-- 所有的 Action 定义都应该放在 package 下 -->
+  <package name="oucj2ee" extends="struts-default">
+    <action name="login" class="ouc.j2ee.action.LoginAction">
+    <!-- 定义三个逻辑视图和物理资源之间的映射 -->		
+      <result name="input">/login.jsp</result>
+      <result name="error">/error.jsp</result>
+      <result name="success">/welcome.jsp</result>
+    </action>
+  </package>
+</struts>
+\end{xmlCode}
+配置一个名称为login的Action，该Action配置三个result元素，用于指定逻辑视图与物理资源之间的映射。
+例如，当返回input逻辑视图名称时，系统跳转到/login.jsp页面。
+\end{frame}
+
+\section{总结：Struts 2的开发步骤}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{182} 在web.xml中配置核心过滤器}
+
+在web.xml文件中增加如下配置片段：
+
+\begin{xmlCode}
+<!-- 定义 Struts 2 的核心过滤器 -->
+<filter>
+  <filter-name>struts2</filter-name>
+  <filter-class>
+    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+  </filter-class>
+</filter>
+<!-- 让 Struts 2 的核心过滤器拦截所有请求 -->
+<filter-mapping>
+  <filter-name>struts2</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>  
+\end{xmlCode}
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{183} 定义包含表单数据的JSP页面}
+
+\begin{itemize}
+\item 如果以POST方式提交表单数据，则定义包含表单数据的JSP页面。
+\item 如果仅仅以GET方式发送请求，则无需经过这一步。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{184} 定义处理用户请求的Action类}
+
+\begin{itemize}
+\item Action是MVC中的C，即控制器。
+\item 控制器Action负责调用Model里的方法来处理请求。
+\item 在Struts 2中，MVC框架控制器实际上由两个部分组成：拦截所有用户请求，处理请求的通用代
+  码由核心控制器完成；实际业务控制则有Action处理。
+\end{itemize}
+
+{\Blue\kai\scriptsize 注意：核心过滤器接收到用户请求后，通常会对用户请求进行简单预处理（例如解析、封装参数），然后通过反射来创建Action实例，并调用Action的指定方法（Struts 1通常是execute，Struts 2可以是任意方法）来处理用户请求。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{185} 在struts.xml中配置Action}
+
+通常采用如下XML片段配置Action：
+\begin{xmlCode}
+<action name="login" class="ouc.j2ee.action.LoginAction">
+  ... ...
+</action>
+\end{xmlCode}
+上述配置指定如果用户请求的URL为login，则使用ouc.j2ee.action.\\LoginAction来处理。
+
+{\Blue\kai\scriptsize 注意：现在Struts 2的Convension插件借鉴Rails框架的优点，开始支持“约
+  定优于配置”的思想，即采用约定的方式来规定用户请求地址和Action之间的对应关系。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{186} 配置处理结果和物理视图资源之间的对应关系}
+\begin{itemize}
+\item 当Action处理用户请求结束后，通常会返回一个处理结果（通常使用简单的字符串），我们可
+  以认为该名称是{\hei 逻辑视图名}。
+\item 逻辑视图名需要和指定的物理视图资源关联才有价值，所以我们需要配置处理结果之间的对应
+  关系。
+\begin{xmlCode}
+<action name="login" class="ouc.j2ee.action.LoginAction">
+  <!-- 定义3个逻辑视图和物理视图资源之间的映射 -->
+  <result name="input">/login.jsp</result>
+  <result name="error">/error.jsp</result>
+  <result name="success">/success.jsp</result>
+</action>  
+\end{xmlCode}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{\ding{187} 编写视图资源}
+
+如果一个Action需要把一些数据传给视图资源，则可以借助{\Red\hei OGNL表达式}。
+
+经过上述步骤后，我们基本完成了一个Struts 2处理流程的开发，即可以完整的执行一次HTTP请求/响
+应过程。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Struts 2流程}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{fig01.pdf}
+\end{figure}
+\begin{itemize}\small\kai
+\item StrutsPrepareAndExecuteFilter和XxxAction共同构成Strut 2的控制器，其中前者称为核心控
+  制器，后者称为业务控制器。
+\item 业务控制器并不与物理视图关联，这种做法提供了很好的解耦。
+\item 在Struts 2的控制下，用户请求不再向JSP页面发送，而是由核心控制器来“调用”JSP页面来生
+  成响应，此处调用不是直接调用，而是将请求forward到指定的JSP页面。
+\end{itemize}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%% \frametitle{本章习题}
+%% \begin{enumerate}
+%% \item a
+%% \item b
+%% \end{enumerate}
+%% \end{frame}
+
+%% \begin{figure}
+%% \centering
+%% \includegraphics[width=0.6\textwidth]{fig01.png}
+%% \end{figure}
+% TKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\centering
+{\Huge \textcolor{blue}{THE END}} \\
+\vspace{5mm}
+{\Large wangxiaodong@ouc.edu.cn} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

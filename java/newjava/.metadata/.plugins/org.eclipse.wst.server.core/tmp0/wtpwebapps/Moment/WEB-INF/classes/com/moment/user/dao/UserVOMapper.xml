@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moment.user.dao.UserVOMapper" >
+  <resultMap id="BaseResultMap" type="com.moment.user.domain.UserVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="phonum" property="phonum" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="gradeid" property="gradeid" jdbcType="INTEGER" />
+    <result column="picnum" property="picnum" jdbcType="INTEGER" />
+    <result column="collectnum" property="collectnum" jdbcType="INTEGER" />
+    <result column="collectPicnum" property="collectpicnum" jdbcType="INTEGER" />
+    <result column="fansnum" property="fansnum" jdbcType="INTEGER" />
+    <result column="concernnum" property="concernnum" jdbcType="INTEGER" />
+    <result column="likenum" property="likenum" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, sex, name, account, phonum, email, salt, password, time, score, gradeid, picnum, 
+    collectnum, collectPicnum, fansnum, concernnum, likenum, img
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.moment.user.domain.UserVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.moment.user.domain.UserVOExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.moment.user.domain.UserVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into user (id, sex, name, 
+      account, phonum, email, 
+      salt, password, time, 
+      score, gradeid, picnum, 
+      collectnum, collectPicnum, fansnum, 
+      concernnum, likenum, img
+      )
+    values (#{id,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{account,jdbcType=VARCHAR}, #{phonum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{score,jdbcType=INTEGER}, #{gradeid,jdbcType=INTEGER}, #{picnum,jdbcType=INTEGER}, 
+      #{collectnum,jdbcType=INTEGER}, #{collectpicnum,jdbcType=INTEGER}, #{fansnum,jdbcType=INTEGER}, 
+      #{concernnum,jdbcType=INTEGER}, #{likenum,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.moment.user.domain.UserVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="phonum != null" >
+        phonum,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="gradeid != null" >
+        gradeid,
+      </if>
+      <if test="picnum != null" >
+        picnum,
+      </if>
+      <if test="collectnum != null" >
+        collectnum,
+      </if>
+      <if test="collectpicnum != null" >
+        collectPicnum,
+      </if>
+      <if test="fansnum != null" >
+        fansnum,
+      </if>
+      <if test="concernnum != null" >
+        concernnum,
+      </if>
+      <if test="likenum != null" >
+        likenum,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="phonum != null" >
+        #{phonum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="gradeid != null" >
+        #{gradeid,jdbcType=INTEGER},
+      </if>
+      <if test="picnum != null" >
+        #{picnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectnum != null" >
+        #{collectnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectpicnum != null" >
+        #{collectpicnum,jdbcType=INTEGER},
+      </if>
+      <if test="fansnum != null" >
+        #{fansnum,jdbcType=INTEGER},
+      </if>
+      <if test="concernnum != null" >
+        #{concernnum,jdbcType=INTEGER},
+      </if>
+      <if test="likenum != null" >
+        #{likenum,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.moment.user.domain.UserVOExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonum != null" >
+        phonum = #{record.phonum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salt != null" >
+        salt = #{record.salt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.gradeid != null" >
+        gradeid = #{record.gradeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.picnum != null" >
+        picnum = #{record.picnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.collectnum != null" >
+        collectnum = #{record.collectnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.collectpicnum != null" >
+        collectPicnum = #{record.collectpicnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.fansnum != null" >
+        fansnum = #{record.fansnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.concernnum != null" >
+        concernnum = #{record.concernnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.likenum != null" >
+        likenum = #{record.likenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.img != null" >
+        img = #{record.img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set id = #{record.id,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      phonum = #{record.phonum,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      salt = #{record.salt,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      score = #{record.score,jdbcType=INTEGER},
+      gradeid = #{record.gradeid,jdbcType=INTEGER},
+      picnum = #{record.picnum,jdbcType=INTEGER},
+      collectnum = #{record.collectnum,jdbcType=INTEGER},
+      collectPicnum = #{record.collectpicnum,jdbcType=INTEGER},
+      fansnum = #{record.fansnum,jdbcType=INTEGER},
+      concernnum = #{record.concernnum,jdbcType=INTEGER},
+      likenum = #{record.likenum,jdbcType=INTEGER},
+      img = #{record.img,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moment.user.domain.UserVO" >
+    update user
+    <set >
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="phonum != null" >
+        phonum = #{phonum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="gradeid != null" >
+        gradeid = #{gradeid,jdbcType=INTEGER},
+      </if>
+      <if test="picnum != null" >
+        picnum = #{picnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectnum != null" >
+        collectnum = #{collectnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectpicnum != null" >
+        collectPicnum = #{collectpicnum,jdbcType=INTEGER},
+      </if>
+      <if test="fansnum != null" >
+        fansnum = #{fansnum,jdbcType=INTEGER},
+      </if>
+      <if test="concernnum != null" >
+        concernnum = #{concernnum,jdbcType=INTEGER},
+      </if>
+      <if test="likenum != null" >
+        likenum = #{likenum,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moment.user.domain.UserVO" >
+    update user
+    set sex = #{sex,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      phonum = #{phonum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=INTEGER},
+      gradeid = #{gradeid,jdbcType=INTEGER},
+      picnum = #{picnum,jdbcType=INTEGER},
+      collectnum = #{collectnum,jdbcType=INTEGER},
+      collectPicnum = #{collectpicnum,jdbcType=INTEGER},
+      fansnum = #{fansnum,jdbcType=INTEGER},
+      concernnum = #{concernnum,jdbcType=INTEGER},
+      likenum = #{likenum,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

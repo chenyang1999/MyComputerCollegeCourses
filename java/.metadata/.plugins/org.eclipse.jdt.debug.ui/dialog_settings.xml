@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="73" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth2"/>
+	<item value="1" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn"/>
+	<item value="362" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1"/>
+	<item value="140" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0"/>
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode&gt;=shiyan/src&amp;lt;{shiyan2.java[BankTest&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=MiniMusicPlayer/lib\/jmf.jar&amp;lt;com.ibm.media.codec.audio(ArrayToPCM.class[ArrayToPCM&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=MinMp3Player/lib\/jmf.jar&amp;lt;com.ibm.media.codec.audio(ArrayToPCM.class[ArrayToPCM&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=FifteenMegahertz/\/Users\/Macbook\/.m2\/repository\/org\/apache\/tomcat\/tomcat-catalina\/8.5.33\/tomcat-catalina-8.5.33.jar&amp;lt;org.apache.catalina.startup(Tomcat$1.class[&lt;/infoNode&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="432" key="DIALOG_X_ORIGIN"/>
+			<item value="147" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+	<section name="AddExceptionDialog">
+		<item value="true" key="caughtChecked"/>
+		<item value="true" key="uncaughtChecked"/>
+	</section>
+</section>

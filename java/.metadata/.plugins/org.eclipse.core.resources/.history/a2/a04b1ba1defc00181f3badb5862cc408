@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>hello,test jsp</p>
+<embed src="/Users/Macbook/Music/网易云音乐/张国荣 - 倩女幽魂 (粤语版).ncm" width="480" height="100"02. loop="false" autostart="false"> 
+</embed> 
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.wst.xsl.launching.launchConfigurationType">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/magic_show"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/CDC-1.0%Foundation-1.0"/>
+<stringAttribute key="org.eclipse.wst.xsl.jaxp.launching.ATTR_ATTRIBUTES" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;Attributes/&gt;&#10;"/>
+<stringAttribute key="org.eclipse.wst.xsl.jaxp.launching.ATTR_OUTPUT_PROPERTIES" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;Properties/&gt;&#10;"/>
+<booleanAttribute key="org.eclipse.wst.xsl.jaxp.launching.ATTR_USE_DEFAULT_PROCESSOR" value="true"/>
+<stringAttribute key="org.eclipse.wst.xsl.jaxp.launching.INVOKER_DESCRIPTOR" value="org.eclipse.wst.xsl.launching.jaxp.invoke"/>
+<booleanAttribute key="org.eclipse.wst.xsl.launching.ATTR_FORMAT_FILE" value="false"/>
+<stringAttribute key="org.eclipse.wst.xsl.launching.ATTR_INPUT_FILE" value="${workspace_loc:/magic_show/magic_show/src/main/resources/mybatis-generator.xml}"/>
+<booleanAttribute key="org.eclipse.wst.xsl.launching.ATTR_OPEN_FILE" value="true"/>
+<stringAttribute key="org.eclipse.wst.xsl.launching.ATTR_OUTPUT_FILENAME" value="mybatis-generator.out.xml"/>
+<stringAttribute key="org.eclipse.wst.xsl.launching.ATTR_OUTPUT_FOLDER" value="${workspace_loc:/magic_show}"/>
+<stringAttribute key="org.eclipse.wst.xsl.launching.ATTR_PIPELINE" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;Pipeline&gt;&#10;&lt;OutputProperties/&gt;&#10;&lt;/Pipeline&gt;&#10;"/>
+<booleanAttribute key="org.eclipse.wst.xsl.launching.ATTR_USE_DEFAULT_OUTPUT_FILE" value="true"/>
+</launchConfiguration>

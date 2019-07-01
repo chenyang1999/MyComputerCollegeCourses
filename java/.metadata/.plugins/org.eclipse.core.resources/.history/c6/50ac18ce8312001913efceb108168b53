@@ -1,0 +1,34 @@
+package com.fsq.util;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
+public class DBUtil {
+
+    private static final String URL="jdbc:mysql://127.0.0.1:3306/photo?useUnicode=true&amp;characterEncoding=utf-8";
+    private static final String USER="root";
+    private static final String PASSWORD="12345678";
+    
+    private static Connection conn=null;
+    
+    static {
+        try {
+            //1.º”‘ÿ«˝∂Ø≥Ã–Ú
+            Class.forName("com.mysql.jdbc.Driver");
+            //2.ªÒµ√ ˝æ›ø‚µƒ¡¨Ω”
+            conn=DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("success connected databases");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("have connected databases");
+    }
+    //Ω´ªÒµ√µƒ ˝æ›ø‚”Îjavaµƒ¡¥Ω”∑µªÿ£®∑µªÿµƒ¿‡–ÕŒ™Connection£©
+    public static Connection getConnection(){
+        return conn;
+    }
+}

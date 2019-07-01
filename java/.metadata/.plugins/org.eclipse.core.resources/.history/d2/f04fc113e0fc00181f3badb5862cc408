@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>hello,test jsp</p>
+<EMBED src=http://www.zhuiluren.com/MusicBYSEA.swf width=460 height=650 
+type=application/x-shockwave-flash><DIV></DIV> 
+</body>
+</html>

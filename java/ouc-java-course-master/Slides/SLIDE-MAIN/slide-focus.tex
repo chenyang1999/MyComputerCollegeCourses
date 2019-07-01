@@ -1,0 +1,192 @@
+% Full instructions available at:
+% https://github.com/elauksap/focus-beamertheme
+
+\documentclass{beamer}
+\usetheme{focus}
+
+% package for font
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}  %%如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}  %%实现对汉字加点、下划线等。
+\usepackage{pifont}  % \ding{}
+% package for math
+\usepackage{amsfonts}
+% package for graphics
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}  % placements=positioning
+\usepackage{graphicx}  % \includegraphics[]{}
+\usepackage{subfigure}  %%图形或表格并排排列
+% package for table
+\usepackage{colortbl,dcolumn}  %% 彩色表格
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+% package for code
+\usepackage{fancyvrb}
+\usepackage{listings}
+% setting for font
+%%\setCJKmainfont{Adobe Kaiti Std}
+\setCJKmainfont{SimSun}
+%%\setCJKmainfont{Microsoft YaHei}
+%%\setCJKmainfont{FangSong_GB2312} 
+%%\setmainfont{Times New Roman}
+%\setsansfont[Mapping=tex-text]{Adobe Song Std}
+%如果装了Adobe Acrobat，可在font.conf中配置Adobe字体的路径以使用其中文字体。
+%也可直接使用系统中的中文字体如SimSun、SimHei、微软雅黑等。
+%原来beamer用的字体是sans family；注意Mapping的大小写，不能写错。
+%设置字体时也可以直接用字体名，以下三种方式等同：
+%\setromanfont[BoldFont={黑体}]{宋体}
+%\setromanfont[BoldFont={SimHei}]{SimSun}
+%\setromanfont[BoldFont={"[simhei.ttf]"}]{"[simsun.ttc]"}
+
+% font setting by xeCJK
+\setCJKfamilyfont{NSimSun}{NSimSun}
+\newcommand{\song}{\CJKfamily{NSimSun}}
+%%%\setCJKfamilyfont{AdobeSongStd}{Adobe Song Std}
+%%%\newcommand{\AdobeSong}{\CJKfamily{AdobeSongStd}}
+\setCJKfamilyfont{FangSong}{FangSong_GB2312}
+\newcommand{\fang}{\CJKfamily{FangSong}}
+%%%\setCJKfamilyfont{AdobeFangsongStd}{Adobe Fangsong Std}
+%%%\newcommand{\AdobeFang}{\CJKfamily{AdobeFangsongStd}}
+\setCJKfamilyfont{SimHei}{SimHei}
+\newcommand{\hei}{\CJKfamily{SimHei}}
+%%%\setCJKfamilyfont{AdobeHeitiStd}{Adobe Heiti Std}
+%%%\newcommand{\AdobeHei}{\CJKfamily{AdobeHeitiStd}}
+\setCJKfamilyfont{KaiTi}{KaiTi}
+\newcommand{\kai}{\CJKfamily{KaiTi}}
+%%%\setCJKfamilyfont{AdobeKaitiStd}{Adobe Kaiti Std}
+\newcommand{\AdobeKai}{\CJKfamily{AdobeKaitiStd}}
+\setCJKfamilyfont{LiSu}{LiSu}
+\newcommand{\li}{\CJKfamily{LiSu}}
+\setCJKfamilyfont{YouYuan}{YouYuan}
+\newcommand{\you}{\CJKfamily{YouYuan}}
+\setCJKfamilyfont{FZJingLei}{FZJingLeiS-R-GB}
+\newcommand{\jinglei}{\CJKfamily{FZJingLei}}
+\setCJKfamilyfont{MSYH}{Microsoft YaHei}
+\newcommand{\msyh}{\CJKfamily{MSYH}}
+
+\setbeamerfont{frametitle}{series=\Large\hei} % 修改Beamer标题字体
+
+\graphicspath{{figures/}}  %%图片路径
+\renewcommand\figurename{图}
+
+% setting for pdf
+\hypersetup{% pdfpagemode=FullScreen,%
+  pdfauthor={Xiaodong Wang},%
+  pdftitle={Title},%
+  CJKbookmarks=true,%
+  bookmarksnumbered=true,%
+  bookmarksopen=false,%
+  plainpages=false,%
+  colorlinks=true,%
+  citecolor=green,%
+  filecolor=magenta,%
+  linkcolor=blue,%red(default)
+  urlcolor=cyan}
+
+% setting for fontspec
+\XeTeXlinebreaklocale "zh"  %%表示用中文的断行
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt  %%多一点调整的空间
+%%%%%
+
+% 自定义颜色
+\def\Red{\color{red}}
+\def\Green{\color{green}}
+\def\Blue{\color{blue}}
+\def\Mage{\color{magenta}}
+\def\Cyan{\color{cyan}}
+\def\Brown{\color{brown}}
+\def\White{\color{white}}
+\def\Black{\color{black}}
+
+\lstnewenvironment{xmlCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    % frame=shadowbox,%
+    % rulesepcolor=\color{cyan},%
+     frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=xml, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{javaCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{cyan},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=Java, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{shCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\scriptsize\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{brown},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=sh, %
+    }\lstset{#1}}{}
+
+\newcommand\ask[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=white,]{\Cyan \includegraphics[height=1.5cm]{question} \Large \msyh #1};}
+
+\newcommand\wxd[1]{\vskip 4bp \tikz \node[rectangle,minimum size=6mm,
+  fill=blue!60!white,]{\White \ding{118} \msyh #1};}
+
+\newcommand\cxf[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=purple!60!white,]{\White \ding{42} \msyh #1};}
+
+\newcommand\xyy[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=black!80!white,]{\White \msyh\scriptsize #1};}
+
+\newcommand\tta[1]{\vskip 4bp \tikz \node[rectangle,minimum size=6mm,
+  fill=blue!60!white,]{\White \ding{118} \msyh #1};}
+
+\newcommand\ttb[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=purple!60!white,]{\White \ding{42} \msyh #1};}
+
+\newcommand\ttc[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=black!80!white,]{\White \msyh\scriptsize #1};}
+
+\newcommand\homework[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=red!80!white,]{\White \ding{45} \msyh\scriptsize 课后小作业 } ; {\kai\small #1}} 
+
+\newcommand\notice[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=red!80!white,]{\White \scriptsize \ding{42} \msyh #1};}
+
+\newcommand\samp[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,]{\Mage\msyh \small CODE \ding{231} \Black #1};\vskip -8bp}
+
+\newcommand\codeset[1]{\vskip 2bp \tikz \node[rectangle,minimum
+  size=3mm]{\Mage\msyh \small 课程配套代码 \ding{231} \Black
+    #1};\vskip -4bp}
+
+\newcommand\pptlink[2]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=blue!70!white,]{\href{run:#1}{\White \scriptsize \msyh 动画演示 #2}};}
+
+
+\makeatletter
+\newcommand{\Extend}[5]{\ext@arrow 0099{\arrowfill@#1#2#3}{#4}{#5}}
+\makeatother

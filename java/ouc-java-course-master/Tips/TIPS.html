@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2018-10-05 Fri 09:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>不断丰富的Java小知识</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Xiaodong Wang" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="orgcss/worg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">不断丰富的Java小知识</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org68c8e80">1. main方法为什么只能那么写？</a></li>
+<li><a href="#org9568c44">2. 抽象类有必要存在构造方法吗？</a></li>
+<li><a href="#org46a489d">3. 对于构造函数，大家知道应该注意什么吗？</a></li>
+<li><a href="#org68a418e">4. 子类会继承父类的构造方法吗？</a></li>
+<li><a href="#org9198adc">5. 以下要删除所有元素c的代码有错么？运行完了还会有c没删除么？如有错请改错。</a></li>
+<li><a href="#orgb76fe0d">6. 关于文件的创建时间。</a></li>
+<li><a href="#orga7b1964">7. 你了解Java中equals和==区别及字符串创建过程吗？</a>
+<ul>
+<li><a href="#org7f58152">7.1. 起因出处</a></li>
+<li><a href="#org1bd410e">7.2. 原因分析</a>
+<ul>
+<li><a href="#orgdbaebf6">7.2.1. ==和equals</a></li>
+<li><a href="#orgf9ba3cc">7.2.2. 创建字符串对象原理</a></li>
+<li><a href="#org6a05b87">7.2.3. 字符串缓存池</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0308995">8. 原码、反码和补码</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org68c8e80" class="outline-2">
+<h2 id="org68c8e80"><span class="section-number-2">1</span> main方法为什么只能那么写？</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+main()方法的声明为public static void main(String args[])，且必须这么定义，这是Java的规范。
+</p>
+
+<p>
+这么定义和JVM的运行有关系。当一个类中有main()方法，执行命令 <b>java 类名</b> 则会启动虚拟机执行该类中的main方法。由于JVM在运行这个Java应用程序的时候，首先会调用main方法，调用时不实例化这个类的对象而是通过类名直接调用，因此需要是限制为public static。对于java中的main方法，JVM限制不能有返回值，因此返回值类型为void。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9568c44" class="outline-2">
+<h2 id="org9568c44"><span class="section-number-2">2</span> 抽象类有必要存在构造方法吗？</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+抽象类虽然自身不可以实例化，但是其子类覆盖了所有的抽象方法后是可以实例化的，所以抽象类的构造函数，适用于给其子类对象进行初始化。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46a489d" class="outline-2">
+<h2 id="org46a489d"><span class="section-number-2">3</span> 对于构造函数，大家知道应该注意什么吗？</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+构造函数是对象的基本，没有构造函数就没有对象。如果在父类中（这里就是你的抽象类）中显示的定义了有参数的构造函数，在子类继承时就必须写一个构造函数来调用父类的构造函数。
+</p>
+
+<p>
+如果父类中有没有参数的构造函数，在子类中可以不显示的调用父类的构造函数，Java会自动调用没有参数的构造函数。
+</p>
+
+<p>
+如果编写一个Java Class时没有添加无参构造方法，那么编译器会自动添加无参构造方法。
+但是如果编写时添加了有参构造方法而未添加无参构造方法，那么编译器只认有参构造方法而不会默认添加无参构造方法！所以，如果需要使用无参构造方法，一定要在类里面添加。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68a418e" class="outline-2">
+<h2 id="org68a418e"><span class="section-number-2">4</span> 子类会继承父类的构造方法吗？</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+父类中的构造方法是不能继承的，但是在实例化子类的时候会调用父类的构造方法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9198adc" class="outline-2">
+<h2 id="org9198adc"><span class="section-number-2">5</span> 以下要删除所有元素c的代码有错么？运行完了还会有c没删除么？如有错请改错。</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #932092;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">util</span>.<span style="color: #228b22;">ArrayList</span>;
+<span style="color: #932092;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">util</span>.<span style="color: #228b22;">List</span>;
+
+<span style="color: #932092;">public</span> <span style="color: #932092;">class</span> <span style="color: #228b22;">Test</span> {
+  <span style="color: #932092;">public</span> <span style="color: #932092;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0432fe;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">String</span>&gt; <span style="color: #a0522d;">li</span> = <span style="color: #932092;">new</span> <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">String</span>&gt;();
+
+    li.add(<span style="color: #8b2252;">"a"</span>);
+    li.add(<span style="color: #8b2252;">"b"</span>);
+    li.add(<span style="color: #8b2252;">"c"</span>);
+    li.add(<span style="color: #8b2252;">"d"</span>);
+    li.add(<span style="color: #8b2252;">"c"</span>);
+    li.add(<span style="color: #8b2252;">"c"</span>);
+    li.add(<span style="color: #8b2252;">"e"</span>);
+    li.add(<span style="color: #8b2252;">"c"</span>);
+
+    <span style="color: #932092;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; li.<span style="color: #228b22;">size</span>(); i++) {
+      <span style="color: #932092;">if</span> (li.get(i).equals(<span style="color: #8b2252;">"c"</span>)) {
+        li.remove(i);
+      }
+    }
+
+    System.out.println(li);
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb76fe0d" class="outline-2">
+<h2 id="orgb76fe0d"><span class="section-number-2">6</span> 关于文件的创建时间。</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+在Linux系统中没有文件创建时间的概念，只有文件的访问时间、修改时间、状态改变时间，即不能在文件的生命周期内永远知道文件的创建时间。与文件相关的几个时间包括：
+</p>
+<dl class="org-dl">
+<dt>访问时间</dt><dd>读一次这个文件的内容，这个时间就会更新。比如对这个文件使用more命令。ls、stat命令都不会修改文件的访问时间。</dd>
+<dt>修改时间</dt><dd>对文件内容修改一次，这个时间就会更新。比如：vi后保存文件。ls -l列出的时间就是这个时间。</dd>
+<dt>状态改变时间</dt><dd>通过chmod命令更改一次文件属性，这个时间就会更新。</dd>
+</dl>
+
+<p>
+可以通过stat命令查看文件的详细的状态、准确的修改时间等。
+</p>
+
+<ul class="org-ul">
+<li>如果文件创建后就没有修改过，那么修改时间 = 创建时间</li>
+<li>如果文件创建后状态就没有改变过，那么状态改变时间 = 创建时间</li>
+<li>如果文件创建后没有被读取过，那么访问时间 = 创建时间</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga7b1964" class="outline-2">
+<h2 id="orga7b1964"><span class="section-number-2">7</span> 你了解Java中equals和==区别及字符串创建过程吗？</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+(感谢 @方政 提出问题并整理）
+</p>
+</div>
+
+<div id="outline-container-org7f58152" class="outline-3">
+<h3 id="org7f58152"><span class="section-number-3">7.1</span> 起因出处</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+在一段Java代码中，使用了两种方式获取字符串：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #b22222;">//</span><span style="color: #b22222;">&#31532;&#19968;&#31181;&#65306;&#33719;&#21462;&#21629;&#20196;&#34892;&#36755;&#20837;&#21442;&#25968;&#25968;&#32452;</span>
+<span style="color: #932092;">public</span> <span style="color: #932092;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0432fe;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+  <span style="color: #932092;">if</span>(args[0] == <span style="color: #8b2252;">"-logdb"</span>) {
+  System.out.println(<span style="color: #8b2252;">"args==-logdb"</span>);
+  } <span style="color: #932092;">else</span> {
+    System.out.println(<span style="color: #8b2252;">"args!=-logdb"</span>);
+  }
+}
+<span style="color: #b22222;">//</span><span style="color: #b22222;">&#31532;&#20108;&#31181;&#65306;&#20351;&#29992;&#20869;&#32622;&#23383;&#31526;&#20018;&#25968;&#32452;</span>
+<span style="color: #932092;">public</span> <span style="color: #932092;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0432fe;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+  <span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args1</span> = {<span style="color: #8b2252;">"-logdb"</span>};
+  <span style="color: #932092;">if</span>(args1[0] == <span style="color: #8b2252;">"-logdb"</span>) {
+    System.out.println(<span style="color: #8b2252;">"args==-logdb"</span>);
+  } <span style="color: #932092;">else</span> {
+    System.out.println(<span style="color: #8b2252;">"args!=-logdb"</span>);
+  }
+}
+</pre>
+</div>
+
+<p>
+结果发现，第一种显示的是args!=-logdb，而第二种显示的却是args!=-logdb。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1bd410e" class="outline-3">
+<h3 id="org1bd410e"><span class="section-number-3">7.2</span> 原因分析</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+<div id="outline-container-orgdbaebf6" class="outline-4">
+<h4 id="orgdbaebf6"><span class="section-number-4">7.2.1</span> ==和equals</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+首先，在Java中，==和equals是不一样的。对于基本类型，如int，char之类的，==比较的是他们的值。而对于复合类型（类），当使用==比较的就不是他们的值，而是他们的地址，==的意思可以看成是参与比较的两个对象是不是同一个对象，即是否具有相同的地址。而equals的初始行为是比较地址，但在一些类中被重写覆盖，如String类中的equals方法：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #932092;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0432fe;">equals</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">anObject</span>) {
+  <span style="color: #932092;">if</span> (<span style="color: #932092;">this</span> == anObject) {
+    <span style="color: #932092;">return</span> <span style="color: #008b8b;">true</span>;
+  }
+
+  <span style="color: #932092;">if</span> (anObject <span style="color: #932092;">instanceof</span> String) {
+    <span style="color: #228b22;">String</span> <span style="color: #a0522d;">anotherString</span> = (<span style="color: #228b22;">String</span>) anObject;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span> = value.length;
+    <span style="color: #932092;">if</span> (n == anotherString.value.length) {
+      <span style="color: #228b22;">char</span> <span style="color: #a0522d;">v1</span>[] = value;
+      <span style="color: #228b22;">char</span> <span style="color: #a0522d;">v2</span>[] = anotherString.value;
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;
+      <span style="color: #932092;">while</span> (n-- != 0) {
+        <span style="color: #932092;">if</span> (v1[i] != v2[i])
+        <span style="color: #932092;">return</span> <span style="color: #008b8b;">false</span>;
+        i++;
+      }
+      <span style="color: #932092;">return</span> <span style="color: #008b8b;">true</span>;
+    }
+  }
+  <span style="color: #932092;">return</span> <span style="color: #008b8b;">false</span>;
+
+}
+</pre>
+</div>
+
+<p>
+我们可以很明白地看出，在开始比较地址如果相同就返回true，后续则是比较String的内容。所以，当我们需要比较两个字符串是否相同的时候，最好使用equals来进行比较。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf9ba3cc" class="outline-4">
+<h4 id="orgf9ba3cc"><span class="section-number-4">7.2.2</span> 创建字符串对象原理</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<ul class="org-ul">
+<li>在创建一个字符串对象str = X时，JVM会拿着X去字符串缓存池中找到是否有内容相同的字符串，若有，则将str与其联系起来，若没有，则在池中创建。</li>
+<li>使用new创建对象时，会在堆栈区中创建一个对象。</li>
+<li>如果直接指定，如第二个例子，则会去字符串缓存池中检查是否存在字符串，不存在则创建，不会在堆栈区创建。</li>
+</ul>
+
+<p>
+示例A：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">str1</span> = <span style="color: #8b2252;">"abc"</span>; 
+System.out.println(str1 == <span style="color: #8b2252;">"abc"</span>);   <span style="color: #b22222;">//</span><span style="color: #b22222;">true</span>
+</pre>
+</div>
+
+<p>
+步骤分析： 
+</p>
+
+<ol class="org-ol">
+<li>栈中开辟一块空间存放引用str1；</li>
+<li>字符串缓存池中开辟一块空间，存放String常量"abc"；</li>
+<li>引用str1指向池中字符串缓存池"abc"；</li>
+<li>str1所指代的地址即常量"abc"所在地址，输出为true。</li>
+</ol>
+
+<p>
+示例B：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">str2</span> = <span style="color: #932092;">new</span> <span style="color: #228b22;">String</span>(<span style="color: #8b2252;">"abc"</span>);  
+System.out.println(str2 == <span style="color: #8b2252;">"abc"</span>);  <span style="color: #b22222;">//</span><span style="color: #b22222;">false</span>
+</pre>
+</div>
+
+<p>
+步骤分析： 
+</p>
+
+<ol class="org-ol">
+<li>栈中开辟一块空间存放引用str2；</li>
+<li>检查维护串池，若串池中有"abc"，copy到堆中，若没有，在堆中创建，并添加到串池中；</li>
+<li>引用str2指向堆中的新建的String对象"abc"；</li>
+<li>str2所指代的对象地址为堆中地址，而常量"abc"地址在池中，输出为false；</li>
+</ol>
+
+<p>
+示例C：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">str3</span> = <span style="color: #932092;">new</span> <span style="color: #228b22;">String</span>(<span style="color: #8b2252;">"abc"</span>); 
+System.out.println(str3 == str2); <span style="color: #b22222;">//</span><span style="color: #b22222;">false</span>
+</pre>
+</div>
+
+<p>
+步骤分析： 
+</p>
+<ol class="org-ol">
+<li>栈中开辟一块空间存放引用str3；</li>
+<li>堆中开辟一块新空间存放另外一个（不同于str2所指）新建的String对象；</li>
+<li>引用str3指向另外新建的那个String对象 ；</li>
+<li>str3和str2指向堆中不同的String对象，地址也不相同，输出为false；</li>
+</ol>
+
+<p>
+参考链接：
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.voidcn.com/article/p-wwfksnxk-vw.html">http://www.voidcn.com/article/p-wwfksnxk-vw.html</a></li>
+<li><a href="http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html#undefined">http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html#undefined</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6a05b87" class="outline-4">
+<h4 id="org6a05b87"><span class="section-number-4">7.2.3</span> 字符串缓存池</h4>
+<div class="outline-text-4" id="text-7-2-3">
+<p>
+在程序运行过程中，会创建一个字符串缓存池。下面，让我们来看一看第一个例子。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #932092;">public</span> <span style="color: #932092;">static</span> <span style="color: #228b22;">void</span>  <span style="color: #0432fe;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+  <span style="color: #932092;">if</span>(args[0] == <span style="color: #8b2252;">"-logdb"</span>) {
+    System.out.println(<span style="color: #8b2252;">"args==-logdb"</span>);
+  } <span style="color: #932092;">else</span> {
+    System.out.println(<span style="color: #8b2252;">"args!=-logdb"</span>);
+  }
+}
+</pre>
+</div>
+
+<p>
+我们可以看到，在new出一个args字符串数组的时候，在字符串缓存池中，并没有存在着"-logdb"。
+所以，这两个字符串进行比较时，比较的是他们的地址,一个位于堆中，一个位于缓存池中，地址当然是不同的，所以返回的是不等于。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #0432fe;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+  <span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args1</span> = {<span style="color: #8b2252;">"-logdb"</span>};
+  <span style="color: #932092;">if</span>(args1[0] == <span style="color: #8b2252;">"-logdb"</span>) {
+    System.out.println(<span style="color: #8b2252;">"args==-logdb"</span>);
+  } <span style="color: #932092;">else</span> {
+    System.out.println(<span style="color: #8b2252;">"args!=-logdb"</span>);
+  }
+}
+</pre>
+</div>
+
+<p>
+而在第二个例子中，我们先示例化了一个字符串数组，其中存在着"-logdb"，所以，当后续比较时，程序先在String缓存池中寻找相同值的对象，即这两比较对象的地址其实是一样的，都是缓存池中的地址，所以返回等于。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0308995" class="outline-2">
+<h2 id="org0308995"><span class="section-number-2">8</span> 原码、反码和补码</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+参考：<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Xiaodong Wang</p>
+<p class="date">Created: 2018-10-05 Fri 09:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

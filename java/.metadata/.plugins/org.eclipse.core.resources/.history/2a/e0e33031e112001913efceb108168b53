@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/com/fsq/servlet/UserServlet.java=GBK
+encoding//src/com/fsq/util/ImageUtils.java=GBK
+encoding//src/com/fsq/util/JdbcUtil.java=UTF-8
+encoding/<project>=GBK

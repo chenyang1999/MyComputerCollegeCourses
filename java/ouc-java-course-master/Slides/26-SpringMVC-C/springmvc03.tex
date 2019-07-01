@@ -1,0 +1,825 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[hyperref={pdfpagelabels=false},compress,table]{beamer} % 在Mac下无法编译
+% \documentclass[compress,table]{beamer} % 在Mac下使用
+% package for font
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}  %%如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}  %%实现对汉字加点、下划线等。
+\usepackage{pifont}  % \ding{}
+% package for math
+\usepackage{amsfonts}
+
+% package for graphics
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}  % placements=positioning
+\usepackage{graphicx}  % \includegraphics[]{}
+\usepackage{subfigure}  %%图形或表格并排排列
+% package for table
+\usepackage{colortbl,dcolumn}  %% 彩色表格
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+% package for code
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+% \usepackage{animate}
+% \usepackage{movie15}
+
+%%%%%
+% setting for beamer
+\usetheme{default} % Madrid（常用）, Copenhagen, AnnArbor, boxes（白色）, Frankfurt，Berkeley，default
+ \useoutertheme[subsection=true]{miniframes} % 使用Berkeley时注释本行
+\usecolortheme{sidebartab}
+\usefonttheme{serif}  %%英文使用衬线字体
+% \setbeamertemplate{background canvas}[vertical
+% shading][bottom=white,top=structure.fg!7] %%背景色，上25%的蓝，过渡到下白。
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{}  %% 去掉页面下方默认的导航条
+\setbeamercovered{transparent}  %设置 beamer 覆盖效果
+
+% 设置标题title背景色
+% \setbeamercolor{title}{fg=black, bg=lightgray!60!white}
+\setbeamercolor{title}{fg=white, bg=black!90!white}
+
+% 设置每页小LOGO
+\pgfdeclareimage[width=1cm]{ouc}{figures/static/ouc.pdf}
+\logo{\pgfuseimage{ouc}{\vspace{-20pt}}}
+
+% setting for font
+%%\setCJKmainfont{Adobe Kaiti Std}
+\setCJKmainfont{SimSun} 
+%% \setCJKmainfont{FangSong_GB2312} 
+%% \setmainfont{Apple Garamond}  %%苹果字体没有SmallCaps
+\setmainfont{Times New Roman}
+%FUNNY%\setCJKmainfont{DFPShaoNvW5-GB}  %%华康少女文字W5(P)
+%FUNNY%\setCJKmainfont{FZJingLeiS-R-GB}  %%方正静蕾体
+%FUNNY%\setmainfont{Purisa}
+%\setsansfont[Mapping=tex-text]{Adobe Song Std}
+     %如果装了Adobe Acrobat，可在font.conf中配置Adobe字体的路径以使用其中文字体。
+     %也可直接使用系统中的中文字体如SimSun、SimHei、微软雅黑等。
+     %原来beamer用的字体是sans family；注意Mapping的大小写，不能写错。
+     %设置字体时也可以直接用字体名，以下三种方式等同：
+     %\setromanfont[BoldFont={黑体}]{宋体}
+     %\setromanfont[BoldFont={SimHei}]{SimSun}
+     %\setromanfont[BoldFont={"[simhei.ttf]"}]{"[simsun.ttc]"}
+% setting for graphics
+\graphicspath{{figures/}}  %%图片路径
+\renewcommand\figurename{图}
+
+% setting for pdf
+\hypersetup{% pdfpagemode=FullScreen,%
+            pdfauthor={Xiaodong Wang},%
+            pdftitle={Title},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=false,%
+            plainpages=false,%
+            colorlinks=true,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=blue,%red(default)
+            urlcolor=cyan}
+
+% setting for fontspec
+\XeTeXlinebreaklocale "zh"  %%表示用中文的断行
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt  %%多一点调整的空间
+%%%%%
+
+% 设置文字版式为两端对齐
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
+\raggedright 
+
+% font setting by xeCJK
+\setCJKfamilyfont{NSimSun}{NSimSun}
+\newcommand{\song}{\CJKfamily{NSimSun}}
+%%%\setCJKfamilyfont{AdobeSongStd}{Adobe Song Std}
+%%%\newcommand{\AdobeSong}{\CJKfamily{AdobeSongStd}}
+\setCJKfamilyfont{FangSong}{FangSong_GB2312}
+\newcommand{\fang}{\CJKfamily{FangSong}}
+%%%\setCJKfamilyfont{AdobeFangsongStd}{Adobe Fangsong Std}
+%%%\newcommand{\AdobeFang}{\CJKfamily{AdobeFangsongStd}}
+\setCJKfamilyfont{SimHei}{SimHei}
+\newcommand{\hei}{\CJKfamily{SimHei}}
+%%%\setCJKfamilyfont{AdobeHeitiStd}{Adobe Heiti Std}
+%%%\newcommand{\AdobeHei}{\CJKfamily{AdobeHeitiStd}}
+\setCJKfamilyfont{KaiTi}{KaiTi}
+\newcommand{\kai}{\CJKfamily{KaiTi}}
+%%%\setCJKfamilyfont{AdobeKaitiStd}{Adobe Kaiti Std}
+\newcommand{\AdobeKai}{\CJKfamily{AdobeKaitiStd}}
+\setCJKfamilyfont{LiSu}{LiSu}
+\newcommand{\li}{\CJKfamily{LiSu}}
+\setCJKfamilyfont{YouYuan}{YouYuan}
+\newcommand{\you}{\CJKfamily{YouYuan}}
+\setCJKfamilyfont{FZJingLei}{FZJingLeiS-R-GB}
+\newcommand{\jinglei}{\CJKfamily{FZJingLei}}
+\setCJKfamilyfont{MSYH}{Microsoft YaHei}
+\newcommand{\msyh}{\CJKfamily{MSYH}}
+
+% 自定义颜色
+\def\Red{\color{red}}
+\def\Green{\color{green}}
+\def\Blue{\color{blue}}
+\def\Mage{\color{magenta}}
+\def\Cyan{\color{cyan}}
+\def\Brown{\color{brown}}
+\def\White{\color{white}}
+\def\Black{\color{black}}
+
+\lstnewenvironment{javaCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{cyan},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=2\fboxsep,%
+    xrightmargin=2\fboxsep,%
+    %numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=Java, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{xmlCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{cyan},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=2\fboxsep,%
+    xrightmargin=2\fboxsep,%
+    %numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=html, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{shCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\scriptsize\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{brown},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=sh, %
+    }\lstset{#1}}{}
+
+\newcommand\ask[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=white,]{\Cyan \includegraphics[height=1.5cm]{question} \Large \msyh #1};}
+
+\newcommand\wxd[1]{\vskip 4bp \tikz \node[rectangle,minimum size=6mm,
+  fill=blue!60!white,]{\White \ding{118} \msyh #1};}
+
+\newcommand\xyy[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=black!80!white,]{\White \msyh\scriptsize #1};}
+
+\newcommand\cxf[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=orange!60!white,]{\White \ding{42} \msyh #1};}
+
+\newcommand\samp[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=white!100!white,]{\Mage\msyh \small CODE \ding{231} \Black #1};\vskip -8bp}
+
+\newcommand\zhyfly[1]{\tikz \node[rectangle,rounded corners,minimum size=6mm,ball
+  color=red!25!blue,text=white,]{#1};}
+
+\newcommand\pno[1]{\tikz \node[rectangle,rounded corners,minimum size=1mm,
+  fill=yellow!50!black,text=white,]{\msyh\scriptsize P. #1};}
+
+\setbeamerfont{frametitle}{series=\msyh} % 修改Beamer标题字体
+
+\makeatletter
+\newcommand{\Extend}[5]{\ext@arrow 0099{\arrowfill@#1#2#3}{#4}{#5}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% \titlepage
+\title[KevinW@OUC]{\hei {\Large 基于Java EE的企业应用系统设计\\Spring MVC}}
+\author[王晓东]{王晓东\\
+  \href{mailto:wangxiaodong@ouc.edu.cn}{\footnotesize wangxiaodong@ouc.edu.cn}}
+\institute[中国海洋大学]{\small 中国海洋大学}
+\date{\today}
+\titlegraphic{\vspace{-6em}\includegraphics[height=6cm]{static/ouc.pdf}\vspace{-6em}}
+
+%%%%% 
+\begin{document}
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSection[]{                              % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{\textbf{\hei 接下来…}}
+    \tableofcontents[currentsection]
+  }
+}  %
+
+\AtBeginSubsection[]                            % 在每个子段落之前
+{
+  \frame<handout:0>                             % handout:0 表示只在手稿中出现
+  {
+    \frametitle{\textit{\hei 接下来…}}\small
+    \tableofcontents[current,currentsubsection] % 显示在目录中加亮的当前章节
+  }
+}
+ \frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{References}
+\begin{enumerate}
+\item Spring MVC: A Tutorial (Second Edition) (ISBN 9781771970310)
+\end{enumerate}  
+\end{frame}
+
+% \begin{frame}
+% \frametitle{本章学习目标}
+% \begin{enumerate}
+% \item 
+% \end{enumerate}  
+% \end{frame}
+
+\section*{大纲}
+\frame{\frametitle{大纲} \tableofcontents }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spring文件上传}
+
+\begin{frame}[fragile]
+  \frametitle{文件上传}
+
+  \wxd{Spring MVC中处理文件上传有两种方法}
+
+  \begin{enumerate}
+  \item 使用Apache Commons FileUpload元件；
+  \item 利用Servlet 3.0及其更高版本的内置支持。
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{文件上传表单}
+
+  \begin{javaCode}
+    <form action="action" enctype="multipart/form-data" method="post">
+      Select a file <input type="file" name="fieldName"/>
+      <input type="submit" value="Upload"/>
+    </form>
+  \end{javaCode}
+
+  \xyy{enctype说明}
+  
+  {\kai enctype属性规定在发送到服务器之前应该如何对表单数据进行编码。默认地，
+  表单数据会编码为“application/x-www-form-urlencoded”。即是在发送到服
+  务器之前，所有字符都会进行编码（空格转换为 "+" 加号，特殊符号转换
+  为ASCII HEX值）。}
+
+  {\hei\Red 为了上传文件，必须将HTML FORM的enctype属性
+    值设为multipart/form-data。}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{多文件上传表单}
+
+  在HTML 5之前，如果想要上传多个文件，必须使用多个文件input元素。
+
+  HTML 5中，通过在input元素中引入multiple属性，使得多个文件的上传变得更加简单。
+
+  \xyy{编写以下任意{\Red 一行代码}，便可生成一个按钮供选择多个文件}
+  
+  \begin{xmlCode}
+    <input type="file" name="fieldName" multiple/>
+    <input type="file" name="fieldName" multiple="multiple"/>
+    <input type="file" name="fieldName" multiple=""/>
+  \end{xmlCode}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{MultipartFile接口}
+
+  上传到Spring MVC应用程序中的文件会被包在一个\xyy{org.springframework.web.multipart.MultipartFile}对象中。唯一
+  的任务就是用类型为MultipartFile的属性编写一个domain类。
+
+  \wxd{MultipartFile接口的方法}
+
+  \begin{itemize}\small\kai
+  \item byte[] getBytes() 以字节数组的形式返回文件的内容。
+  \item String getContentType() 返回文件的内容类型。
+  \item InputStream getlnputStream() 返回一个InputStream，从中读取文件的内容。
+  \item String getName() 以多部分的形式返回参数的名称。
+  \item String getOriginalFilename() 返回客户端本地驱动器中的初始文件名。
+  \item long getSize() 以字节为单位，返回文件的大小。
+  \item boolean isEmpty() 表示被上传的文件是否为空。
+  \item void transferTo(File destination) 将上传的文件保存到目标目录下。
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{用Commons FileUpload上传文件}
+
+  对版本低于Servlet 3.0的容器，需要Apache Commons FileUpload元件和Apache Commons IO元件完成文件的上传。
+
+  \xyy{下载地址}
+  
+  \begin{itemize}
+  \item http://commons.apache.org/proper/commons-fileupload/
+  \item http://commons.apache.org/proper/commons-io/
+  \end{itemize}
+
+  此外，还需要在Spring MVC配置文件中定义multipartResolver。
+  \begin{xmlCode}
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="2000000" />
+    </bean>
+  \end{xmlCode}
+\end{frame}
+
+\subsection{示例：Apache Commons FileUpload上传文件}
+
+\begin{frame}[fragile]
+  \frametitle{Domain类}
+
+  \xyy{Product.java}
+  
+  \begin{javaCode}
+    public class Product implements Serializable {
+      private static final long serialVersionUID = 74458L;
+
+      // JSR303 Bean Validation
+      @NotNull 
+      @Size(min=l, max=10)
+      private String name;
+      
+      private String description;
+      private Float price;
+      private List<MultipartFile> images;
+
+      public List<MultipartFile> getImages() {
+        return images;
+      }
+      
+      public void setImages(List<MultipartFile> images) {
+        this.images = images;
+      }
+
+      // other setter and getter methods.
+    }
+  \end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{ProductController类}
+
+  \xyy{ProductController.java}
+  
+  \begin{javaCode}
+    @Controller
+    public class ProductController {
+      ... // input-product
+      
+      @RequestMapping(value = "/save-product")
+      public String saveProduct(HttpServletRequest servletRequest, BindingResult bindingResult,
+      @ModelAttribute Product product, Model model) {
+        List<MultipartFile> files = product.getlmages();
+        List<String> fileNames = new ArrayList<String>();
+        if (null != files && files.size() > 0) {
+          for (MultipartFile multipartFile : files) {
+            String fileName = multipartFile.getOriginalFilename();
+            fileNames.add(fileName);
+            File imageFile = newFile(servletRequest.getServletContext()
+                .getRealPath("/image"), fileName);
+            try {
+              multipartFile.transferTo(imageFile);
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+          }
+        }
+        model.addAttribute("product", product);
+        return "ProductDetails";
+      }
+    }
+  \end{javaCode}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{配置文件}
+
+  \wxd{注意在配置文件中添加multipartResolver bean}
+  \begin{xmlCode}
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
+  \end{xmlCode}
+
+  {\kai\Red 注：利用multipartResolverbean 的maxUploadSize属性可以设置能够接受的最大上传文件容量。}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{JSP页面}
+
+  \xyy{ProductForm.jsp}
+  
+  \begin{xmlCode}
+    <form:form commandName="product" action="product save" method="post"
+      enctype="multipart/form-data">
+      ...
+      <label for="name">Product Name: </label>
+      <form:input id="name" path="name" cssErrorClass="error" />
+      <form:errors path="name" cssClass="error" />
+      ...
+    
+      <label for="image">Product Image: </label>
+      <input type="file" name="images[0]"/>
+    
+      <p id="buttons">
+      <input id="reset" type="reset" tabindex="4">
+      <input id="submit" type="submit" tabindex="5" value="Add Product">
+      ...
+    </form:form>
+  \end{xmlCode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{JSP页面}
+  
+  \xyy{ProductDetails.jsp}
+
+  \begin{xmlCode}
+    <h5>Details:</h5>
+    Product Name: \${product.name}<br/>
+    Description: \${product.description}<br/>
+    Price: \${product.price}
+
+    <p>Fo1lowing fi1es are uploaded successfu11y.</p>
+    
+    <c:forEach items="\${product.images}" var="image">
+      <li>\${image.originalFilename}
+      <img width="100" src="<c:url va1ue="/image/ "/>
+      \${image.origina1Fi1ename}"/>
+      </li>
+    </c:forEach>
+  \end{xmlCode}
+
+  \cxf{完整代码参考} springmvc-fileupload-01
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{用Servlet3 及其更高版本上传文件}
+
+  \cxf{请自行搜索学习。}
+
+\end{frame}
+
+
+\section{Spring文件下载}
+
+\begin{frame}[fragile]
+  \frametitle{文件下载}
+
+  为了将像文件资源发送到浏览器，需要在控制器中完成以下工作：
+
+  \begin{enumerate}\kai
+  \item 对请求处理方法使用void返回类型，并在方法中添
+    加HttpServletResponse参数。
+  \item 将响应的内容类型设为文件的内容类型。Content-Type标题在某个实体
+    的body中定义数据的类型，并包含媒体类型和子类型标识符。如果不清楚内
+    容类型，并且希望浏览器始终显示Sava As（另存为）对话框，则将它设
+    为APPLICATION/OCTET-STREAM。
+  \item 添加一个名为Content-Disposition的HTTP响应标题，并赋
+    值attachment; filename=fileName，这里的fileName是默认文件名，应该
+    出现在File Download（文件下载）对话框中，它通常与文件同名。
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{文件下载}
+
+  \wxd{将文件发送到浏览器的代码}
+
+  \begin{javaCode}
+    FilelnputStream fis = new FilelnputStream(file);
+    BufferedlnputStream bis = new BufferedlnputStream(fis);
+    byte[] bytes = new byte[bis.available());
+    response.setContentType(contentType);
+    OutputStream os = response.getOutputStream();
+    bis.read(bytes);
+    os.write(bytes);
+  \end{javaCode}
+\end{frame}
+
+\subsection{示例：隐藏资源}
+
+\begin{frame}[fragile]
+  \frametitle{示例：隐藏资源}
+
+  \wxd{基本功能}
+
+  \begin{itemize}
+  \item ResourceController类处理用户登录，并将一个secret.pdf文件发送给浏览器。
+  \item secret.pdf文件放在WEB-INF/data目录下，无法直接访问。只有得到授权的用户，才能访问该文件。
+  \item 如果用户没有登录，应用程序就会跳转到登录页面。
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{ResourceController}
+
+  \begin{javaCode}
+    @Controller
+    public class ResourceController {
+      @RequestMapping(value = "/login")
+      public String login(@ModelAttribute Login login, HttpSession session, Model model) {
+        model.addAttribute("login", new Login());
+        if ("kevin".equals(login.getUserName()) && "secret".equals(login.getPassword())) {
+          session.setAttribute("loggedIn", Boolean.TRUE);
+          return "Main";
+        } else {
+          return "LoginForm";
+        }
+      }
+  \end{javaCode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{ResourceController +}
+
+  \begin{javaCode}
+    @RequestMapping(value = "/resource-download")
+    public String downloadResource(HttpSession session,
+    HttpServletRequest request, HttpServletResponse response) {
+      if (session == null || session.getAttribute("loggedln") == null) {
+        return "LoginForm";
+      }
+      
+      String dataDirectory = request.getServletContext().getRealPath("/WEB-INF/data");
+      File file = new File(dataDirectory, "secret.pdf");
+      if (file.exists()) {
+        response.setContentType("application/pdf");
+        response.addHeader("Content-Disposition", "attachment; filename=secret.pdf");
+        byte[] buffer = new byte[1024];
+        FilelnputStream fis = null;
+        BufferedlnputStream bis = null;
+  \end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{ResourceController ++}
+  
+  \begin{javaCode}
+        try {
+          fis = new FilelnputStream(file);
+          bis = new BufferedlnputStream(fis);
+          OutputStream os = response.getOutputStream();
+          int i = bis.read(buffer);
+          while (i != -1) {
+            os.write(buffer, 0, i);
+            i = bis.read(buffer);
+          } catch (IOException e) {
+            // do something, probably forward to an Error page.
+          } finally {
+            if (bis != null) {
+              try {
+                bis.close();
+              } catch (IOException e) {
+                if (fis != null) {
+                  try {
+                    fis.close();
+                  } catch (IOException e) {
+                    return null;
+                  }
+                }
+              }
+            }
+          }
+        }
+  \end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{LoginForm.jsp}
+
+  \begin{xmlCode}
+  <form:form commandName="login" action="login" method="post">
+    <fieldset>
+      <legend>Login</legend>
+      <p>
+        <label for="userName">User Name:</label>
+        <form:input id="userName" path="userName" cssErrorClass="error" />
+      </p>
+      <p>
+        <label for="password">Password: </label>
+        <form:password id="password" path="password" cssErrorClass="error" />
+      </p>
+      <p id="buttons">
+        <input id="reset" type="reset" tabindex="4">
+        <input id="submit" type="submit" tabindex="5" value="Login">
+      </p>
+    </fieldset>
+  </form:form>
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Main.jsp}
+
+  \begin{xmlCode}
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+  <title>Download Page</title>
+  <style type="text/css">@import url("<c:urlvalue="/css/main.css"/>"); </style>
+  </head>
+  <body>
+    <div id="global">
+      <h4>Please click the link below. </h4>
+      <p>
+        <a href="resource-download">Download</a>
+      </p>
+    </div>
+  </body>
+  </html>
+  \end{xmlCode}
+\end{frame}
+
+\subsection{示例: 防止交叉引用}
+
+\begin{frame}[fragile]
+  \frametitle{示例: 防止交叉引用}
+
+  \cxf{目的：避免其他站点通过交叉引用“窃取”你的网站资产}
+  
+  通过编程控制，使得只有当referer标题\footnote{根据HTTP协议，在HTTP头中
+    有一个字段为Referer，它记录了该HTTP请求的来源地址。}中包含你的域名
+  时才发出资源，可以在一定程度上防止交叉引用。
+
+  示例实现ImageController类，使得{\Red\hei 仅当referer标题不为null时，
+    才将图片发送给浏览器}。这样可以防止仅在浏览器中输入网址就能下载图片
+  的情况发生。
+  
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{ImageController}
+  \begin{javaCode}
+    @Controller
+    public class ImageController {
+      @RequestMapping(value="/get-image/{id}" , method = RequestMethod.GET)
+      public void getImage(@PathVariable String id, HttpServletRequest request,
+      HttpServletResponse response, @RequestHeader String referer) {
+        if (referer != null) {
+          // do something, send the file to the user.
+        }
+      }
+    }
+  \end{javaCode}
+
+\end{frame}
+
+
+
+\section{Spring用户登录}
+
+\begin{frame}[fragile]
+  \frametitle{Spring MVC拦截器}
+
+  Spring MVC的拦截器类似于Servlet开发中的过滤器Filter，用于对处理器进行
+  预处理和后处理。本质也是AOP（面向切面编程），符合横切关注点的所有功能
+  都可以放入拦截器实现。
+
+  \wxd{常见应用场景}
+  
+  \begin{description}\kai\Red
+  \item[日志记录] 记录请求信息的日志，以便进行信息监控、信息统计、计
+    算PV等。
+  \item[权限检查] 如登录检测，进入处理器检测是否登录，如果没有直接返回
+    到登录页面。
+  \item[性能监控] 通过拦截器在进入处理器之前记录开始时间，在处理完后记
+    录结束时间，从而得到该请求的处理时间，以监控请求处理行为。
+  \item[通用行为] 只要是多个请求处理器都需要的即可使用拦截器实现。如，
+    读取cookie得到用户信息并将用户对象放入请求，从而方便后续流程使用。
+    \end{description}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{拦截器接口}
+
+  \xyy{org.springframework.web.servlet.HandlerInterceptor}
+  \begin{javaCode}
+    package org.springframework.web.servlet;
+
+    public interface HandlerInterceptor {  
+      boolean preHandle(  
+            HttpServletRequest request, HttpServletResponse response,   
+            Object handler)   
+            throws Exception;
+  
+      void postHandle(  
+            HttpServletRequest request, HttpServletResponse response,   
+            Object handler, ModelAndView modelAndView)   
+            throws Exception;  
+  
+      void afterCompletion(  
+            HttpServletRequest request, HttpServletResponse response,   
+            Object handler, Exception ex)  
+            throws Exception;  
+    }
+  \end{javaCode}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{拦截器接口方法说明}
+
+  \begin{description}[<+-|structure@+>]
+  \item[preHandle] 预处理回调方法。\only<1>{实现处理器的预处理（如登录
+      检查），第三个参数为响应处理器（如Controller实现）。返回值true表
+      示继续流程（如调用下一个拦截器或处理器）；false表示流程中断（如登
+      录检查失败），不会继续调用其他的拦截器或处理器，此时我们需要通
+      过response来产生响应。}
+    
+\item[postHandle] 后处理回调方法。\only<2>{实现处理器的后处理（但在渲染
+    视图之前），此时我们可以通过modelAndView（模型和视图对象）对模型数
+    据进行处理或对视图进行处理，modelAndView也可能为null。}
+    
+\item[afterCompletion] 整个请求处理完毕回调方法。\only<3>{在视图渲染完
+    毕时回调，如性能监控中我们可以在此记录结束时间并输出消耗时间，还可
+    以进行一些资源清理，类似于try-catch-finally中的finally，但仅调用处
+    理器执行链中preHandle返回true的拦截器的afterCompletion。}
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{拦截器适配器}
+
+  有时候我们可能只需要实现三个回调方法中的某一个，如果实
+  现HandlerInterceptor接口的话，三个方法必须实现，不管你需不需要。
+  
+  Spring MVC提供了一个HandlerInterceptorAdapter适配器，允许我们只实现需要的回调方法。
+
+  \begin{javaCode}
+    public abstract class HandlerInterceptorAdapter implements HandlerInterceptor {
+      // 省略代码，此处所以三个回调方法都是空实现，preHandle返回true。
+    }
+ \end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{示例：用户登录验证}
+
+  \cxf{示例参考}
+
+  springmvc-interceptor-01
+
+\end{frame}
+
+\section{监听器}
+
+\begin{frame}[fragile]
+  \frametitle{监听器配置}
+
+  在Spring MVC中配置监听器与原生Servlet Listener监听器配置相同。
+
+  \cxf{参考} springmvc-intro-01
+
+
+
+\end{frame}
+
+
+
+
+% TKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \centering
+  {\Huge \textcolor{blue}{THE END}} \\
+  \vspace{5mm}
+  {\Large wangxiaodong@ouc.edu.cn} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

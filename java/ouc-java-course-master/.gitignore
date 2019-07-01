@@ -1,0 +1,14 @@
+experiments.hide
+Share.hide
+.DS_Store
+*.md~
+*.tex~
+Makefile~
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*~

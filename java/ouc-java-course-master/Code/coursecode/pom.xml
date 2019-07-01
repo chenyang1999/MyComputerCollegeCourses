@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ouc.cs.java</groupId>
+  <artifactId>coursecode</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>sample.swing</module>
+  	<module>sample.format</module>
+  	<module>sample.setlistmap</module>
+  	<module>sample.thread</module>
+    <module>sample.array</module>
+    <module>sample.oop</module>
+    <module>sample.memory</module>
+    <module>sample.jvm</module>
+    <module>sample.advance</module>
+    <module>sample.generics</module>
+    <module>sample.commandline</module>
+    <module>sample.awt</module>
+    <module>sample.exception</module>
+    <module>sample.io</module>
+  </modules>
+</project>

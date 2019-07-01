@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>444.42</string>
+	<key>AMApplicationVersion</key>
+	<string>2.9</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.1.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>访达</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>fileNames</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action</string>
+				<key>ActionName</key>
+				<string>获得指定的访达项目</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>fileNames</key>
+					<array>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A601 - %E6%A6%82%E8%BF%B0%281%29.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A602 - %E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81.ppt%3FglobalNavigation%3Dfalse.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A603 - %E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A604 - HASH%E5%87%BD%E6%95%B0.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A605 - %E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A606 - %E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A607 - %E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A608 - %E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E4%B8%8EIBC.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A608 - %E9%99%84%E4%BB%B6-%E7%99%BD%E5%A4%9C%E8%BF%BD%E5%87%B6%E4%B8%AD%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%8E%9F%E7%90%86.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A609 - %E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE.ppt</string>
+						<string>~/Desktop/现代密码学/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A610 - %E9%87%8F%E5%AD%90%E5%AF%86%E7%A0%81%E5%AD%A6.ppt</string>
+					</array>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SpecifiedFiles</string>
+				<key>CFBundleVersion</key>
+				<string>1.1.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryFilesAndFolders</string>
+				</array>
+				<key>Class Name</key>
+				<string>SpecifiedFilesAction</string>
+				<key>InputUUID</key>
+				<string>C58A4386-431F-49A4-9172-733A9CD10AD0</string>
+				<key>Keywords</key>
+				<array>
+					<string>文件</string>
+					<string>选取</string>
+					<string>查找</string>
+					<string>获得</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>9854BAEF-B186-4C35-BE96-DB3859A8CD77</string>
+				<key>UUID</key>
+				<string>2CD80A8E-C1D8-4462-B7DE-13CE46E166CB</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<array/>
+						<key>name</key>
+						<string>fileNames</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>229.000000:239.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>自动操作</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>运行 AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on run {input, parameters}	set theOutput to {}	tell application "Microsoft PowerPoint" -- work on version 15.15 or newer		launch		set theDial to start up dialog		set start up dialog to false		repeat with i in input			open i			set pdfPath to my makeNewPath(i)			save active presentation in pdfPath as save as PDF -- save in same folder			close active presentation saving no			set end of theOutput to pdfPath as alias		end repeat		set start up dialog to theDial	end tell	return theOutputend runon makeNewPath(f)	set t to f as string	if t ends with ".pptx" then		return (text 1 thru -5 of t) &amp; "pdf"	else		return t &amp; ".pdf"	end ifend makeNewPath</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>664C2B2F-2FD6-4197-A706-8C091B8791D3</string>
+				<key>Keywords</key>
+				<array>
+					<string>运行</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>116118A4-D2A0-4BF6-9079-D6933E7859CA</string>
+				<key>UUID</key>
+				<string>34C5BF7F-4650-4401-94D5-7727143206A5</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>229.000000:484.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>9EF89654-52E2-476B-8FA7-687DEF4410AE</key>
+		<dict>
+			<key>from</key>
+			<string>2CD80A8E-C1D8-4462-B7DE-13CE46E166CB - 2CD80A8E-C1D8-4462-B7DE-13CE46E166CB</string>
+			<key>to</key>
+			<string>34C5BF7F-4650-4401-94D5-7727143206A5 - 34C5BF7F-4650-4401-94D5-7727143206A5</string>
+		</dict>
+	</dict>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.workflow</string>
+	</dict>
+</dict>
+</plist>

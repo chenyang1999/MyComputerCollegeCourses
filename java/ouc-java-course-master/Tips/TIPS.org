@@ -1,0 +1,239 @@
+#+TITLE:     不断丰富的Java小知识
+#+AUTHOR:    Xiaodong Wang
+#+EMAIL:     wangxiaodong@ouc.edu.cn
+
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  zh
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="orgcss/worg.css" />
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS:   ^:nil
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{SimSun}
+
+* main方法为什么只能那么写？
+
+main()方法的声明为public static void main(String args[])，且必须这么定义，这是Java的规范。
+
+这么定义和JVM的运行有关系。当一个类中有main()方法，执行命令 *java 类名* 则会启动虚拟机执行该类中的main方法。由于JVM在运行这个Java应用程序的时候，首先会调用main方法，调用时不实例化这个类的对象而是通过类名直接调用，因此需要是限制为public static。对于java中的main方法，JVM限制不能有返回值，因此返回值类型为void。
+
+* 抽象类有必要存在构造方法吗？
+
+抽象类虽然自身不可以实例化，但是其子类覆盖了所有的抽象方法后是可以实例化的，所以抽象类的构造函数，适用于给其子类对象进行初始化。
+
+* 对于构造函数，大家知道应该注意什么吗？
+
+构造函数是对象的基本，没有构造函数就没有对象。如果在父类中（这里就是你的抽象类）中显示的定义了有参数的构造函数，在子类继承时就必须写一个构造函数来调用父类的构造函数。
+
+如果父类中有没有参数的构造函数，在子类中可以不显示的调用父类的构造函数，Java会自动调用没有参数的构造函数。
+
+如果编写一个Java Class时没有添加无参构造方法，那么编译器会自动添加无参构造方法。
+但是如果编写时添加了有参构造方法而未添加无参构造方法，那么编译器只认有参构造方法而不会默认添加无参构造方法！所以，如果需要使用无参构造方法，一定要在类里面添加。
+
+* 子类会继承父类的构造方法吗？
+
+父类中的构造方法是不能继承的，但是在实例化子类的时候会调用父类的构造方法。
+
+* 以下要删除所有元素c的代码有错么？运行完了还会有c没删除么？如有错请改错。
+
+#+BEGIN_SRC java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+  public static void main(String[] args) {
+    List<String> li = new ArrayList<String>();
+    
+    li.add("a");
+    li.add("b");
+    li.add("c");
+    li.add("d");
+    li.add("c");
+    li.add("c");
+    li.add("e");
+    li.add("c");
+    
+    for (int i = 0; i < li.size(); i++) {
+      if (li.get(i).equals("c")) {
+        li.remove(i);
+      }
+    }
+
+    System.out.println(li);
+  }
+}
+#+END_SRC
+
+* 关于文件的创建时间。
+
+在Linux系统中没有文件创建时间的概念，只有文件的访问时间、修改时间、状态改变时间，即不能在文件的生命周期内永远知道文件的创建时间。与文件相关的几个时间包括：
+- 访问时间 :: 读一次这个文件的内容，这个时间就会更新。比如对这个文件使用more命令。ls、stat命令都不会修改文件的访问时间。
+- 修改时间 :: 对文件内容修改一次，这个时间就会更新。比如：vi后保存文件。ls -l列出的时间就是这个时间。
+- 状态改变时间 :: 通过chmod命令更改一次文件属性，这个时间就会更新。
+
+可以通过stat命令查看文件的详细的状态、准确的修改时间等。
+
+- 如果文件创建后就没有修改过，那么修改时间 = 创建时间
+- 如果文件创建后状态就没有改变过，那么状态改变时间 = 创建时间
+- 如果文件创建后没有被读取过，那么访问时间 = 创建时间
+
+
+* 你了解Java中equals和==区别及字符串创建过程吗？
+
+(感谢 @方政 提出问题并整理）
+
+** 起因出处
+
+在一段Java代码中，使用了两种方式获取字符串：
+
+#+BEGIN_SRC java
+//第一种：获取命令行输入参数数组
+public static void main (String[] args) {
+  if(args[0] == "-logdb") {
+  System.out.println("args==-logdb");
+  } else {
+    System.out.println("args!=-logdb");
+  }
+}
+//第二种：使用内置字符串数组
+public static void main (String[] args) {
+  String[] args1 = {"-logdb"};
+  if(args1[0] == "-logdb") {
+    System.out.println("args==-logdb");
+  } else {
+    System.out.println("args!=-logdb");
+  }
+}
+#+END_SRC
+
+结果发现，第一种显示的是args!=-logdb，而第二种显示的却是args!=-logdb。
+
+** 原因分析
+
+*** ==和equals
+
+首先，在Java中，==和equals是不一样的。对于基本类型，如int，char之类的，==比较的是他们的值。而对于复合类型（类），当使用==比较的就不是他们的值，而是他们的地址，==的意思可以看成是参与比较的两个对象是不是同一个对象，即是否具有相同的地址。而equals的初始行为是比较地址，但在一些类中被重写覆盖，如String类中的equals方法：
+
+#+BEGIN_SRC java
+public boolean equals(Object anObject) {
+  if (this == anObject) {
+    return true;
+  }
+  
+  if (anObject instanceof String) {
+    String anotherString = (String) anObject;
+    int n = value.length;
+    if (n == anotherString.value.length) {
+      char v1[] = value;
+      char v2[] = anotherString.value;
+      int i = 0;
+      while (n-- != 0) {
+        if (v1[i] != v2[i])
+	return false;
+	i++;
+      }
+      return true;
+    }
+  }
+  return false;
+
+}
+#+END_SRC
+
+我们可以很明白地看出，在开始比较地址如果相同就返回true，后续则是比较String的内容。所以，当我们需要比较两个字符串是否相同的时候，最好使用equals来进行比较。
+
+*** 创建字符串对象原理
+
+- 在创建一个字符串对象str = X时，JVM会拿着X去字符串缓存池中找到是否有内容相同的字符串，若有，则将str与其联系起来，若没有，则在池中创建。
+- 使用new创建对象时，会在堆栈区中创建一个对象。
+- 如果直接指定，如第二个例子，则会去字符串缓存池中检查是否存在字符串，不存在则创建，不会在堆栈区创建。
+
+示例A：
+
+#+BEGIN_SRC java 
+String str1 = "abc"; 
+System.out.println(str1 == "abc");   //true
+#+END_SRC
+
+步骤分析： 
+
+1) 栈中开辟一块空间存放引用str1；
+2) 字符串缓存池中开辟一块空间，存放String常量"abc"； 
+3) 引用str1指向池中字符串缓存池"abc"；
+4) str1所指代的地址即常量"abc"所在地址，输出为true。
+
+示例B：
+
+#+BEGIN_SRC java
+String str2 = new String("abc");  
+System.out.println(str2 == "abc");  //false
+#+END_SRC
+
+步骤分析： 
+
+1) 栈中开辟一块空间存放引用str2； 
+2) 检查维护串池，若串池中有"abc"，copy到堆中，若没有，在堆中创建，并添加到串池中；
+3) 引用str2指向堆中的新建的String对象"abc"；
+4) str2所指代的对象地址为堆中地址，而常量"abc"地址在池中，输出为false；
+
+示例C：
+
+#+BEGIN_SRC java
+String str3 = new String("abc"); 
+System.out.println(str3 == str2); //false
+#+END_SRC
+
+步骤分析： 
+1) 栈中开辟一块空间存放引用str3；
+2) 堆中开辟一块新空间存放另外一个（不同于str2所指）新建的String对象； 
+3) 引用str3指向另外新建的那个String对象 ；
+4) str3和str2指向堆中不同的String对象，地址也不相同，输出为false；
+
+参考链接：
+
+- http://www.voidcn.com/article/p-wwfksnxk-vw.html
+- http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html#undefined
+
+*** 字符串缓存池
+
+在程序运行过程中，会创建一个字符串缓存池。下面，让我们来看一看第一个例子。
+
+#+BEGIN_SRC java
+public static void  main (String[] args) {
+  if(args[0] == "-logdb") {
+    System.out.println("args==-logdb");
+  } else {
+    System.out.println("args!=-logdb");
+  }
+}
+#+END_SRC
+
+我们可以看到，在new出一个args字符串数组的时候，在字符串缓存池中，并没有存在着"-logdb"。
+所以，这两个字符串进行比较时，比较的是他们的地址,一个位于堆中，一个位于缓存池中，地址当然是不同的，所以返回的是不等于。
+
+#+BEGIN_SRC java
+int main (String[] args) {
+  String[] args1 = {"-logdb"};
+  if(args1[0] == "-logdb") {
+    System.out.println("args==-logdb");
+  } else {
+    System.out.println("args!=-logdb");
+  }
+}
+#+END_SRC
+
+而在第二个例子中，我们先示例化了一个字符串数组，其中存在着"-logdb"，所以，当后续比较时，程序先在String缓存池中寻找相同值的对象，即这两比较对象的地址其实是一样的，都是缓存池中的地址，所以返回等于。
+
+* 原码、反码和补码
+
+参考：http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html
+
+

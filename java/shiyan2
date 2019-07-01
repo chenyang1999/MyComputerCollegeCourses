@@ -1,0 +1,33 @@
+#java实验二
+##姓名：陈扬 学号：17150011001
+##实验目的
+1. 熟悉 Java 开发工具 Eclipse 的安装和使用。
+2. 熟练使用 Maven 创建和管理 Java 工程。
+3. 理解面向对象编程的封装、多态、继承等特点。 
+4. 掌握面向对象技术的编程方法  
+
+##实验编号 
+
+###1.下载并安装 Java 开发环境 Eclispe，熟练应用 Eclipse。
+![](https://ws3.sinaimg.cn/large/006tNbRwly1fvw32tih07j31kw182qlp.jpg)
+###2.创建一个[银行类](https://blog.csdn.net/qq_35069223/article/details/79597931)  
+####设计一个银行账户类，其中包括:  
+• 账户信息，如帐号、姓名、开户时间、身份证号码等。  
+• 存款方法。 
+• 取款方法。  
+
+![](https://ws3.sinaimg.cn/large/006tNbRwly1fvw3bkyzj1j31kw1e71kx.jpg)
+
+###3.计算三角形面积和周长，要求如下: 
+• 设计 Point 类(点类)。   
+• 设计 Triangle 类，至少包括其构造方法，获取面积和周长的方法。  
+• 通过输入三点坐标来确定一个三角形，并输出三角形的面积、周长等内容。  
+![](https://ws3.sinaimg.cn/large/006tNbRwly1fvw3h14v5vj31kw1e71kq.jpg)
+###4.编写程序求解一元多次方程的解，要求如下:  
+• 至少包括一元一次、一元二次、一元三次方程。  
+• 至少设计两个接口。  
+• 必须用到内部类和包。  
+• 写出详细的运行过程。  
+我的方法是MC，蒙特卡罗方法，处于方便，我用了matlab：
+![](https://ws4.sinaimg.cn/large/006tNbRwly1fvw4a276nuj310416gguv.jpg)
+![](https://ws1.sinaimg.cn/large/006tNbRwly1fvw49kf3iuj30k60lsgnc.jpg)

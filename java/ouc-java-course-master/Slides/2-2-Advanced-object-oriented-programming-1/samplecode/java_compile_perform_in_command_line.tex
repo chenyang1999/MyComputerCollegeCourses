@@ -1,0 +1,80 @@
+命令行式下java  package的编译与运行
+ 	
+这几天遇到了java的package问题（这种问题只是在cmd命令行模式下会遇到，如果用eclipse就不会
+有这种问题），把java中的package编译运行的问题总结一下，作为备忘。
+
+首先，如果你有两个类：
+
+A.java
+\begin{javaCode}
+import edu.ustc.*;
+public class A{
+  public static void main(String[] args){
+    B b = new B();
+    b.print();
+  }
+}
+\end{javaCode}
+
+B.java
+\begin{javaCode}  
+package edu.ustc;
+public class B{
+  public void print(){
+    System.out.println("hello");
+  }
+}
+\end{javaCode}
+由于java中有类似于make的功能，而且A中引用了B，所以不需要对B进行单独的编译，对A进行编译的
+时候会自动生成B的class文件，但是这里要注意组织A.java和B.java的文件位置。比如说，A.java放
+在F:/test目录下，那么B.java需要放在F:/test/edu/ustc目录下，只有这样才能找到B（根据B所在
+的包名从当前目录开始需找B）。
+ 
+接下来，再把问题变一下，如果A也在某一个包中，即把A.java变为：
+\begin{javaCode}
+package edu.main;
+import edu.ustc.*;
+public class A{
+  public static void main(String[] args){
+    B b = new B();
+    b.print();
+  }
+}
+\end{javaCode}
+
+会发生什么变化呢？根据上面得出的结论，编译器往往从当前目录下开始，根据类的package名称来
+搜索文件，所以我们应该把A.java放在F:/test/edu/main目录下，并在F:/test下运行javac A.java
+命令，这样就可以找到A.java文件了吧，可惜事与愿违，编译报错，找不到源文件！！！
+
+这是为什么呢？因为上面可以根据包名找B.java是使用了编译器自带的make功能，而这里我们直接编
+译A.java，没有这个功能，也就是说直接编译的时候不能根据包名找到相关的类，那我们该怎么办呢？
+
+其实解决方案很简单，既然编译器不能根据包名找到A类，那我们就把A类的绝对路径直接告诉编译器
+不就可以了吗？事实上就是这么做的，具体操作为：在命令行模式下进入F:/test目录，然后运行编
+译命令javac F:/test/edu/main/A.java，可以成功编译生成A.class文件。（注意：如果不在此目录
+下执行编译命令的话，就要将f:/test加入到当前的classpath中为make工具提供B.java的位置信息）
+
+接下来就要运行这个class文件了，运行仍然在F:/test目录下执行（注意：如果不在此目录下执行运
+行命令的话，一定要把F:/test加入到当前的classpath中），命令为：java edu.main.A，很显然，
+这里就是根据输入的package名称找到对应的class文件，并检验找到的class文件的与输入的包名是
+否匹配（例如：如果你在edu目录下新建一个test目录，将A.class文件拷贝进去，输入java
+edu.test.A 的话还是会报错：找不到class文件）。可能有人要问：为什么运行的时候又可以根据包
+名找到相应的class文件呢？因为运行的时候默认是从当前路径开始搜索的，如果当前路径找不到的
+话，就在系统的classpath中找，如果再找不到就会报错。
+
+由上面的分析我们可以得出：
+\begin{itemize}
+\item 在命令行模式下编译java文件时，如果cmd不在该java文件所在的目录下，就要直接指定文件的
+  绝对路径（javac F:/test/edu/main/A.java），如果在java文件所在的目录下，可以不指定路
+  径，但是要设置classpath让编译器的make工具找到其他import的类。
+\item 运行的时候要指出包路径（java edu.main.A），并且一定要在class文件名前带上完整的包
+  名（edu.main.A），而且该包所在的文件夹（即edu所在的文件夹）一定要在classpath中，这样才
+  能找到对应的class文件（在包所在的文件夹目录下运行cmd程序或者将该目录加入到classpath中均
+  可）。
+\item 在命令行模式下非直接编译的java，编译器使用make工具根据java文件中的import信息间接找
+  到引用的java文件，所以一定要注意文件的配置，以及相互之间的位置关系。当然也可以通过设
+  置classpath提供给make工具，但是如果文件比较多而且相互之间的引用关系比较复杂的话会比较麻
+  烦。
+\item classpath只能供make工具以及运行class文件时使用，在直接编译的时候不使用classpath信
+  息，必须在要编译的java文件前带上其绝对的路径名。
+\end{itemize}

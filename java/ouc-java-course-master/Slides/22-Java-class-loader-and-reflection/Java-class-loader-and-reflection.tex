@@ -1,0 +1,971 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[hyperref={pdfpagelabels=false},compress,table]{beamer} % 在Mac下无法编译
+% \documentclass[compress,table]{beamer} % 在Mac下使用
+% package for font
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}  %%如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}  %%实现对汉字加点、下划线等。
+\usepackage{pifont}  % \ding{}
+% package for math
+\usepackage{amsfonts}
+
+% package for graphics
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}  % placements=positioning
+\usepackage{graphicx}  % \includegraphics[]{}
+\usepackage{subfigure}  %%图形或表格并排排列
+% package for table
+\usepackage{colortbl,dcolumn}  %% 彩色表格
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+% package for code
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+% \usepackage{animate}
+% \usepackage{movie15}
+
+%%%%%
+% setting for beamer
+\usetheme{default} % Madrid（常用）, Copenhagen, AnnArbor, boxes（白色）, Frankfurt，Berkeley，default
+ \useoutertheme[subsection=true]{miniframes} % 使用Berkeley时注释本行
+\usecolortheme{sidebartab}
+\usefonttheme{serif}  %%英文使用衬线字体
+% \setbeamertemplate{background canvas}[vertical
+% shading][bottom=white,top=structure.fg!7] %%背景色，上25%的蓝，过渡到下白。
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{}  %% 去掉页面下方默认的导航条
+\setbeamercovered{transparent}  %设置 beamer 覆盖效果
+
+% 设置标题title背景色
+% \setbeamercolor{title}{fg=black, bg=lightgray!60!white}
+\setbeamercolor{title}{fg=white, bg=black!90!white}
+
+% 设置每页小LOGO
+\pgfdeclareimage[width=1cm]{ouc}{figures/static/ouc.pdf}
+\logo{\pgfuseimage{ouc}{\vspace{-20pt}}}
+
+% setting for font
+%%\setCJKmainfont{Adobe Kaiti Std}
+\setCJKmainfont{SimSun} 
+%% \setCJKmainfont{FangSong_GB2312} 
+%% \setmainfont{Apple Garamond}  %%苹果字体没有SmallCaps
+\setmainfont{Times New Roman}
+%FUNNY%\setCJKmainfont{DFPShaoNvW5-GB}  %%华康少女文字W5(P)
+%FUNNY%\setCJKmainfont{FZJingLeiS-R-GB}  %%方正静蕾体
+%FUNNY%\setmainfont{Purisa}
+%\setsansfont[Mapping=tex-text]{Adobe Song Std}
+     %如果装了Adobe Acrobat，可在font.conf中配置Adobe字体的路径以使用其中文字体。
+     %也可直接使用系统中的中文字体如SimSun、SimHei、微软雅黑等。
+     %原来beamer用的字体是sans family；注意Mapping的大小写，不能写错。
+     %设置字体时也可以直接用字体名，以下三种方式等同：
+     %\setromanfont[BoldFont={黑体}]{宋体}
+     %\setromanfont[BoldFont={SimHei}]{SimSun}
+     %\setromanfont[BoldFont={"[simhei.ttf]"}]{"[simsun.ttc]"}
+% setting for graphics
+\graphicspath{{figures/}}  %%图片路径
+\renewcommand\figurename{图}
+
+% setting for pdf
+\hypersetup{% pdfpagemode=FullScreen,%
+            pdfauthor={Xiaodong Wang},%
+            pdftitle={Title},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=false,%
+            plainpages=false,%
+            colorlinks=true,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=blue,%red(default)
+            urlcolor=cyan}
+
+% setting for fontspec
+\XeTeXlinebreaklocale "zh"  %%表示用中文的断行
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt  %%多一点调整的空间
+%%%%%
+
+% 设置文字版式为两端对齐
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
+\raggedright 
+
+% font setting by xeCJK
+\setCJKfamilyfont{NSimSun}{NSimSun}
+\newcommand{\song}{\CJKfamily{NSimSun}}
+%%%\setCJKfamilyfont{AdobeSongStd}{Adobe Song Std}
+%%%\newcommand{\AdobeSong}{\CJKfamily{AdobeSongStd}}
+\setCJKfamilyfont{FangSong}{FangSong_GB2312}
+\newcommand{\fang}{\CJKfamily{FangSong}}
+%%%\setCJKfamilyfont{AdobeFangsongStd}{Adobe Fangsong Std}
+%%%\newcommand{\AdobeFang}{\CJKfamily{AdobeFangsongStd}}
+\setCJKfamilyfont{SimHei}{SimHei}
+\newcommand{\hei}{\CJKfamily{SimHei}}
+%%%\setCJKfamilyfont{AdobeHeitiStd}{Adobe Heiti Std}
+%%%\newcommand{\AdobeHei}{\CJKfamily{AdobeHeitiStd}}
+\setCJKfamilyfont{KaiTi}{KaiTi}
+\newcommand{\kai}{\CJKfamily{KaiTi}}
+%%%\setCJKfamilyfont{AdobeKaitiStd}{Adobe Kaiti Std}
+\newcommand{\AdobeKai}{\CJKfamily{AdobeKaitiStd}}
+\setCJKfamilyfont{LiSu}{LiSu}
+\newcommand{\li}{\CJKfamily{LiSu}}
+\setCJKfamilyfont{YouYuan}{YouYuan}
+\newcommand{\you}{\CJKfamily{YouYuan}}
+\setCJKfamilyfont{FZJingLei}{FZJingLeiS-R-GB}
+\newcommand{\jinglei}{\CJKfamily{FZJingLei}}
+\setCJKfamilyfont{MSYH}{Microsoft YaHei}
+\newcommand{\msyh}{\CJKfamily{MSYH}}
+
+% 自定义颜色
+\def\Red{\color{red}}
+\def\Green{\color{green}}
+\def\Blue{\color{blue}}
+\def\Mage{\color{magenta}}
+\def\Cyan{\color{cyan}}
+\def\Brown{\color{brown}}
+\def\White{\color{white}}
+\def\Black{\color{black}}
+
+\lstnewenvironment{javaCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{cyan},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    %numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=Java, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{xmlCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\tiny\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{cyan},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=html, %
+    }\lstset{#1}}{}
+
+\lstnewenvironment{shCode}[1][]{% for Java
+  \lstset{
+    basicstyle=\scriptsize\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm, %
+    frame=shadowbox,%
+    rulesepcolor=\color{brown},%
+    % frame=single,%
+    backgroundcolor=\color{white},%
+    xleftmargin=4\fboxsep,%
+    xrightmargin=4\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=sh, %
+    }\lstset{#1}}{}
+
+\newcommand\ask[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=white,]{\Cyan \includegraphics[height=1.5cm]{question} \Large \msyh #1};}
+
+\newcommand\wxd[1]{\vskip 4bp \tikz \node[rectangle,minimum size=6mm,
+  fill=blue!60!white,]{\White \ding{118} \msyh #1};}
+
+\newcommand\xyy[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=black!80!white,]{\White \msyh\scriptsize #1};}
+
+\newcommand\cxf[1]{\vskip 4bp \tikz \node[rectangle,rounded corners,minimum size=6mm,
+  fill=orange!60!white,]{\White \ding{42} \msyh #1};}
+
+\newcommand\samp[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=white!100!white,]{\Mage\msyh \small CODE \ding{231} \Black #1};\vskip -8bp}
+
+\newcommand\zhyfly[1]{\tikz \node[rectangle,rounded corners,minimum size=6mm,ball
+  color=red!25!blue,text=white,]{#1};}
+
+\newcommand\pno[1]{\tikz \node[rectangle,rounded corners,minimum size=1mm,
+  fill=yellow!50!black,text=white,]{\msyh\scriptsize P. #1};}
+
+\setbeamerfont{frametitle}{series=\msyh} % 修改Beamer标题字体
+
+\makeatletter
+\newcommand{\Extend}[5]{\ext@arrow 0099{\arrowfill@#1#2#3}{#4}{#5}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \titlepage
+\title[KevinW@OUC]{\hei {\Large Java EE企业应用系统开发}\\  
+  类加载和反射}
+\author[王晓东]{王晓东\\
+  \href{mailto:wangxiaodong@ouc.edu.cn}{\footnotesize wangxiaodong@ouc.edu.cn}}
+\institute[中国海洋大学]{\small 中国海洋大学}
+\date{\today}
+\titlegraphic{\vspace{-6em}\includegraphics[height=6cm]{static/ouc.pdf}\vspace{-6em}}
+%%%%%
+\begin{document}
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSection[]{                              % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{\textbf{\hei 接下来…}}
+    \tableofcontents[currentsection]
+  }
+}  %
+
+\AtBeginSubsection[]                            % 在每个子段落之前
+{
+  \frame<handout:0>                             % handout:0 表示只在手稿中出现
+  {
+    \frametitle{\textit{\hei 接下来…}}\small
+    \tableofcontents[current,currentsubsection] % 显示在目录中加亮的当前章节
+  }
+}
+ \frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{References}
+\begin{enumerate}
+\item 疯狂Java讲义
+\item 回顾：什么是反射？ \\http://www.sczyh30.com/posts/Java/java-reflection-1/
+\end{enumerate}  
+\end{frame}
+
+%\begin{frame}
+%\frametitle{本章学习目标}
+%\begin{enumerate}
+%\item 
+%\end{enumerate}  
+%\end{frame}
+
+\section*{大纲}
+\frame{\frametitle{大纲} \tableofcontents }
+
+
+\section{反射}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{反射机制}
+
+\begin{itemize}
+\item 程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言。从
+  这个观点看，Perl、Python、Ruby是动态语言，C++、Java、C\#不是动态语
+  言。
+
+\item 但是Java有着一个非常突出的动态相关机制：Reflection，用在Java身上
+  指的是我们可以于运行时加载、探知、使用编译期间完全未知的类。换句话
+  说，Java程序可以加载一个运行时才得知名称的类，获悉其完整构造（但不包
+  括methods定义），并生成其对象实体、或对其fields设值、或唤起调用
+  其methods。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{反射机制}
+
+\begin{itemize}
+\item 反射机制就是Java语言在运行时拥有一项自观的能力。通过这种能力可以彻底的
+了解自身的情况为下一步的动作做准备。
+\item 反射机制是在运行状态（注意是运行而不是编译）中：
+  \begin{itemize}\kai
+  \item 在运行时判断任意一个对象所属的类；
+  \item 在运行时构造任意一个类的对象；
+  \item 在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；
+  \item 在运行时调用任意一个对象的方法。
+  \end{itemize}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+  \frametitle{反射的主要用途}
+
+  \wxd{一个常见的场景}
+
+  当我们在使用IDE（如Eclipse）时，当我们输入一个对象或类并想调用它的属
+  性或方法，一按点号，编译器就会自动列出它的属性或方法，这里就会用到反
+  射。
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+  \frametitle{反射的主要用途2}
+
+  \wxd{反射最重要的用途就是开发各种通用框架}
+
+  很多框架（比如Spring、Strut）都是基于配置化的，比如通过XML文件配
+  置JavaBean和Action。为了保证框架的通用性，需要根据配置
+  文件加载不同的对象或类，调用不同的方法，这个时候就必须用到反射——{\hei\Red 运行
+    时动态加载需要加载的对象}。
+
+  \xyy{一个例子} {\kai Struts2框架开发中会在struts.xml里配置Action}
+
+  \begin{xmlCode}
+    <action name="login" class="ouc.j2ee.action.LoginAction" method="execute">
+      <result name="success">index.jsp</result>
+      <result name="error">login.jsp</result>
+    </action>
+  \end{xmlCode}
+  
+  XML配置文件与Action实现建立了映射关系。用户请求login.action会
+  被StrutsPrepareAndExecuteFilter拦截并解
+  析struts.xml文件，检索其中name为login的Action，并根据class属性创
+  建LoginAction的实例，并用invoke方法来调用execute方法。
+
+  {\Red 这个过程是基于Java反射框架完成的}。
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+  \frametitle{反射的主要用途3}
+
+  \wxd{依赖注入}
+
+  有两个组件A和B，A依赖于B。
+
+  \begin{javaCode}
+    public class A {
+      public void importantMethod() {
+        B b = ...; // get an instance of B
+        b.usefulMethod();
+        ...
+      }
+    }
+  \end{javaCode}
+
+  我们需要获得B的实例的引用。如果B是接口且有多个实现该怎么做？
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+  \frametitle{反射的主要用途3}
+
+  \wxd{依赖注入}
+
+  接管对象的创建工作，并将该对象的引用注入需要该对象的组件。例如，我们
+  使用Spring框架将对象B注入到对象A中，A需要进行如下修改，加入setB()方法：
+
+  \begin{javaCode}
+    public class A {
+      private B b;
+      public void importantMethod() {
+        B b = ...; // get an instance of B
+        b.usefulMethod();
+        ...
+      }
+
+      public void setB(B b) {
+        this.b = b;
+      }
+    }   
+
+  \end{javaCode}
+
+
+  \begin{xmlCode}
+    <bean id="b" class="ouc.j2ee.sample.B" />
+    <bean id="a" class="ouc.j2ee.sample.A">
+      <property name="b" ref="b"></property>
+    </bean>
+  \end{xmlCode}
+\end{frame}
+
+\section{类的加载、连接和初始化}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{JVM和类}
+
+同一个JVM的所有线程、所有变量都处在同一个进程里，它们都使用该JVM进程的内存区。当系统出现以下几种情况时，JVM进程将被终止：
+
+\begin{itemize}\kai
+\item 程序运行至正常结束。
+\item 程序运行到使用System.exit()或Runtime.getRuntime().exit()代码结束程序。
+\item 程序执行过程中遇到未捕获的异常或者错误而结束。
+\item 程序所在的平台强制结束了JVM进程。
+\end{itemize}
+
+{\hei 当程序主动使用某个类时，如果该类还未被加载到内存中，系统会通过{\Red 加载、连接、初始化}三个步骤对该类进行初始化。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类的加载}
+
+类的加载是指将类的class文件读入内存，并为之创建一个java.lang.Class对象。
+
+{\Red （类是某一类对象的抽象，都是java.lang.Class的实例）}
+
+\begin{itemize}\kai
+\item JVM提供类加载器（系统类加载器）来完成对类的加载。
+\item 此外，开发者可以通过继承ClassLoader基类来创建自己的类加载器。
+\item 可以从本地文件系统、jar包和网络方式加载类的class文件。
+\item 类加载器通常无须等到“首次使用”该类时才加载此类，Java虚拟机允许系统预先加载某些类。
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类的连接}
+
+类被加载生成对应的Class对象后，进入连接阶段，负责把类的二进制数据合并到JRE中。
+
+\begin{enumerate}
+\item 验证：用于检验被加载的类是否有正确的内部结构，并和其它类协调一致。
+\item 准备：负责为类的静态属性分配内存，并设置默认初始值。
+\item 解析：将类的二进制数据中的符号引用替换成直接引用。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类的初始化}
+
+主要负责对静态属性进行初始化：
+\begin{itemize}
+\item 声明静态属性时指定初始值。
+\item 使用静态初始化块为静态属性指定初始值。
+\end{itemize}
+
+\begin{javaCode}
+public class Test {
+  static int a = 5;
+  static int b;
+  static int c;
+  static {
+    b = 6;
+  }
+  ... ...
+}  
+\end{javaCode}
+初始化上述代码后：a=5 b=6 c=0。
+
+{\kai\Red 注意：程序主动使用一个类时，系统会保证该类以及所有父类（包括直接父类和间接父类）都会被初始化，所有JVM最先初始化的总是java.lang.Object类。}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类的初始化时机}
+
+当Java程序首次通过下面6种方式使用某个类或接口时，系统会初始化该类或接口：
+\begin{itemize}\kai
+\item 创建类的实例，包括通过new操作符、通过反射、通过反序列化的方式。
+\item 调用某个类的静态方法。
+\item 访问某个类或接口的静态属性，或为该静态属性赋值。
+\item 使用反射方式来强制创建某个类或接口对应的java.lang.Class对象。例如，Class.forName("Person")。
+\item 初始化某个类的子类，其父类都会被初始化。
+\item 直接使用java.exe运行某个主类时。
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类的初始化时机}
+
+当使用ClassLoader类的loadClass()方法来加载某个类时，该方法只是加载该类，并不会执行该类的初始化。
+
+\begin{javaCode}
+ClassLoader cl = ClassLoader.getSystemClassLoader();
+cl.loadClass("Tester");  
+\end{javaCode}
+
+当使用Class的forName()静态方法时导致强制初始化该类。
+\begin{javaCode}
+Class.forName("Tester");  
+\end{javaCode}
+\end{frame}
+
+\section{类加载器}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类加载器简介}
+
+类加载器负责加载所有的类，在内存中生成java.lang.Class的实例。一个载入JVM的类也有一个唯一的标识。
+
+注意：在Java中，一个类用其全限定名作为标识。在JVM中，一个类用其全限定名和其类加载器作为唯
+一标识。例如：包pg中的Person类，被类加载器ClassLoader的实例k1负责加载，则该Person类对应
+的Class对象在JVM中表示为(Person, pg, k1)。类加载器不同，即使加载同一个类，所加载的类的实
+例也是完全不同、互不兼容的。
+
+JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：
+\begin{itemize}\kai
+\item Bootstrap ClassLoader \ding{235} 根类加载器
+\item Extension ClassLoader \ding{235} 扩展类加载器
+\item System ClassLoader \ding{235} 系统类加载器
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{ClassLoader}
+\begin{itemize}
+\item Bootstrap ClassLoader根类加载器负责加载Java的核心类。它非常特殊，并不
+  是java.lang.ClassLoader的子类，而是由JVM自身实现的。
+\item Extension ClassLoader扩展类加载器，负责加载JRE的扩展目录（JAVA\_HOME/jre/lib/ext或
+  者java.ext.dirs系统属性指定的目录中的JAR的类包。
+\item System ClassLoader系统（应用）类加载器，负责在JVM启动时，加载来自java中的-classpath选
+  项或java.class.path系统属性，或CLASSPATH环境变量所指定JAR包和类路径。
+
+  程序可以通过ClassLoader的静态方法getSystemClassLoader()获得该类加载器。没有特别指定，用
+  户自定义的类加载器都以该类加载器作为父加载器。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类加载机制}
+
+\wxd{关于类加载机制的几点说明}
+
+\begin{enumerate}
+\item 全盘负责：当一个类加载器复负责加载某个Class时，该Class所依赖和引用的其它Class也将由
+  该类加载器负责载入，除非显式使用另一个类加载器载入。
+\item 父类委托：先让父类加载器试图加载该Class，只有父类加载器无法加载该类时才尝试从自己的
+  类路径中加载该类。
+\item 缓存机制：类加载器先从缓存中搜索Class，只有当缓存中不存在该Class对象时，系统才会重
+  新读取该类对应的二进制数据。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类加载机制}
+
+File: ClassLoaderPropTest.java
+
+\begin{javaCode}
+import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
+
+public class BootstrapTest {
+  public static void main(String[] args) throws IOException {
+    ClassLoader systemLoader = ClassLoader.getSystemClassLoader();
+    System.out.println("系统类加载器：" + systemLoader);
+    // 系统类加载器的加载路径通常由 CLASSPATH 环境变量指定
+    // 如果操作系统没有指定 CLASSPATH 环境变量，默认以当前路径
+    // 作为系统类加载器的加载路径  
+
+    Enumeration<URL> eml = systemLoader.getResources(""); 
+    while(eml.hasMoreElements()) {
+      System.out.println(eml.nextElement());
+    }
+    ClassLoader extensionLoader = systemLoader.getParent();
+    System.out.println("扩展类加载器：" + extensionLoader);
+    System.out.println("扩展类加载器的加载路径：" + System.getProperty("java.ext.dirs"));
+    System.out.println("扩展类加载器的parent：" + extensionLoader.getParent());
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类加载机制}
+上述代码的执行结果：
+{\footnotesize
+\begin{verbatim}
+系统类加载器：sun.misc.Launcher$AppClassLoader@dda25b
+file:/C:/Java_Workspace/Test/bin/
+扩展类加载器：sun.misc.Launcher$ExtClassLoader@ce2187
+扩展类加载器的加载路径：C:\Program Files\Java\jre7\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+扩展类加载器的parent：null
+\end{verbatim}}
+\begin{itemize}
+\item {\Red\kai 可以看出，扩展类加载器的getParent()方法返回null，并不是根类加载器。这是因为根类加载器没有继承自ClassLoader抽象类，所以返回空。但实际上，根类加载器确实是扩展类加载器的父类加载器。}
+\item 可以看出，系统类加载器是AppClassLoader的实例，扩展类加载器是ExtClassLoader的实例；实际上，这两个类都是URLClassLoader的实例。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{类加载器加载Class的大致步骤}
+\begin{enumerate}\kai
+\item 检查此Class是否载入过（即缓存中是否存在），如果有则直接进入第8步，否则进入第2步。
+\item 如果父加载器不存在（如果父加载器不存在，要么parent一定是根加载器，要么本身就是根加载器），则跳到第4步。如果父加载器存在，则接着执行第3步。
+\item 请求父加载器加载目标类，如果成果则进入第8步，否则执行第5步。
+\item 请求使用根加载器载入目标类，如果成功则进入第8步，否则跳到第7步。
+\item 从与此ClassLoader相关的类路径中寻找Class文件，如果找到则执行第6步，否则跳到第7步。
+\item 从文件中载入Class，成功载入后则跳到第8步。
+\item 抛出ClassNotFoundException异常。
+\item 返回Class。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建并使用自定义的类加载器}
+略。
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{URLClassLoader类}
+Java为ClassLoader提供了一个URLClassLoader实现类，该类是系统类加载器和扩展类加载器的父类。
+该类既可以从本地文件系统获取二进制文件来加载类，也可以从远程主机获取二进制文件来加载类。
+
+URLClassLoader提供了如下两个构造器：
+
+\begin{itemize}
+\item URLClassLoader(URL[] urls) 使用默认的父类加载器创建一个ClassLoader对象，该对象将
+  从urls所指定的系列路径中查询并加载类。
+\item URLClassLoader(URL[] urls, ClassLoader parent) 使用指定的父类加载器创建一
+  个ClassLoader对象。
+\end{itemize}
+一旦得到了URLClassLoader对象后，就可以调用该对象的loadClass方法加载指定类。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{从文件系统中加载MySQL驱动的示例}
+
+\begin{javaCode}
+URL[] urls = {new URL("file:mysql-connector-java-***-bin.jar")};
+URLClassLoader myClassLoader = new URLClassLoader(urls);
+Driver driver = (Driver) myClassLoader.loadClass("com.mysql.jdbc.Driver").newInstance();
+... ...
+Connection conn = driver.connect("jdbc:mysql://localhost:3306/mysql", props);
+\end{javaCode}
+
+\begin{itemize}\kai
+\item 该类加载器的加载路径为当前路径下
+  的mysql-connector-java-***-bin.jar文件。这里file:前缀表明从本地文件系
+  统加载，也可以以http:或ftp:为前缀，表示通过网络加载。
+\item 使用ClassLoader的loadClass加载指定类，并调用Class对象
+  的newInstance()方法创建一个该类的实例。
+\end{itemize}
+\end{frame}
+
+
+
+
+\section{使用反射生成并操作对象}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{获得Class对象的三种方式}
+
+\begin{enumerate}
+\item 使用Class类的forName()静态方法。该方法需要传入字符串参数，为某个类的全限定名（包含完整的包名）。
+\item 调用某个类的class属性获取该类的Class对象，例如Person.class将返回Person类对应的Class对象。
+\item 调用某个对象的getClass()方法，该方法是java.lang.Object类的一个方法，该方法会返回该对象所属类对应的Class对象。
+\end{enumerate}
+
+第二种方式更建议使用，具有两个优势：
+\begin{itemize}\kai
+\item 代码更安全，程序在编译阶段就可以检查需要访问的Class对象是否存在。
+\item 程序性能更高，因为这种方式无需调用方法，所以具有更好的性能。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{使用反射生成并操作对象}
+
+Class对象可以获得该类里的成分，包括：
+
+\begin{description}
+\item[方法] 由Method对象表示，可以通过该对象执行对应的方法。
+\item[构造器] 由Constructor对象表示，可以通过该对象来调用对应的构造器创建对象。
+\item[Field] 由Field对象表示，可以通过该对象直接访问并修改对象属性值。
+\end{description}
+
+{\Red\small 上述三个类都定义在java.lang.reflect包下，并实现
+了java.lang.reflect.Member接口。}
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建对象}
+
+使用反射来生成对象的两种方式：
+
+\begin{itemize}
+\item 使用Class对象的newInstance()方法来创建该Class对象对应的类实例，此种方法要求
+  该Class对象的对应类有默认构造器，而执行newInstance()方法时实际利用默认构造器来创建该类
+  的实例。
+\item 先使用Class对象获取指定的Constructor对象，再调用Constructor对象的newInstance()方法
+  创建该Class对象对应类的实例。通过这种方式可以选择使用某个类的指定构造器来创建实例。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建对象示例}
+
+很多Java EE框架中都需要根据配置文件信息来创建Java对象。从配置文件中读取的只是某个类的字符串名，程序就需要根据该字符串创建对应的实例，就必须使用{\hei\Red 反射}。
+
+\wxd{简单对象池的示例}
+
+\begin{javaCode}
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+public class ObjectPoolFactory {
+  //定义对象池
+  private Map<String, Object> objectPool = new HashMap<String, Object>();
+  
+  private Object createObject(String ClazzName)
+  throws ClassNotFoundException, InstantiationException,
+  IllegalAccessException {
+    //根据字符串来获取对应的 Class 对象
+    Class<?> clazz = Class.forName(ClazzName);
+    return clazz.newInstance();
+  }
+\end{javaCode}
+\end{frame}
+
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建对象示例（续）}
+\begin{javaCode}
+  //根据指定文件来初始化对象池
+  public void initPool(String fileName) throws ClassNotFoundException,
+  InstantiationException, IllegalAccessException {
+    FileInputStream fis = null;
+    try {
+      fis = new FileInputStream(fileName);
+      Properties props = new Properties();
+      props.load(fis);
+      for (String name : props.stringPropertyNames()) {
+        objectPool.put(name, createObject(props.getProperty(name)));
+      }
+    } catch (IOException ex) {
+      System.out.println("读取" + fileName + "异常");
+    } finally {
+      try {
+        if (fis != null) {
+          fis.close();
+        }
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
+    }
+  }
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{创建对象示例（续）}
+
+\begin{javaCode}
+  public Object getObject(String name) {
+    return objectPool.get(name);
+  }
+  
+  public static void main(String[] args) throws ClassNotFoundException,
+  InstantiationException, IllegalAccessException {
+    ObjectPoolFactory pf = new ObjectPoolFactory();
+    pf.initPool("obj.txt");
+    System.out.println(pf.getObject("a"));
+  }
+}  
+\end{javaCode}
+
+File: obj.txt
+
+\begin{xmlCode}
+a=java.util.Date
+b=javax.swing.JFrame  
+\end{xmlCode}
+输出结果：
+\begin{stdoutCode}
+Mon Sep 23 11:26:40 CST 2013
+\end{stdoutCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{使用指定的构造器创建对象}
+
+需要利用Constructor对象，每个Constructor对应一个构造器，步骤如下：
+\begin{enumerate}
+\item 获取该类的Class对象。
+\item 利用Class对象的getConstructor()方法来获得指定构造器。
+\item 调用Constructor()的newInstance()方法创建对象。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{使用指定的构造器创建对象}
+
+\begin{javaCode}
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class CreateJFrame {
+  public static void main(String[] args) throws ClassNotFoundException,
+  IllegalArgumentException, InstantiationException,
+  IllegalAccessException, InvocationTargetException,
+  SecurityException, NoSuchMethodException {
+    // 获取 JFrame 对应的 Class 对象
+    Class<?> jframeClazz = Class.forName("javax.swing.JFrame");
+    // 获取 JFrame 中带一个字符串参数的构造器
+    Constructor ctor = jframeClazz.getConstructor(String.class);
+    Object obj = ctor.newInstance("测试窗口");
+    System.out.println(obj);
+  }
+}  
+\end{javaCode}
+注意：
+\begin{itemize}\scriptsize
+\item 如果要唯一的确定某类中的构造器，只要指定构造器的{\Red 形参列表}即可。
+\item 调用Constructor对象的newInstance()方法时通常需要传入参数，实际上等于调用它对应的构造器。
+\item 只有当程序需要动态创建某个类的对象时才会考虑使用反射；对于已知类的情形，通常没有必要通过反射创建对象（降低性能）。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{调用方法}
+
+获得某个类对应的Class对象后，可以该对象的如下方法执行方法调用：
+\begin{itemize}
+\item getMethods()方法：获取全部方法，返回值为Method对象数组；
+\item getMethod()方法：获取指定方法，返回Method对象。
+\end{itemize}
+获取Method对象后，程序可以该对象的invoke()方法调用对应方法：
+\begin{javaCode}
+Object invoke(Object obj, Object ... args)
+\end{javaCode}
+其中，obj是主调，args是执行该方法时传入该方法的参数。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{调用方法}
+\begin{javaCode}
+Class<?> targetClass = target.getClass();
+Method mtd = targetClass.getMethod(mtdName, String.class);
+mtd.invoke(target, props.getProperty(name));
+\end{javaCode}
+
+当通过Method对象的invoke方法调用对应方法时，Java会要求程序必须有调用该
+方法的权限。{\Red 如果程序需要调用某个对象的private方法，可以先调
+  用Method对象的如下方法}：
+
+\begin{itemize}\kai
+\item setAccessible(boolean flag) 将Method对象的accessible标志设置为指
+  示的布尔值。值为true则指示该Method在使用时应该取消Java语言访问权限检
+  查，值为flase则指示该Method在使用时应该实施Java语言访问权限检查。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{访问属性值}
+
+通过Class对象的getFields()或getField()方法可以获取该类所包含的全部Field（属性）或指定Field。
+\begin{itemize}\kai
+\item getXxx(Object obj) 获取obj对象该Field的属性值，此处Xxx对应8个基本类型，如果该属性的
+  类型为引用类型则取消get后面的Xxx。
+\item setXxx(Object obj, Xxx val) 将obj对象的该Field设置成val值。此处Xxx对应8个基本类型，
+  如果该属性的类型为引用类型则取消get后面的Xxx。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{访问属性值}
+\begin{javaCode}
+import java.lang.reflect.Field;
+class Person{
+  private String name;
+  private int age;
+  public String toString(){
+    return "Person [ name: " + name + ", age: " + age + " ]"; 
+  }
+}
+
+public class FieldTest {
+  public static void main(String[] args) throws Exception {
+    Person p = new Person();
+    Class<Person> personClazz = Person.class;
+    Field nameField = personClazz.getDeclaredField("name");
+    nameField.setAccessible(true);
+    nameField.set(p, "Kevin W");
+    Field ageField = personClazz.getDeclaredField("age");
+    ageField.setAccessible(true);
+    ageField.setInt(p, 30);
+    System.out.println(p);
+  }
+}
+\end{javaCode}
+
+上述代码使用getDeclaredField()方法获取名为name的Field，而不是使用getField()方法，因
+为getField()方法只能获取public的Field，而getDeclaredField()则可以获取所有Field。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{操作数组}
+
+java.lang.reflect包提供Array类，代表所有数组，程序可以通过Array类来动态的创建数组，操作数组元素。
+
+\begin{itemize}
+\item static Object newInstantce(Class<?> componentType, int... length) 创建一个具有指定
+  元素类型、指定维度的新数组。
+\item static xxx getXxx(Object array, int index) 返回array数组中第index个元素，其中xxx是
+  各种基本数据类型，如果数组元素为引用类型，则方法去掉Xxx，为get(Object array, int
+  index)。
+\item static void setXxx(Object array, int index, xxx val) 将array数组中第index元素的值设
+  为val。其中xxx是各种基本数据类型，如果数组元素为引用类型，则方法去掉Xxx，为set(Object
+  array, int index, Object val)。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{操作数组}
+\begin{javaCode}
+//创建一个元素类型为 String ，长度为 10 的数组
+Object arr = Array.newInstance(String.class, 10);
+//为数组中 index 为 5 的元素赋值
+Array.set(arr, 5, "Java EE企业应用系统设计");
+//取出 arr 数组中 index 为 5 的元素的值
+Object book = Array.get(arr, 5);
+
+//创建一个元素类型为 String 的三维数组
+Object arr = Array.newInstance(String.class, 3, 4, 10);
+//获取 arr 数组中 index 为 2 的元素，是二维数组
+Object arrObj = Array.get(arr1, 2);
+//获取 arrObj 数组中 index 为 3 的元素，应该是一维数组
+Object Arr.get(arrObj, 3);
+//将 arr 强制转换为三维数组
+String[][][] cast = (String[][][]) arr;
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{使用反射生成JDK动态代理}
+
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%% \frametitle{本章习题}
+%% \begin{enumerate}[<+-| alert@+>]
+%% \item a
+%% \item b
+%% \end{enumerate}
+%% \end{frame}
+
+%% \begin{figure}
+%% \centering
+%% \includegraphics[width=0.6\textwidth]{fig01.png}
+%% \end{figure}
+% TKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\centering
+{\Huge \textcolor{blue}{THE END}} \\
+\vspace{5mm}
+{\Large wangxiaodong@ouc.edu.cn} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

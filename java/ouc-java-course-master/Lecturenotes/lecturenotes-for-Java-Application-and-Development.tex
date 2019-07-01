@@ -1,0 +1,504 @@
+%% 
+%% 中文 XeTeX book/report 模板 
+%% book模式下，请将\frontmatter \mainmatter \backmater去掉注释
+%% report模式下，请将\frontmatter \mainmatter \backmater进行注释
+%% Maintained by Xiaodong Wang
+%% Data 2010/08/05
+%%
+\documentclass[12pt,leqno]{report}
+
+\def\pgfsysdriver{pgfsys-dvipdfm.def}
+\usepackage[slantfont,boldfont]{xeCJK}
+\usepackage{fontspec,indentfirst}
+\usepackage{xunicode} % provides unicode character macros
+\usepackage{xltxtra} % provides some fixes/extras
+\usepackage{tikz}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage{color}
+\usepackage{ifthen}
+
+%% 页面设置
+\usepackage[paper=a4paper,
+         total={15.8cm,23.2cm},
+         top=2cm,
+         left=2.5cm,]{geometry}
+
+%% 设定行距
+\linespread{1.5} %% 1.5倍
+
+%% 自定义宏包解决段落首行缩进2个中文字符问题
+\usepackage{cjkindent} 
+
+%% 设定itemize等列表环境的间距
+\usepackage{enumitem}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+% 目录超链接
+\usepackage[pdfauthor={Xiaodong Wang},%
+            pdftitle={Java应用与开发课程实验手册},%
+            pdfsubject={book},%
+            pdfkeywords={Xiaodong Wang, NSEG, NewStar Embedded Group, OUC},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=true,%
+            plainpages=false,%
+            % pdftex,
+            bookmarks]{hyperref}
+
+\hypersetup{colorlinks,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=blue, %red(default)
+            urlcolor=cyan}
+
+% 支持插图
+\usepackage{graphicx}
+\usepackage{pdfcolmk}
+\usepackage{subfigure}
+
+% 支持文本框
+\usepackage{fancybox}
+
+% 支持彩色表格
+\usepackage{colortbl}
+\def\colCell#1#2{\multicolumn{1}{>{\columncolor{#1}}c}{#2}}
+
+% 支持引用的宏包
+\usepackage{cite}
+
+% 添加算法包
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% 支持插入代码
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% 特殊数学字体
+\usepackage{pifont}
+\usepackage{txfonts}
+\usepackage{mathrsfs}
+
+% 不清楚是啥
+\usepackage{subfigure}  %%图形或表格并排排列
+\usepackage{colortbl,dcolumn}
+\usepackage{multirow}
+\usepackage{multicol}
+
+% 修改目录名
+\usepackage{titletoc}
+\renewcommand{\contentsname}{目\quad 录}
+\renewcommand{\listfigurename}{图目录}
+\renewcommand{\listtablename}{表目录}
+
+% 去掉图表号后面的冒号
+\usepackage{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
+
+% 目录和章节题目
+\usepackage[bf,big,indentafter,pagestyles]{titlesec}
+
+% 页眉页脚
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\addtolength{\headheight}{3\baselineskip}
+\addtolength{\footskip}{0\baselineskip}
+%\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrule}{\vbox to 0pt{\hbox to \headwidth{\dotfill}\vss}}
+
+% 支持中文字号
+\newcommand{\CJKfontsize}[4]{%
+  \fontsize{#1}{#2 plus#3 minus #4}\selectfont}
+
+\newcommand\zihao[1]{%
+  \ifthenelse{\equal{#1}{0}}{%
+    \CJKfontsize{42bp}{50.4pt}{.5pt}{.3pt}}{}%
+  \ifthenelse{\equal{#1}{0-}}{%
+    \CJKfontsize{36bp}{43.2pt}{.5pt}{.3pt}}{}%
+  \ifthenelse{\equal{#1}{1}}{%
+    \CJKfontsize{26bp}{31.2pt}{.5pt}{.3pt}}{}%
+  \ifthenelse{\equal{#1}{1-}}{%
+    \CJKfontsize{24bp}{28.8pt}{.5pt}{.3pt}}{}%
+  \ifthenelse{\equal{#1}{2}}{%
+    \CJKfontsize{22bp}{26.4pt}{.5pt}{.3pt}}{}%
+  \ifthenelse{\equal{#1}{2-}}{%
+    \CJKfontsize{18bp}{21.6pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{3}}{%
+    \CJKfontsize{16bp}{19.3pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{3-}}{%
+    \CJKfontsize{15bp}{18pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{4}}{%
+    \CJKfontsize{14bp}{16.8pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{4-}}{%
+    \CJKfontsize{12bp}{14.4pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{5}}{%
+    \CJKfontsize{10.5bp}{12.6pt}{.3pt}{.2pt}}{}%
+  \ifthenelse{\equal{#1}{5-}}{%
+    \CJKfontsize{9bp}{10.8pt}{.2pt}{.1pt}}{}%
+  \ifthenelse{\equal{#1}{6}}{%
+    \CJKfontsize{7.5bp}{9pt}{.2pt}{.1pt}}{}%
+  \ifthenelse{\equal{#1}{6-}}{%
+    \CJKfontsize{6.5bp}{7.8pt}{.2pt}{.1pt}}{}%
+  \ifthenelse{\equal{#1}{7}}{%
+    \CJKfontsize{5.5bp}{6.6pt}{.1pt}{.1pt}}{}%
+  \ifthenelse{\equal{#1}{8}}{%
+    \CJKfontsize{5bp}{6pt}{.1pt}{.1pt}}{}}
+
+%%
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+% Font settings by xeCJK
+\setCJKfamilyfont{NSimSun}{NSimSun}
+\newcommand{\song}{\CJKfamily{NSimSun}}
+%%%\setCJKfamilyfont{AdobeSongStd}{Adobe Song Std}
+%%%\newcommand{\AdobeSong}{\CJKfamily{AdobeSongStd}}
+%%%\setCJKfamilyfont{FangSong}{FangSong_GB2312}
+%%%\newcommand{\fang}{\CJKfamily{FangSong}}
+%%%\setCJKfamilyfont{AdobeFangsongStd}{Adobe Fangsong Std}
+%%%\newcommand{\AdobeFang}{\CJKfamily{AdobeFangsongStd}}
+\setCJKfamilyfont{SimHei}{SimHei}
+\newcommand{\hei}{\CJKfamily{SimHei}}
+%%%\setCJKfamilyfont{AdobeHeitiStd}{Adobe Heiti Std}
+%%%\newcommand{\AdobeHei}{\CJKfamily{AdobeHeitiStd}}
+\setCJKfamilyfont{KaiTi}{KaiTi}
+\newcommand{\kai}{\CJKfamily{KaiTi}}
+%%%\setCJKfamilyfont{AdobeKaitiStd}{Adobe Kaiti Std}
+\newcommand{\AdobeKai}{\CJKfamily{AdobeKaitiStd}}
+%\setCJKfamilyfont{LiSu}{LiSu}
+\newcommand{\li}{\CJKfamily{LiSu}}
+\setCJKfamilyfont{YouYuan}{YouYuan}
+\newcommand{\you}{\CJKfamily{YouYuan}}
+\setCJKfamilyfont{FZJingLei}{FZJingLeiS-R-GB}
+\newcommand{\jinglei}{\CJKfamily{FZJingLei}}
+\setCJKfamilyfont{MSYH}{Microsoft YaHei}
+\newcommand{\msyh}{\CJKfamily{MSYH}}
+
+%% 设置缺省中文字体
+\setCJKmainfont{SimSun}
+%\setCJKmainfont{Adobe Fangsong Std}
+%% 设置中文等宽字体
+ \setCJKmonofont{SimSun}
+%% 设置英文衬线字体
+\setmainfont{Times New Roman}
+% \setmainfont{"微软雅黑"}
+% 设置英文等宽字体
+%\setmonofont{Times New Roman}
+% 设置英文无衬线字体
+% \setsansfont{Times New Roman}
+
+%% 自定义颜色
+\def\Red{\color{red}}
+\def\Green{\color{green}}
+\def\Blue{\color{blue}}
+\def\Mage{\color{magenta}}
+\def\Cyan{\color{cyan}}
+\def\Brown{\color{brown}}
+\def\Gray{\color{gray}}
+\def\Black{\color{black}}
+\def\White{\color{white}}
+
+%% 自定义命令
+% 注意
+\newcommand{\notice}[2][red]{\vspace{3mm}\noindent\hskip5pt\shadowbox{\color{#1}
+    #2 \vspace{3mm}}}
+% 说明
+\newcommand{\descript}[2][blue]{\vspace{3mm}\noindent\hskip5pt\shadowbox{\color{#1}
+    #2 \vspace{3mm}}}
+
+% TIP
+\newcommand{\kgtip}[2][blue]{\vspace{3mm}\noindent\hskip5pt\framebox{\color{#1}\msyh
+    #2 \vspace{3mm}}}
+% 其他
+\newcommand{\mysb}[2][magenta]{\ding{42}\hskip5pt\shadowbox{\color{#1}
+    #2\vspace{3mm}}}
+
+% 其他
+\newcommand{\sline}[1][magenta]{{\color{#1}\vspace{-5mm}\noindent\rule{\textwidth}{.4mm}}}
+
+\newcommand\tta[1]{\vskip 4bp \tikz \node[rectangle,minimum size=6mm,
+  fill=blue!60!white]{\White \ding{118} \msyh #1};}
+
+\newcommand\ttb[1]{\vskip 4bp \tikz \node[rectangle,rounded
+  corners,minimum size=6mm, fill=purple!60!white,]{\White \ding{42}
+    \msyh #1};}
+
+\newcommand\ttc[1]{\vskip 2bp \tikz \node[rectangle,minimum size=3mm,
+  fill=black!80!white,]{\White \msyh\scriptsize #1};}
+
+% 示例代码
+\newcommand{\samplecode}[2][blue]{{\vspace{3mm}\noindent\hskip5pt\color{#1}
+    Code: #2 \vspace{3mm}}}
+
+\newcommand{\samp}[2][blue]{{\vspace{3mm}\noindent\hskip5pt\color{#1}
+    Code: #2 \vspace{3mm}}}
+
+\newcommand\codeset[1]{\vskip 2bp \tikz
+  \node[rectangle,minimum size=3mm,
+  fill=white!100!white,]{\Mage\msyh\small 课程配套代码 \ding{231}
+    \Black #1};\vskip -8bp}
+
+% 重定义日期格式
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+%%%%%%%%%%%%%%%%%%% Code Environment %%%%%%%%%%%%%%%%%%%
+% 非程序代码环境请参阅~fancyvrb.cfg
+% 作业环境
+\lstnewenvironment{workS}[1][]{% for shell command code
+  \lstset{
+    basicstyle=\footnotesize, % \msyh, %\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=-1mm,
+    backgroundcolor=\color{white},%
+    xleftmargin=3\fboxsep,%
+    xrightmargin=3\fboxsep,%
+    aboveskip=1em,
+    belowskip=-2em,
+    numberblanklines=false, numbersep=7pt,%
+    language=sh%
+    }\lstset{#1}}{}
+
+
+% shCode环境
+\lstnewenvironment{shCode}[1][]{% for shell command code
+  \lstset{
+    basicstyle=\footnotesize\ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm,%
+    %frame=shadowbox,%
+    %rulesepcolor=\color{cyan},%
+    backgroundcolor=\color{white},%
+    xleftmargin=7\fboxsep,%
+    xrightmargin=2\fboxsep,%
+    aboveskip=1em,
+    belowskip=-2em,
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=sh%
+    }\lstset{#1}}{}
+
+% cCode环境
+\lstnewenvironment{cCode}[1][]{% for c code
+  \lstset{
+    basicstyle=\footnotesize \ttfamily, %\msyh,%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{black},%
+    backgroundcolor=\color{white},%
+    xleftmargin=3\fboxsep,%
+    xrightmargin=3\fboxsep,%
+    aboveskip=1em, %外框上边距
+    belowskip=-2em,%外框下边距
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=c,%
+    keywordstyle= \bfseries
+    }\lstset{#1}}{}
+
+% javaCode环境
+\lstnewenvironment{javaCode}[1][]{% for c code
+  \lstset{
+    basicstyle=\footnotesize \ttfamily,%
+    columns=flexible,%
+    framexleftmargin=.7mm,%
+    %frame=shadowbox,%
+    %rulesepcolor=\color{gray},%
+    backgroundcolor=\color{white},%
+    xleftmargin=7\fboxsep,%
+    xrightmargin=2\fboxsep,%
+    aboveskip=1em,  %外框上边距
+    belowskip=-2em, %外框下边距
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=java,%
+    escapeinside={\/\/*}{*)}, % if you want to add a comment within your code
+    keywordstyle= \bfseries
+    }\lstset{#1}}{}
+
+% xmlCode环境
+\lstnewenvironment{xmlCode}[1][]{% for XML code
+  \lstset{
+    basicstyle=\footnotesize \sffamily \msyh ,% 字体为微软雅黑
+    columns=flexible,%
+    framexleftmargin=.5mm,frame=shadowbox,%
+    rulesepcolor=\color{yellow},%
+    backgroundcolor=\color{white},%
+    xleftmargin=3\fboxsep,%
+    xrightmargin=3\fboxsep,%
+    numbers=left,numberstyle=\tiny,%
+    numberblanklines=false,numbersep=7pt,%
+    language=html,%
+    escapeinside={\%*}{*)}, % if you want to add a comment within your code
+    morekeywords={output, about, resource, parseType, intersectionOf , onProperty,
+      unionOf, Restriction, allValuesFrom,  someValuesFrom, *, ...}, % add more keywords
+    keywordstyle= \bfseries
+    }\lstset{#1}}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% 增加 \ucite 命令使显示的引用为上标形式
+\newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
+
+% 重定义图表名
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\newtheorem{definition}{定义}
+
+
+\renewcommand{\chaptername}{\ding{64}~\thechapter~\ding{64}}
+%\titleformat{\chapter}[hang]{\LARGE\hei\bfseries}{\chaptername}{1em}{}
+%\titleformat{\section}[hang]{\Large\hei\bfseries}{\thesection}{1em}{}
+\titleformat{\chapter}[hang]{\LARGE\hei}{\chaptername}{1em}{}
+\titleformat{\section}[hang]{\Large\hei}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\large\hei}{\thesubsection}{1em}{}
+%\titleformat{\subsubsection}[hang]{\msyh}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsection}[hang]{\hei}{\thesubsubsection}{1em}{}
+
+% 定义参数列表环境
+% Define new namelist environment to list the used parameters
+ \newcommand{\namelistlabel}[1]{\mbox{#1}\hfil}
+ \newenvironment{namelist}[1]{%
+ \begin{list}{}
+      {
+        \let\makelabel\namelistlabel
+        \settowidth{\labelwidth}{XXXX}
+        \setlength{\leftmargin}{1.4\labelwidth}
+        }
+      }{%
+ \end{list}}
+
+% 定义Rule环境
+\newenvironment{Rule} %
+{\vspace{0.3cm}\noindent\textbf{\Green RULE: }} %
+{\vspace{0.3cm}} %
+
+% 配置lstlisting环境
+\lstset{ %
+language=HTML,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+% backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,	                % adds a frame around the code
+%frame=shadowbox, 
+tabsize=2,	                % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting; also try caption instead of title
+escapeinside={\%*}{*)},          % if you want to add a comment within your code
+morekeywords={output, about, resource, parseType, intersectionOf , onProperty, unionOf, Restriction, allValuesFrom,  someValuesFrom, *, ...},            % if you want to add more keywords to the set
+keywordstyle=\Cyan \bfseries
+}
+
+% 更改itemize的列表项符号
+% \renewcommand{\labelitemi}{$\blacksquare$}
+\renewcommand{\labelitemi}{$\bullet$}
+
+% 更改enumerate的列表项符号
+%% \renewcommand{\labelenumi}{[\arabic{enumi}]}
+
+%%%%%% %%%%% 标题 作者 日期 %%%%%
+%%%%%% 
+%%%%%% \title{\Huge{Java应用与开发课程实验手册 \thanks{配套中国海洋大学信息科学与工程学院计算机科学与技术系《Java应
+%%%%%%       用与开发》课程使用。}}}
+%%%%%% \author{王晓东\\
+%%%%%%   中国海洋大学\\
+%%%%%%   信息科学与工程学院计算机科学与技术系}
+%%%%%% 
+%%%%%% \date{\today} \maketitle
+%%%%%% 
+%%%%%% \pagenumbering{alph}
+%%%%%% \maketitle
+%%%%%% 
+%%%%%% %%%
+%%%%%% % \frontmatter
+%%%%%% \clearpage\pagenumbering{roman}
+%%%%%% \include{logs}
+%%%%%% 
+%%%%%% %%%%% 生成目录 %%%%%
+%%%%%% \tableofcontents 
+%%%%%% \newpage
+%%%%%% \listoffigures % 图目录
+%%%%%% \listoftables % 标目录
+%%%%%% %%%%%%%%%%%%%%%%%%
+%%%%%% \chapter*{序\quad 言}
+%%%%%% 
+%%%%%% \pagestyle{plain}
+%%%%%% 
+%%%%%% 本文档为中国海洋大学信息科学与工程学院计算机科学与技术系《J2EE应用与开
+%%%%%% 发》实验课程参考资料。
+%%%%%% 
+%%%%%% 本文档参考了多方书籍、资料和源代码而编写，在此对原始资料的作者和编者表
+%%%%%% 示感谢。但为保证实验授课质量，并没有随本文档公开原始参考资料的出处，望
+%%%%%% 相关作者和编者谅解！
+%%%%%% 
+%%%%%% 基于~GNU~通用公共许可证（General Public License）的条款，任何人有权复制、
+%%%%%% 发布和~/~或修改本文。虽然由于参考资料的版权限制，本开放发布策略并不算非
+%%%%%% 常合理。
+%%%%%% 
+%%%%%% \pagestyle{headings}
+%%%%%% \clearpage\pagenumbering{arabic}
+
+%%%%% 页眉 页脚 %%%%%
+\pagestyle{fancy}
+%\lhead{\textcolor{gray}{\leftmark}}
+%\chead{\hei\bfseries中国海洋大学}
+\rhead{\chaptername}
+\lfoot{\small 中国海洋大学信息学院计算机系}
+\cfoot{\sc}
+\rfoot{\textcolor{gray}{第~\thepage{}~页~/~共~\pageref{LastPage}~页}}
+
+%%%
+%\mainmatter
+
+%\include{lecturenotes/Java-course-arch}
+%% Week 01 %%
+
+%\include{lecturenotes/Introduction-to-Java}
+%\include{lecturenotes/Java-language-basic-and-flow-control}
+%\include{lecturenotes/exp-ide-and-basic}
+
+%% Week 02 %%
+%\include{lecturenotes/Java-array-and-string}
+%\include{lecturenotes/Advanced-object-oriented-programming-1}
+
+%% Week 03 %%
+%\include{lecturenotes/Advanced-object-oriented-programming-2}
+%\include{lecturenotes/Java-memory-allocation}
+
+%% Week 04 %%
+%\include{lecturenotes/Advanced-class-features}
+%\include{lecturenotes/Java-generic-type}
+
+%% Week 05 %%
+%\include{lecturenotes/Terminal-application-programming}
+%\include{lecturenotes/Set-list-map}
+
+%% Week 06 %%
+%\include{lecturenotes/Java-GUI-programming}
+
+%% Week 07 %%
+%\include{lecturenotes/Java-exception-handling}
+\include{lecturenotes/Advanced-IO-programming}
+
+
+% \include{lecturenotes/Java-thread-programming}
+
+%%%
+% \backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Thank for Teddy %%%%%

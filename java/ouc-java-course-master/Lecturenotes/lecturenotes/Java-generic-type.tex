@@ -1,0 +1,316 @@
+\chapter{泛型}
+\label{chp:Java-generic-type}
+
+\section*{基本信息}
+\sline
+\begin{description}
+\item[课程名称：] Java应用与开发
+\item[授课教师：] 王晓东
+\item[授课时间：] 第四周
+\item[参考教材：] 本课程参考教材及资料如下：
+  \begin{itemize}
+  \item 陈国君主编，Java程序设计基础（第5版），清华大学出版社，2015.5
+  \item Bruce Eckel, Thinking in Java (3rd)
+  \end{itemize}
+\end{description}
+
+\section*{教学目标}
+
+\sline
+
+\begin{enumerate}
+\item 理解泛型的概念，掌握其基本应用
+  \begin{itemize}
+  \item 集合框架中的泛型
+  \item 泛型的向后兼容性
+  \end{itemize}
+\item 掌握自定义泛型类和泛型方法
+  \begin{itemize}
+  \item 理解类型参数
+  \item 理解差异性并能够定义自己的泛型类和泛型方法
+  \item 受限制的类型参数
+  \end{itemize}
+\item 学会处理泛型类型，包括使用通配符实现泛型容器遍历和操作
+\end{enumerate}
+
+\section*{授课方式}
+
+\sline
+\begin{description}
+\item[理论课：] 多媒体教学、程序演示
+\item[实验课：] 上机编程
+\end{description}
+
+\newpage
+\section*{教学内容}
+\sline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{泛型概念}
+
+\subsection{泛型的概念}
+
+泛型机制自JDK 5.0开始引入，其实质是{\hei\Blue 将原本确定不变的数据类型
+  参数化}。作为对原有Java类型体系的扩充，使用泛型可以提高Java应用程序的
+类型安全、可维护性和可靠性。
+
+传统的集合容器为了提供广泛的适用性，会将所有加入其中的元素当作Object类
+型来处理。基于此原因，在实际使用时，我们必须将从集合中取出的元素值再强
+制转换（造型）为所期望的类型。
+  
+\notice{无泛型机制的集合容器}
+
+\begin{javaCode}
+  Vector v = new Vector();
+  v.addElement(new Person("Tom", 18));
+  Person p = (Person) v.elementAt(0);
+  p.showInfo();
+\end{javaCode}
+  
+\subsection{集合框架中的泛型}
+
+\begin{itemize}
+\item 泛型允许编译器实施由开发者设定的附加类型约束，将类型检查
+  从{\hei\Blue 运行时挪到编译时}进行，这样类型错误就可以在编译时暴露出
+  来，而不是在运行时才发作（抛出ClassCastException运行异常）。
+\item 创建集合容器时规定其允许保存的元素类型，然后由编译器负责添加元素
+  的类型合法性检查，在取用集合元素时则不必再进行造型处理。
+\end{itemize}
+
+\subsubsection{在Vector中使用泛型}
+
+\codeset{sample.generics.VectorGenericsSample.java}
+  
+\subsubsection{在Hashtable中使用泛型}
+
+\codeset{sample.generics.HashtableGenericsSample.java}
+
+\subsubsection{泛型的向后兼容性}
+
+\begin{itemize}
+\item Java语言中的泛型是维护向后兼容的，完全可以不采用泛型、而继续
+  沿用过去的做法。
+\item 这些未加改造的旧式代码将无法使用泛型带来的便利和安全性。
+\end{itemize}
+
+未启用泛型机制的代码在高版本编译器中会输出如下形式的编译提示信息：
+
+\begin{stdoutCode}
+  注: VectorGenericsSample.java使用了未经检查或不安全的操作。
+  注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+\end{stdoutCode}
+
+可以使用SuppressWarnings注解关闭编译提示或警告信息：
+
+\begin{javaCode}
+  @SuppressWarnings({"unchecked"})  
+  public class VectorGenericsSample {
+    ...
+  }
+\end{javaCode}
+
+
+\section{泛型类与泛型方法}
+
+\subsubsection{类型参数}
+
+
+形如Vector<String>，其中，尖括号括起来的部分被称为{\Red\hei 类型参数}，
+而这种由类型参数修饰的类型则被称为{\Blue\hei 泛型类}。
+
+\notice{注意}
+
+应在声明泛型类变量和创建对象时均给出类型参数，且两者应保持一致。
+
+使用类型参数$E$进行泛型化处理的java.util.Vector类的定义代码摘要如下：
+
+\begin{javaCode}
+  public class Vector<E> --- {
+    public void addElement(E obj) { --- }
+    public E elementAt(int index) { --- }
+  }  
+\end{javaCode}
+
+这里的$E$也称为“形式类型”参数。在实际使用该泛型类时，我们需要指定相应的
+具体类型，即实际类型参数。
+  
+\begin{javaCode}
+  Vector<String> v = new Vector<String>();
+\end{javaCode}
+
+编译器遇到Vector<String>类型变量时，即知道此Vector变量/对象的类型参
+数$E$已经被绑定为String类型，进而也就确定其addElement()方法的参数
+和elementAt()方法的返回值均为String类型。
+
+\subsection{定义泛型类}
+
+\codeset{package sample.generics.userdefined}
+
+{\kai 代码示例中的泛型类PersonG可以在使用时通过类型参数T指定其属性secrecy的具体类型（以及该
+  属性相应存/取方法的参数和返回值类型），进而提供了通用的信息存储能力。}
+
+\subsubsection{形式类型参数的编程惯例}
+
+\begin{table}
+  \footnotesize
+  \begin{tabular}{c|p{6cm}}
+    {\bf 符号} & {\bf 意义}  \\
+    K & 键，比如映射的键\\
+    V & 值，比如List和Set的内容，或者Map中的值\\
+    E & 元素，比如Vector<E>\\
+    T & 泛型\\
+  \end{tabular}
+\end{table}
+
+\subsubsection{使用受限制的类型参数}
+
+泛型机制允许开发者对类型参数进行附加约束。
+
+\begin{javaCode}
+  import java.utils.Number;
+
+  public class Point<T extends Number> {
+    private T x;
+    private T y;
+    public Point() {}
+    public Point(T x, T y) {
+      this.x = x;
+      this.y = y;
+    }
+    ...
+  }
+\end{javaCode}
+
+类型参数不能为基本数据类型，而java.lang.Number是所有数值型封装类（
+如Integer、Float、Double等）的父类型，于是限制泛型类Point的类型参数必须
+为Number或其子类类型，并使用extends关键字来标明这种继承层次上限制。
+
+
+\subsection{定义泛型方法}
+
+与泛型类的情况类似，{\Red\hei 方法也可以被泛型化，且无论其所属的类是否
+  为泛型类。}
+
+\samp{泛型方法示例}
+
+\begin{javaCode}
+  public class Tool {
+    public <T>T evaluate(T a, T b) {
+      if(a.equals(b)) 
+      return a;
+      else
+      return null;
+    }
+  }  
+\end{javaCode}
+
+
+\begin{itemize}
+\item 上述代码中方法evaluate()声明中的“<T>”用于标明这是一个{\hei 泛型方
+    法}。
+\item 类型T是可变的，不必显示的告知编译器T具体取何值，但出现多处（两个
+  形参、一个返回值类型）的这些值必须都相同。
+\end{itemize}
+
+
+
+\subsubsection{使用泛型方法，而不是定义泛型类的原则}
+
+\begin{enumerate}
+\item 不涉及到类中的其他方法时，则应将之定义为泛型方法，因为泛型方法的
+  类型参数是局部性的，这样可以简化其所在类型的声明和处理开销。
+\item 要施加类型约束的方法为静态方法时，只能将之定义为泛型方法，因为静
+  态方法不能使用其所在类的类型参数。
+\end{enumerate}
+
+
+\subsubsection{对泛型的理解}
+  
+\begin{itemize}
+\item 泛型类可以理解为具有广泛适用性、尚未最终定型的类型。
+\item Person<String>和Person<Double>属于同一个类，但确是不同的类型。
+\item 同一个泛型类与不同的类型参数复合而成的类型间并不存在继承关系，即使是类型参数间存在
+  继承关系时也是如此。\\
+  {\kai 如：Vector<String>不是Vector<Object>的子类。}
+\end{itemize}
+
+\section{处理泛型类型}
+
+\subsection{遍历泛型Vector集合}
+
+\subsubsection{遍历Vector<String>类型集合}
+  
+\begin{javaCode}
+  public void overview(Vector<String> v) {
+    for(String o: v) {
+      String.out.println(o);
+    }
+  }
+\end{javaCode}
+
+\notice{遍历其他类型参数的Vector集合元素该怎么办？}
+
+难道要定义overview(Vector<Person> v)、overview(Vector<Integer> v)
+... 显然过于繁琐，引用泛型机制后代码的通用性似乎不如从前？
+
+\subsection{泛型类型的处理方法}
+
+\subsubsection{可能的处理方法（不要使用）}
+
+将遍历方法的形参定义为不带任何类型参数的原型类型Vector，但这样会破坏已
+有的类型安全性。
+
+\begin{javaCode}
+  public void overview(Vector v) {
+    for(Object o: v) {
+      String.out.println(o);
+    }
+  }
+\end{javaCode}
+
+\subsubsection{使用通配符}
+
+为了解决类似泛型遍历的问题，Java泛型机制中引入了通配符“？”。
+
+\begin{javaCode}
+  public void overview(Vector<?> v) {
+    for(Object o : v) {
+      System.out.println(o);
+    }
+  }
+\end{javaCode}
+
+\subsubsection{类型通配符}
+
+使用类型通配符的好处包括：
+
+\begin{enumerate}
+\item Vector<?>是任何泛型Vector的父类型，因此可以将Vector<String>、Vector<Integer>、
+  Vector<Object>等作为实参传给overview(Vector<?> v)方法处理；
+\item Vector<?>类型的变量在调用方法时是受到限制的——凡是必须知道具体类型参数才能进行的操作
+  均被禁止。
+\end{enumerate}
+
+\begin{javaCode}
+  Vector<String> vs = new Vector<String>();
+  vs.add("Tom");
+  Vector<?> v = vs;
+  v.add("Billy");  // 非法，编译器不知道具体类型参数
+  Object e = v.elementAt(0); // 合法，允许检索元素，此时读取的元素均当作 Object 类型处理
+  System.out.println(e);
+\end{javaCode}
+
+上述限制不等同于将Vector<?>变为“只读”，在不需要编译器确定类型参数的情况
+下也是可以修改集合内容的，例如：
+\begin{javaCode}
+  Vector<String> vs = new Vector<String>();
+  vs.add("Tom");
+  vs.add("Billy");
+  Vector<?> v = vs;
+  v.remove(new Integer(200));  // 形参为 Object 类型，运行不受影响
+  v.clear(); // 不需要参数，运行不受影响
+\end{javaCode}
+
+\newpage
+\section*{实验设计}
+\sline

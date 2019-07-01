@@ -1,0 +1,694 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a ,a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+p{
+    margin:0px;
+}
+ul,li{
+	list-style: none;
+}
+body{
+	background-color: #f0f0f0;
+}
+.h4, h4 {
+    font-size: 16px;
+}
+.active{
+    color:#ecbe79;
+}
+.top_content,.container{
+	position: relative;
+	width: 100%;
+}
+/*公共样式*/
+.hidden{
+    display:none;
+}
+.orange{
+    background-color:#f3b14d; 
+}
+/*头部*/
+header {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    z-index: 101;
+    width: 100%;
+    transform: translate(-50%, 0%);
+}
+header>div>ul>li{
+	float: left;
+	margin-left: 22px;
+	font-size: 15px;
+}
+header>div>ul{
+    width: 1200px;
+    display: block;
+    margin: 0 auto;
+    height: 20px;
+    position: relative;
+}
+header>div>ul>li:first-child a {
+    padding-top: 10px;
+}
+header>div>ul>li:nth-child(6) {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+header>div>ul>li>a{
+    display: inline-block;
+    padding: 16px 35px 10px 10px;
+}
+header>div>ul>li:nth-child(6) a {
+    padding: 7px;
+}
+.search_block ,ul{
+    clear: both;
+}
+header img.logo {
+   width: 97px;
+    margin-top: 2px;
+}
+header>div {
+    display: block;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+header img.userImg {
+    width: 30px!important;
+    cursor: pointer;
+    height: 30px!important;
+}
+.userCenter{
+    position: relative;
+}
+.centerList {
+    position: absolute;
+    border-radius: 2px;
+   left: -73px;
+   background-color: #fff;
+       top: 40px;
+}
+ul.centerList li {
+    float: left;
+    clear: both;
+    margin-top: -5px;
+}
+ul.centerList li a {
+  color: #000;
+    padding: 7px 11px 9px 35px!important;
+    display: block;
+   width: 106px;
+}
+ul.centerList>li:first-child {
+    padding-top: 10px;
+}
+ul.centerList>li:last-child {
+    padding-bottom: 10px;
+}
+
+/*搜索区域*/
+.search_block {
+    background-image: url(../img/bg.png);
+    background-position: 0 -80px;
+    width: 100%;
+    display: block;
+    z-index: 100;
+    text-align: center;
+    height: 260px;
+    position: relative;
+    padding-top: 120px;
+}
+.search_block form p {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.search_block form {
+      width: 350px;
+    margin: 0 auto;
+}
+.search_block form input {
+    line-height: 1.8em;
+    font-size: 15px;
+    width: 350px;
+    text-indent: 18px;
+    background-color: rgba(255, 255, 255, 0.58);
+    border: none;
+    border-radius: 2px;
+    height: 33px;
+    display: inline-block;
+    margin: 0 auto;
+}
+.search_block form button.search_btn {
+    background-color: rgba(245, 240, 240, 0.68);
+    width: 40px;
+    height: 33px;
+    border: none;
+    margin-top: -33px;
+    display: block;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer;
+    position: relative;
+}
+/*摄影日志*/
+.picCalendar img {
+       width: 205px!important;
+    border: 2px solid  #ecbe79;
+}
+.picCalendar .calendar, .date {
+    display: inline-block;
+}
+.picCalendar  .calendar {
+    border: 2px solid  #ecbe79;
+    border-top: none;
+    padding:20px 0px 8px 6px;
+    width: 145px;
+}
+.picCalendar .date {
+    border: 2px solid #ecbe79;
+    padding: 0px 9px 8px 8px;
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    margin-left: -5px;
+}
+h2.day {
+    font-size: 28px;
+}
+p.calendar_description {
+    font-size: 16px;
+    padding-left: 2px;
+    font-weight: bold;
+}
+span.cal_time ,span.cal_weekday{
+    font-size: 13px;
+    /* margin-top: 2px; */
+}
+p.lunar_today {
+    font-size: 13px;
+    color: #999;
+}
+.picCalendar {
+    margin-bottom: 10px;
+}
+/*个人名片*/
+.userSetting {
+        background-color: rgba(241, 237, 237, 0.57)!important;
+}
+.userSetting img.userImg {
+    width: 55px!important;
+    display: inline-block!important;
+}
+button.upload_btn {
+    padding: 5px 15px 5px 15px;
+    display: block;
+    margin: auto;
+    background-color: #ecbe79;
+    border: navajowhite;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.avatar-view{
+    height: initial!important;
+    width: initial!important;
+}
+
+/*图片瀑布流*/
+.pic_waterfall{
+	width:1200px;
+	display: block;
+	margin: 0 auto;
+}
+.pic_waterfall ul>li {
+    float: left;
+    width: 205px;
+    margin-left: 25px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.pic_waterfall ul>li img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+.pic_waterfall>ul>li {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 3px;
+}
+.piccardDiv {
+    box-shadow: 4px -6px 20px #999;
+    background-color: #fff;
+    margin: 10px 0 10px 0;
+}
+.pic_detail {
+    padding: 5px 0px 5px 5px;
+}
+.user_detail li {
+     display: inline-block;
+    width: 27%!important;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    background-color: rgba(241, 237, 237, 0.57)!important;
+    margin: 10px 5px 10px 7px!important;
+}
+.pic_detail {
+    padding: 5px 0px 5px 5px;
+}
+p.picdesc {
+    font-size: 13px;
+    display: block;
+    width: 90%;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pic_detail li {
+    width: 35px!important;
+    margin-top: 10px!important;
+    margin-left: 2px!important;
+}
+.pic_detail span {
+    padding-left: 18px;
+    padding-left: 22px;
+    font-size: 12px;
+    color: #666;
+}
+.pic_detail ul {
+    position: relative;
+}
+li.report a {
+    color: #666!important;
+    font-size: 13px;
+    /* float: right; */
+    position: absolute;
+    right: 7px;
+    top: 12px;
+    cursor: pointer;
+}
+.owner_detail {
+   clear: both;
+    background-color: rgba(241, 237, 237, 0.57);
+}
+img.ownerImg {
+    position: absolute;
+    width: 40px!important;
+    bottom: 17px;
+}
+.owner_detail span {
+    display: inline-block;
+    padding: 6px;
+}
+.owner_detail span:first-child {
+    margin-left: 39px;
+}
+.owner_detail p {
+    margin-left: 45px;
+    display: block;
+    color:#999;
+    padding-bottom: 1px;
+}
+
+.owner_detail>div {
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 4px;
+    vertical-align: bottom;
+}
+p.time {
+    display: inline-block;
+    font-size: 12px;
+    color: #999;
+    float: right;
+    position: absolute;
+    bottom: 12px;
+    right: 2px;
+}
+
+/*上传图片模块*/
+.modal .file {
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ecbe79;
+    padding: 15px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    margin:0 auto;
+    margin-top:50px;
+}
+.modal .file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.modal .file:hover {
+    background: #efd3aa;
+    border-color:#ecbe79;
+    color: #efd3aa;
+    text-decoration: none;
+}
+.modal  .hori_line {
+    width: 1px;
+    border: 1px solid #ecbe79;
+    height: 60px;
+    margin: 0 auto;
+}
+.modal  .stra_line {
+    height: 1px;
+    border: 1px solid #ecbe79;
+    width: 60px;
+    margin: 0 auto;
+    margin-top: -30px;
+}
+.modal  form {
+    margin-bottom: 45px;
+}
+.modal-footer button {
+    display: block;
+    margin:0 auto;
+    clear: both;
+    width: 150px;
+}
+.modal-footer .btn+.btn {
+    margin-bottom: 0;
+    margin-left: auto;
+}
+.modal-footer>button:nth-child(2) {
+    margin-top: 10px;
+}
+label {
+    font-weight: 500;
+    vertical-align: top;
+}
+input#picNameInput {
+    outline: none;
+    width: 50%;
+    margin-left: 15px;
+    border:none;
+}
+textarea{
+    outline: none;
+    width: 90%;
+    margin-left: 15px;
+    border:none;
+}
+.avatar-save{
+    color: #fff;
+    background-color:#ecbe79;
+    border-color: #ecbe79;
+    width:50%;
+    display: block;
+    margin:auto;
+}
+.avatar-save:hover {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+}
+
+/*脚部*/
+footer{
+    width:100%;
+    height:30px;
+    background-color: #000;
+    clear: both;
+    padding-top: 20px;
+}
+
+/*举报框*/
+li.report {
+    width: 62px!important;
+    padding-left: 33px;
+    cursor: pointer;
+    /* display: inline-block; */
+}
+li.report:hover{
+	color: #ecbe79;
+}
+/*CSS3动画*/
+header ul>li a:hover{
+	color:#ecbe79;
+}
+.search_block form a:hover{
+	background-color: #ecbe79;
+	color:#fff;
+}
+
+
+/*图片瀑布流hover样式*/
+@-webkit-keyframes shade{
+    from{opacity:1;}
+    15%{opacity:0.4;}
+    to{opacity:1;}
+}
+@-moz-keyframes shade{
+    from{opacity:1;}
+    15%{opacity:0.4;}
+    to{opacity:1;}
+}
+@-ms-keyframes shade{
+    from{opacity:1;}
+    15%{opacity:0.4;}
+    to{opacity:1;}
+}
+@-o-keyframes shade{
+    from{opacity:1;}
+    15%{opacity:0.4;}
+    to{opacity:1;}
+}
+@keyframes shade{
+    from{opacity:1;}
+    15%{opacity:0.4;}
+    to{opacity:1;}
+}
+/* wrap */
+#waterfall_ul{width:auto;height:auto;margin:0 auto;position:relative;}
+.pic_card>img:hover{
+    -webkit-animation:shade 3s ease-in-out 1;
+    -moz-animation:shade 3s ease-in-out 1;
+    -ms-animation:shade 3s ease-in-out 1;
+    -o-animation:shade 3s ease-in-out 1;
+    animation:shade 3s ease-in-out 1;
+}
+/*举报图片的模态框*/
+.modal-dialog.display-dialog {
+    width: 100%;
+    margin: 0 auto;
+}
+.display-dialog .modal-content {
+    background-color: rgba(247, 247, 247, 0.84);
+}
+.display-dialog button.close {
+    font-size: 45px;
+    font-weight: 400;
+}
+.display-dialog .modal-header {
+    min-height: 45px;
+    padding: 5px 15px 5px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+img.display-pic {
+    display: block;
+    margin: 0 auto;
+    width:90%;
+}
+.displaypic-div {
+    background-color: #fff;
+    width: 52%;
+    margin: 0 auto;
+    box-shadow: 6px 8px 18px #8A8585;
+    padding: 32px 0px;
+}
+.left-div.left_arrow ,.right-div.right_arrow {
+    display: inline-block;
+}
+.left-div.left_arrow {
+    position: fixed;
+    top: 289px;
+    left: 8px;
+    width: 100px;
+    height: 300px;
+}
+.right-div.right_arrow {
+    position: fixed;
+    top: 289px;
+    right: 8px;
+    width: 100px;
+    height: 300px;
+}
+.display-dialog li.report {
+    float: right;
+}
+.display-dialog ul {
+    padding: 15px 30px 7px 29px;
+}
+.display-dialog ul li {
+    display: inline-block;
+    border: 1px solid #D2CBCB;
+    background-color: #f0f0f0;
+    width: 48px;
+    margin-left: 6px;
+}
+.display-dialog span.piclike,
+ .display-dialog span.piccollect,
+ .display-dialog span.piccollect {
+    padding: 24px;
+}
+
+.modal-middle-body {
+    width: 51%;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 6px 8px 18px #8A8585;
+        padding-top: 20px;
+        padding-bottom: 44px;
+}
+.modal-middle-body .user_detail span {
+    padding: 0px 14px;
+    font-size: 17px;
+    margin-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+.modal-middle-body .user_detail {
+    height: 67px;
+        position: relative;
+}
+.modal-middle-body img {
+    width: 66px;
+    display: inline-block;
+    margin-left: 29px;
+    /* padding: 10px; */
+}
+.modal-middle-body .user_detail p {
+    width: 65px;
+    margin-left: 112px;
+    color: #999;
+    margin-top: -26px;
+}
+.modal-middle-body .pic-detail {
+    background-color: rgba(220, 214, 214,  0.13);
+    margin: 10px 27px;
+        clear: both;
+    /* margin-bottom: 20px; */
+}
+p.createtime {
+    position: absolute;
+    right: 20px;
+    width: 100px!important;
+    top: 68px;
+}
+.modal-middle-body .pic-detail p:first-child {
+    font-size: 23px;
+    padding: 10px 20px;
+}
+.modal-middle-body  .pic-detail p:nth-child(2) {
+    padding: 1px 23px 15px 23px;
+        color: #666;
+}
+.modal-middle-body .comment_div textarea {
+    padding: 10p;
+    margin-left: -2px;
+}
+.comment_div {
+    width: 91%;
+    margin: 40px auto;
+}
+.comment_div textarea {
+    margin-left: -2px;
+}
+.comment_div button {
+    float: right;
+    display: block;
+    margin: 8px auto;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 12px;
+    background-color: #999;
+    border: 0px;
+}
+.other-comment {
+    margin-top: 70px;
+}
+
+.other-comment  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cpmment-content img {
+    width: 20px;
+    margin: 0;
+}
+.cpmment-content .comment-text{
+    display: inline-block;
+    font-size: 13px;
+    color: #555;
+}
+.cpmment-content .comment-name{
+    display: inline-block;
+    color: #aaa;
+}
+.cpmment-content .reply_button{
+    float: right;
+    font-size: 13px;
+    cursor: pointer;
+    color: #aaa;
+}
+p.reply {
+    display: inline-block;
+    font-size: 13px;
+    color: #555;
+}
+.watch_div {
+   position: absolute;
+    right: 21px;
+    top: 1px;
+}
+span.watch {
+    float: right;
+    margin-right: 19px;
+    font-size: 14px!important;
+    margin-top: 7px!important;
+    color: #666;
+    cursor: pointer;
+}
+span.watched {
+    float: right;
+    margin-right: 16px;
+    font-size: 14px!important;
+    background-color: rgba(239, 153, 27, 0.73);
+    height: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+span.watch:hover,span.watch:active{
+	color:orange;
+}
+.user_detail span.time {
+    float: left;
+    position: initial;
+    margin-left: 12px;
+    position: absolute;
+    font-size: 14px;
+    width: 200px;
+    top: 31px;
+}

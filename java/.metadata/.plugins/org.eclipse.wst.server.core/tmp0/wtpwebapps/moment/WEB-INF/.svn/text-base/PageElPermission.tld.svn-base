@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>PageElPermission</short-name>
+
+    <tag>
+        <!-- 定义标签名字 -->
+        <name>permission</name>
+        <!-- 指定类的路径 -->
+        <tag-class>com.mashen.privilege.tag.PageElPermission</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <!-- 自定义定义属性 -->
+            <name>privilege</name>
+            <!-- 是否是必须属性 -->
+            <required>true</required>
+            <!-- 使用标签时是否可以使用表达式来动态指定数据 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
+        
+    </tag>
+</taglib>

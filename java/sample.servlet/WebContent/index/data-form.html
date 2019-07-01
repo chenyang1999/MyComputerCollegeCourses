@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang=ch>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css"
+	href="../bootstrap/4.1.3/css/bootstrap.min.css" />
+
+<title>表单数据提交示例</title>
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-info">
+		<a class="navbar-brand" href="data-form.html">表单实例</a>
+	</nav>
+
+	<div class="container">
+		<div class="row" style="min-height: 50px"></div>
+		<div class="row">
+			<div class="col-md-8">
+				<form action="../http-request-data" method="POST">
+					<div class="form-group">
+						<label for="input-message">把你想说的写下来，可以么？</label> <input
+							type="text" class="form-control" id="input-message"
+							name="message" placeholder="what do you want to say">
+					</div>
+					<button type="submit" class="btn btn-primary">提 交</button>
+					<a class="btn btn-secondary" href="index.html" role="button">返
+						回</a> <a class="btn btn-secondary" href="http://www.baidu.com"
+						role="button" target="_blank">baidu</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

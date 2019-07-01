@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="new" key="selection"/>
+		<item value="true" key="casesensitive"/>
+		<item value="true" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="new"/>
+			<item value="fieldName"/>
+			<item value="fileName"/>
+			<item value="file"/>
+			<item value="print"/>
+			<item value="Sys"/>
+			<item value="sys"/>
+			<item value="password"/>
+			<item value="test"/>
+			<item value="{path}"/>
+			<item value="注册失败"/>
+			<item value="registerCode"/>
+			<item value="&lt;servlet-mapping&gt;  "/>
+			<item value="prefetch"/>
+			<item value="70"/>
+		</list>
+		<list key="replacehistory">
+			<item value="&quot;file:///&quot;"/>
+			<item value="&quot;file:/// &quot;"/>
+			<item value="&quot;file: &quot;"/>
+			<item value=""/>
+			<item value="backImage.jpg"/>
+			<item value="88.jpg"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="294" key="DIALOG_WIDTH"/>
+		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+		<item value="408" key="DIALOG_HEIGHT"/>
+		<item value="1129" key="DIALOG_X_ORIGIN"/>
+		<item value="123" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

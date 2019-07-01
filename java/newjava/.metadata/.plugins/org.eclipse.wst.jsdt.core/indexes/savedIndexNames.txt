@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/Users/Macbook/Desktop/java/newjava/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+26522531.index
+2719090586.index
+2542106768.index
+662420028.index
+3906333156.index
+1860952701.index

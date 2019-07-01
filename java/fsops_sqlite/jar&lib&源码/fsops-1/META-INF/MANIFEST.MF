@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: . fsops_lib/sqlite-jdbc-3.23.1.jar
+Main-Class: fsops.Fsops
+

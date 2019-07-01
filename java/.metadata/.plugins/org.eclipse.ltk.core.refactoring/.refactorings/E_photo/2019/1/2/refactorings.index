@@ -1,0 +1,8 @@
+1546769524881	Rename resource 'jdbc.java'
+1546769546423	Rename resource 'jdbc.java'
+1546870173861	Extract local variable 'preparedStatement'
+1546870178543	Extract local variable 'resultSet'
+1546907985473	Extract local variable 'preparedStatement'
+1546908000775	Extract local variable 'resultSet'
+1546908014165	Extract local variable 'resultSet'
+1547113235257	Rename resource 'img_003-outputs.png'

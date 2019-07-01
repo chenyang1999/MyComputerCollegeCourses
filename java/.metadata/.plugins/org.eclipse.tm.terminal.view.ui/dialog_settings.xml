@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="LaunchTerminalSettingsDialog">
+		<item value="Local Terminal" key="terminalLabel"/>
+		<section name="SettingsPanelControl">
+			<section name="Local Terminal">
+				<item value="UTF-8" key="encoding"/>
+			</section>
+		</section>
+	</section>
+</section>

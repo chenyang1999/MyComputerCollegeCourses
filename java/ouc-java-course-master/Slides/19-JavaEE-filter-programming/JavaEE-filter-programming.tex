@@ -1,0 +1,421 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../SLIDE-MAIN/slide-main}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \titlepage
+\title[KevinW@OUC]{\hei {\huge Java EE企业应用系统设计}\\  
+Java EE过滤器编程}
+\author[王晓东]{王晓东\\
+  \href{mailto:wangxiaodong@ouc.edu.cn}{\footnotesize wangxiaodong@ouc.edu.cn}}
+\institute[中国海洋大学]{\small 中国海洋大学}
+\date{\today}
+\titlegraphic{\vspace{-6em}\includegraphics[height=6cm]{static/ouc.pdf}\vspace{-6em}}
+%%%%%
+\begin{document}
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSection[]{                              % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{\textbf{\hei 接下来…}}
+    \tableofcontents[currentsection]
+  }
+}  %
+
+\AtBeginSubsection[]                            % 在每个子段落之前
+{
+  \frame<handout:0>                             % handout:0 表示只在手稿中出现
+  {
+    \frametitle{\textit{\hei 接下来…}}\small
+    \tableofcontents[current,currentsubsection] % 显示在目录中加亮的当前章节
+  }
+}
+ \frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{参考书目}
+\begin{enumerate}
+\item 吕海东，张坤 编著，Java EE企业级应用开发实例教程，清华大学出版社，2010年8月
+\end{enumerate}  
+\end{frame}
+
+\begin{frame}
+\frametitle{本章学习目标}
+\begin{enumerate}
+\item 什么是过滤器？
+\item 掌握过滤器的主要功能。
+\item 掌握过滤器编程。
+\item 掌握过滤器配置。
+\end{enumerate}  
+\end{frame}
+
+\section*{大纲}
+\frame{\frametitle{大纲} \tableofcontents}
+
+\section{过滤器概述}
+
+\begin{frame}
+\frametitle{监听器概述} 
+
+\wxd{Web开发所遇到的常见问题}
+
+\begin{itemize}
+\item 用户登录验证
+\item 开发中文Web遇到的汉字乱码
+\end{itemize}
+
+常规开发会带来大量的代码冗余，需要将处理上述问题的代码从每个Web组件中抽取出来，放在一个公共的地方，供所有需要这些公共功能代码的Web组件调用。
+
+在Servlet 2.3规范中引入了新的Web组件技术——{\hei 过滤器（Filter）}，使上述难题迎刃而解。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器的基本概念}
+
+{\hei 过滤器，对某种数据流动进行过滤处理的对象。在Java EE Web应用中，这种数据流动就是HTTP请求数据流和响应数据流。}
+
+\begin{itemize}
+\item Filter是对HTTP请求和响应的头（Header）和体（Body）进行特殊操作的Web组件。
+\item Filter本身不生成Web响应，只对Web的请求和响应做过滤处理。这些操作都是在Web组件和浏览器毫不知情的情况下进行的。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器的基本功能} 
+过滤器采用AOP（Aspect Oriented Programming）编程思想，使用拦截技术，在HTTP请求和响应达到目标之前，对请求和响应的数据进行预处理。主要包括：
+\begin{itemize}
+\item 对HTTP请求作分析，对输入流进行预处理。
+\item 阻止请求或响应的进行。
+\item 根据需求改动请求头的信息和数据体。
+\item 根据需求改动响应的头（Header）和体（Body）数据。
+\item 与其他Web资源进行协作。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器的主要应用领域} 
+\begin{itemize}
+\item 登录检验
+\item 权限审核
+\item 数据验证
+\item 日志登记
+\item 数据压缩/解压缩
+\item 数据加密/解密
+\end{itemize}
+\end{frame}
+
+\section{Java EE过滤器API}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Javax.servlet.Filter接口} 
+
+所有过滤器必须实现javax.servlet.Filter接口。
+
+\xyy{public void init(FilterConfig filterConfig) throws ServletException}
+
+初始化方法，在Web容器创建过滤器对象后被调用，用于完成过滤器初始化操作，如取得过滤器配置的参数，连接外部资源。
+
+\xyy{public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException}
+
+过滤器的核心方法，在满足过滤器过滤目标URL的请求和响应时调用，开发人员在此方法中编写过滤功能代码。
+
+\xyy{public void destroy()}
+
+在过滤器销毁之前此方法被调用，此方法主要编写清理和关闭打开的资源操作，如关闭数据库连接、将过滤信息保存到外部资源操作。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Filter的doFilter()方法} 
+
+\begin{description}
+\item[参数1] 请求对象 javax.servlet.ServletRequest
+\item[参数2] 响应对象 javax.servlet.ServletResponse
+\item[参数3] 过滤链对象 javax.servlet.Filter
+\end{description}
+
+\begin{itemize}
+\item 此方法在每次过滤被激活时被调用。
+\item 此方法代码完成过滤器的操作功能。
+\item 如果是HTTP请求，需要强转为HttpServletRequest和HttpServletResponse。
+\item 过滤器的请求和响应对象会被传递到被过滤的JSP或Servlet。
+\item 可以通过对request对象操作，在Servlet之前修改请求对象的信息。
+\item 通过response对象操作，在Servlet响应之前修改响应信息。
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{javax.servlet.FilterChain接口} 
+
+此接口的对象表达过滤器链，在Java EE规范中对每个URL的请求和响应都可以定义多个过滤器，这些过滤器构成过滤器链。
+\begin{itemize}\kai
+\item 过滤器使用FilterChain接口的doFilter()方法来调用过滤器链中的下一个过滤器，如果没有下级过滤器，则将用doFilter方法调用末端的JSP和Servlet。
+\item 如果在过滤器的过滤方法中不调用FilterChain的传递方法doFilter()，则将截断对下级过滤器或JSP/Servlet的请求和响应，使得Web容器没有机会运行JSP或Servlet，达到阻断请求和响应的目的。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{FilterChain的doFilter()方法} 
+
+\xyy{public void doFilter(ServletRequest request, ServletResponse response) throws IOException, ServletException}
+
+\begin{itemize}
+\item 此方法完成调用下级过滤器或最终请求资源，如JSP和Servlet。
+\item 该方法传递请求对象和响应对象两个参数，并将请求对象和响应对象传递到下级过滤器或Web组件，这个过滤器链就可以共用一个请求对象和响应对象。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{javax.servlet.FilterConfig接口} 
+
+FilterConfig接口定义了取得过滤器配置的初始参数方法，通过实现了该接口的对象，可以取得在配置过滤器时初始参数和ServletContext上下文对象，进而取得Web应用信息。
+
+\xyy{public String getInitParameter(String name)} \\取得过滤器配置的初始参数。
+
+\xyy{public Enumeration getInitParameterNames()} \\取得过滤器配置的所有初始参数，以枚举器类型返回。
+
+\xyy{public String getFilterName()} \\取得配置的过滤器名称。
+
+\xyy{public ServletContext getServletContext()} \\取得过滤器运行的Web应用环境对象，通过ServletContext对象，过滤器可以取得所有Web应用环境数据供过滤器使用。
+\end{frame}
+
+\section{Java EE过滤器编程和配置}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{Java EE过滤器编程和配置}
+\begin{enumerate}
+\item 实现javax.servlet.Filter接口，编写过滤器类。
+\item 在Web配置文件/WEB-INF/web.xml中完成对过滤器的配置。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+编写过滤器类CharEncodingFilter.java，实现Filter接口的所有方法。
+
+\begin{javaCode}
+public class CharEncodingFilter implements Filter {
+  private FilterConfig config = null;
+  private String contentType = null;
+  private String code = null;
+
+  public void init(FilterConfig config) throws ServletException {
+    this.config = config;
+    contentType = config.getInitParameter("contentType");
+    code = config.getInitParameter("encoding");
+  }
+
+  public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) 
+  throws IOException, ServletException {
+    //转换为 HTTP 请求对象
+    HttpServletRequest request = (HttpServletRequest)req;
+    if (request.getContentType().equals(contentType)) {
+      request.setCharacterEncoding(code); // 设置字符编码集
+    }
+    //继续下个过滤器
+    chain.doFilter(req, res);
+  }
+
+  public void destroy() {
+    //放置过滤器销毁的处理代码
+  }
+}
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+配置过滤器，在Web应用的配置文件/WEB-INF/web.xml中配置声明和过滤URL地址映射。
+
+\wxd{过滤器声明}
+\begin{xmlCode}
+<filter>
+  <description>此过滤器完成对请求数据编写及进行修改</description>
+  <display-name>字符集编码过滤器</display-name>
+  <filter-name>EncodingFilter</filter-name><!-- * -->
+  <filter-class>javaee.ch08.CharEncodingFilter</filter-class><!-- * -->
+  <init-param>
+    <description>Content Type</description>
+    <param-name>contentType</param-name>
+    <param-value>text/html</param-value>
+  </init-param>
+  <init-param>
+    <description>Encoding</description>
+    <param-name>encoding</param-name>
+    <param-value>utf-8</param-value>
+  </init-param>
+</filter>
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+配置过滤器，在Web应用的配置文件/WEB-INF/web.xml中配置声明和过滤URL地址映射。
+
+\wxd{过滤器URL映射}
+
+\begin{itemize}
+\item 过滤器需要对所过滤的URL进行映射。当浏览器访问的Web文档URL地址符合过滤器的映射地址时，此过滤器自动开始工作。
+\item 如果有多个过滤器对某个URL地址都符合时，这些过滤器构成过滤器链，先声明的过滤器先运行，运行的顺序与声明的次序一致。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+过滤器映射语法：
+
+\begin{xmlCode}
+<filter-mapping>
+  <filter-name>EncodingFilter</filter-name>
+  <servlet-name>SaveCookie</servlet-name>
+  <servlet-name>GetCookie</servlet-name>
+  <url-pattern>/employee/add.do</url-pattern>
+  <url-pattern>/admin/*</url-pattern>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>INCLUDE</dispatcher>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+</filter-mapping>
+\end{xmlCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+对过滤器映射标记的说明：
+
+\begin{description}
+\item[<filter-mapping>] 与<filter>标记平级，且在<filter>之后，即先声明后映射的原则。
+\item[<filter-name>] 应该与过滤器声明中的<filter-name>一致。
+\item[<url-pattern>] 过滤器映射地址声明，每个过滤器映射可以定义多个。
+\item[<servlet-name>] 指示过滤器对指定的Servlet进行过滤，每个过滤器映射可以定义多个。
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器编程示例} 
+
+\begin{description}
+\item[<dispatcher>] 
+从Servlet API 2.4开始，过滤器映射增加了根据请求类型有选择的对映射地址进行过滤，提供标记<dispatcher>实现请求类型的选择。
+\begin{itemize}\kai
+\item REQUEST 当请求直接来自客户时，过滤器才工作。
+\item FORWARD 当请求是来自Web组件转发到另一个组件时，过滤器工作。
+\item INCLUDE 当请求来自include操作时，过滤器生效。
+\item ERROR 当转发到错误页面时，过滤器起作用。
+\end{itemize}
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{过滤器生命周期} 
+
+\begin{enumerate}\kai
+\item {\hei\Blue 创建阶段} 根据<filter-class>标记定义的过滤器类，将累定义加载到服务器内存，并调用此类的默认构造方法，创建过滤器对象。
+\item {\hei\Blue 初始化阶段} 创建FilterConfig对象，调用过滤器的init()方法，传入FilterConfig象，完成初始化工作。
+\item {\hei\Blue 过滤服务阶段} 每次请求符合过滤器配置的URL时，过滤方法都将执行一次。
+\item {\hei\Blue 销毁阶段} 当Web应用卸载或Web容器停止之前，destroy方法被Web容器调用，完成卸载操作，Web容器销毁过滤器对象。
+\end{enumerate}
+\end{frame}
+
+\section{过滤器的主要任务}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{处理HTTP请求} 
+
+\wxd{修改请求头}
+
+调用ServletRequest或HttpServletRequest的各种set请求头方法对请求头进行修改。
+
+\begin{javaCode}
+request.setCharacterEncoding{"code"};  
+\end{javaCode}
+
+{\kai 对文字乱码问题，可以在过滤器中进行集中处理，避免在每个Servlet或JSP中进行请求字符编码的转换。}
+
+\wxd{修改请求对象的属性}
+
+调用请求对象的setAttribute方法对请求对象的属性进行增加、修改和删除。
+
+\begin{javaCode}
+request.setAttribute("infoType", "image/jpeg"); //设定请求对象的一个属性
+request.removeAttribute("userId");
+\end{javaCode}
+
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{处理HTTP响应} 
+
+过滤器可以在HTTP响应到达客户端浏览器之前，对响应头和响应体进行转换、修改等操作。
+
+过滤器实现对响应处理的代码要在FilterChain的doFilter()方法之后完成，而对请求处理的代码要在doFilter()方法之前进行，流程如下：
+
+\begin{javaCode}
+public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) 
+    throws IOException, ServletException {
+  ...  // 处理请求的代码放在 doFilter 之后
+  chain.doFilter(req, res); // 传递到链中的下个过滤器
+  ...  // 处理响应的代码放在过滤器链传递之后
+}  
+\end{javaCode}
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{处理HTTP响应} 
+
+\wxd{修改响应头}
+
+\begin{javaCode}
+response.setContentType("application/pdf");
+response.setContentType("GBK");
+\end{javaCode}
+
+\wxd{修改响应体内容}
+
+过滤器使用HTTP响应对象的包装类javax.servlet.http.HttpServletResponseWrapper可以将响应体内容进行重新包装和处理，使浏览器接收到的是经过过滤器处理修改过的响应数据。
+
+见本章后续示例。
+\end{frame}
+
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{阻断HTTP请求} 
+
+常用于用户登录验证等操作。
+
+在某种条件下，实现对请求的阻断，不让请求传递到链中的下一个对象，只要在过滤器的过滤方法中，不执行FilterChain的传递方法doFilter()即可。
+
+\begin{javaCode}
+if ( 某条件成立 ) {
+  chain.doFilter(request, response); // 继续传递请求
+} else {
+  response.sendRedirect("url"); // 阻断请求，直接重定向到指定的 URL
+}
+\end{javaCode}
+\end{frame}
+
+\section{过滤器应用实例：用户登录验证和权限验证}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile] % [fragile]参数使得能够插入代码
+\frametitle{} 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}
+%% \centering
+%% \includegraphics[width=0.6\textwidth]{fig01.png}
+%% \end{figure}
+% TKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\centering
+{\Huge \textcolor{blue}{THE END}} \\
+\vspace{5mm}
+{\Large wangxiaodong@ouc.edu.cn} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

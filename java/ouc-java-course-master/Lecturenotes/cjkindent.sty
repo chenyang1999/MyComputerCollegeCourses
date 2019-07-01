@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 功能：自动缩进2中文字符
+%% 参考来源：https://liam0205.me/2013/05/15/LaTeX-Chinese-parindent/
+%% 用法：
+%% 将该段代码另存为cjkindent.sty，保存在当前目录；
+%%   在导言区使用命令\usepackage{cjkindent}；
+%%   正文部分立即能按照中文习惯缩进。
+%% 使用\Eindent命令，可以使得该段缩进；
+%% 使用\Enoindent命令，可以使得该段不缩进。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{cjkindent}
+% -----字宽/缩进-----
+% ----CJK字符宽度
+% \f@size = 当前字符大小数值（pt/pt）
+% \p@ = 1pt
+\def\elegant@CJKChar@size{\hskip \f@size \p@}
+% ----定义字宽
+% 字宽 = 字符宽度 + 字符间距 = 相邻字符中心的间距
+\newdimen\elegant@CJKChar@size@dimen
+\settowidth\elegant@CJKChar@size@dimen{\elegant@CJKChar@size\CJKglue}
+% ----用户接口
+% 负责刷新字宽和段落缩进
+\newcommand{\CJKsetfontspace}{
+  % 刷新字宽
+  \settowidth\elegant@CJKChar@size@dimen{\elegant@CJKChar@size\CJKglue}%
+  % 刷新段落缩进
+  % 判断段落缩进是否被设置为0（如果是表示要求不缩进）
+  \ifdim\parindent=0pt%
+  \relax%
+  \else%
+  \parindent2\elegant@CJKChar@size@dimen%
+  \fi%
+}
+\newcommand{\Eindent}{\CJKsetfontspace\parindent2\elegant@CJKChar@size@dimen}
+\newcommand{\Enoindent}{\parident\z@}
+% ----自动执行
+\RequirePackage{indentfirst}
+\AtBeginDocument{\Eindent}
+% -----字宽/缩进-----
