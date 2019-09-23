@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Readme.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/core/astar/AStar.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/core/astar/Fringe.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/core/problem/Problem.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/core/problem/State.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/core/runner/SearchRunner.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/xu/problem/mc/McAction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/xu/problem/mc/McProblem.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/xu/problem/mc/McState.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

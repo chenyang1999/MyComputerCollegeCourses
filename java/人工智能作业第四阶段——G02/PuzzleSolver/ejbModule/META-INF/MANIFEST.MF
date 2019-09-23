@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Application-Name: 8/15-Puzzle Solver
+Permissions: all-permissions
+Created-By: Brian S. Borowski
+Main-Class: Application
+
