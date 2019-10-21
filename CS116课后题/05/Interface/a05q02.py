@@ -10,56 +10,35 @@ def highest(n):
     return highest(n)
   return n
   
-def gen_pd(p,i):
-  if i>9:
-     return 
-  p[i]=math.log10((i+1)/i)
-  gen_pd(p,i+1)
+def gen_pd(i):
+  return math.log10((i+1)/i)
 
-def gen_a(a,L,i,ll):
-  if i>=ll:
-    return a
+def gen_a(L:list,i):
+  if i in L:
+    return L.count(i)
   else:
-#    print(i,ll)
-#    print(highest(L[i]))
-    a[highest(L[i])]=a[highest(L[i])]+1
-#    print(a)
-    return gen_a(a,L,i+1,ll)
-  
-def solve(ans,p,a,i,n):
-  if i>=len(a):
-    return ans
-  else:
-    ans=ans+math.pow(a[i]-n*p[i], 2)/(n*p[i])
-    return solve(ans, p, a, i+1,n)
+    return 0
+
+def solve(p,a,n):
+#  print(p,a,n)
+  return math.pow(a-n*p, 2)/(n*p)
+    
 def obey_benford(L):
   #YOUR CODE GOES HERE
-  p=[0]*10
-#  print(0)
-  gen_pd(p,1)
+  p=list(map(gen_pd,range(1,10)))
 #  print(p)
-  a=[0]*10
-  a=gen_a(a,L,0,len(L))
+  L=list(map(highest, L))
+#  print(L)
+  n=len(L)
+  a=list(map(gen_a,[L]*10,range(1,10)))
 #  print(a)
-  ans=solve(0, p, a, 1,len(L))
+  ans=list(map(solve,p,a,[n]*10))
 #  print(ans)
+  ans=sum(ans)
   return ans
-  
-L = [1] * 301 + [2] * 176 + [3] * 125 + [4] * 97 + [53] * 79 \
-+[6]*67 +[7]*58 +[8]*51+[96]*46
-#print(L)
-#  for i in L:
-#    Lp[highest(i)]=Lp[highest(i)]+1
-#  n=len(L)
-##  print(p[1:])
-##  print(Lp[1:])
-##  print(n)
-#  ans=0
-#  for i in range(1,10):
-#    ans=ans+pow(Lp[i]-n*p[i],2)/(n*p[i])
-#  return ans
-#L=[1,2,1337]
 
+
+#L = [1, 2, 1337]
 L = [1] * 301 + [2] * 176 + [3] * 125 + [4] * 97 + [53] * 79 +[6]*67 +[7]*58 +[8]*51+[96]*46
 ans=obey_benford(L)
 print(ans)
