@@ -126,3 +126,84 @@ dmypy.json
 计算机网络/计算机网络.pdf
 计算机网络/计算机网络.pdf
 *.pptx
+机器学习/.DS_Store
+机器学习/ex/.DS_Store
+机器学习/ex/housing_data.txt
+机器学习/ex/housing_names.txt
+机器学习/ex/未命名.ipynb
+机器学习/MachineLearning/.DS_Store
+机器学习/MachineLearning/data.rar
+机器学习/MachineLearning/data/.DS_Store
+机器学习/MachineLearning/data/波士顿房价数据集/housing_data.txt
+机器学习/MachineLearning/data/波士顿房价数据集/housing_names.txt
+机器学习/MachineLearning/data/输血服务中心数据集/blood_data.txt
+机器学习/MachineLearning/data/输血服务中心数据集/blood_names.txt
+机器学习/MachineLearning/data2.rar
+机器学习/MachineLearning/data2/感知机数据集/perceptron_data.txt
+机器学习/MachineLearning/data2/隐形眼镜数据集/lenses_data.txt
+机器学习/MachineLearning/data2/隐形眼镜数据集/lenses_names.txt
+机器学习/MachineLearning/data3.rar
+机器学习/MachineLearning/data3/K-means数据集/kmeans_data.txt
+机器学习/MachineLearning/data3/MNIST_csv数据集/mnist_test.csv
+机器学习/MachineLearning/data3/MNIST_csv数据集/mnist_train.csv
+机器学习/MachineLearning/jupyterNotebookCode/2d.png
+机器学习/MachineLearning/jupyterNotebookCode/6.py
+机器学习/MachineLearning/jupyterNotebookCode/6_test.py
+机器学习/MachineLearning/jupyterNotebookCode/8_25_.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/8_26_.py.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/exp3_9_30.py.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/iris.py.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/k_means.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/kmeans_data.txt
+机器学习/MachineLearning/jupyterNotebookCode/mnist_test.csv
+机器学习/MachineLearning/jupyterNotebookCode/mnist_train.csv
+机器学习/MachineLearning/jupyterNotebookCode/untitled
+机器学习/MachineLearning/jupyterNotebookCode/Untitled.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled1.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled10.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled11.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled12.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled2.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled3.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled4.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled5.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled6.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled7.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled8.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/Untitled9.ipynb
+机器学习/MachineLearning/jupyterNotebookCode/感知机.ipynb
+机器学习/MachineLearning/myMachineLearningCode/.DS_Store
+机器学习/MachineLearning/myMachineLearningCode/__init__.py
+机器学习/MachineLearning/myMachineLearningCode/data/.DS_Store
+机器学习/MachineLearning/myMachineLearningCode/data/波士顿房价数据集/housing_data.txt
+机器学习/MachineLearning/myMachineLearningCode/data/波士顿房价数据集/housing_names.txt
+机器学习/MachineLearning/myMachineLearningCode/data/输血服务中心数据集/blood_data.txt
+机器学习/MachineLearning/myMachineLearningCode/data/输血服务中心数据集/blood_names.txt
+机器学习/MachineLearning/myMachineLearningCode/LDA.py
+机器学习/MachineLearning/myMachineLearningCode/LDA1.py
+机器学习/MachineLearning/myMachineLearningCode/LinearRegression.py
+机器学习/MachineLearning/myMachineLearningCode/model_selection.py
+机器学习/MachineLearning/myMachineLearningCode/model_selection2.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/.DS_Store
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/kNN.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/LinearRegression.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/metrics.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/PCA.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/preprocessing.py
+机器学习/MachineLearning/myMachineLearningCode/project (1)/y2hw7n/SimpleLinearRegression.py
+机器学习/MachineLearning/myMachineLearningCode/SimpleLinearRegression.py
+机器学习/MachineLearning/myMachineLearningCode/SImpleLinearRegression1.py
+机器学习/MachineLearning/~$复习范围.docx
+机器学习/MachineLearning/复习范围.docx
+机器学习/MachineLearning/复习范围_修改后.docx
+机器学习/MachineLearning/实验报告/.DS_Store
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验一.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验三.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验二.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验五.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验六.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃-实验四.docx
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃.zip
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃2.zip
+机器学习/MachineLearning/实验报告/17070001148-缪倩铃3.zip
+机器学习/复习范围_修改后.docx

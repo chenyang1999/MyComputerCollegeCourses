@@ -1,0 +1,12 @@
+Compile starting
+the expression is:
+2+3+4
+
+The stack instruction list is:
+Push 2
+Push 3
+Add
+Push 4
+Add
+
+Compile finished

@@ -1,0 +1,16 @@
+NUM(1) PLUS NUM(2) PLUS NUM(3) ENTER
+Parsing Success!
+NUM(4) PLUS LPAREN NUM(5) PLUS NUM(6) RPAREN ENTER
+Parsing Success!
+NUM(12) PLUS NUM(5) ENTER
+Parsing Success!
+NUM(13) PLUS NUM(4) PLUS NUM(5) ENTER
+Parsing Success!
+NUM(1) 
+LEX:ERROR! c=-
+PARSE_ERROR:(ERROR TOKEN)Parsing Fail!
+NUM(2) ENTER
+Parsing Success!
+PARSE_ERROR:(RPAREN )Parsing Fail!
+LPAREN PARSE_ERROR:(RPAREN )Parsing Fail!
+NUM(1) PLUS NUM(2) PARSE_ERROR:(EOF)Parsing Fail!

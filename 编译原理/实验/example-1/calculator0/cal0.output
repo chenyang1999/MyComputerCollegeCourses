@@ -1,0 +1,297 @@
+/* 下面部分描述了文法的所有产生式，并为每条产生式编号。
+ * 注意，编号为0的产生式是拓广产生式[S'--> S $]，只表示何时分析结束。 
+ */
+Grammar
+
+    0 $accept: prog $end
+
+    1 prog: prog expln
+    2     | expln
+
+    3 expln: expr ENTER
+
+    4 expr: expr PLUS term
+    5     | expr MINUS term
+    6     | term
+
+    7 term: term TIMES factor
+    8     | term DIVIDE factor
+    9     | factor
+
+   10 factor: LPAREN expr RPAREN
+   11       | MINUS factor
+   12       | NUM
+
+
+/* 下面这部分说明了文法的所有终结符，括号内的数字是该终结符的
+ * 内部表示（常数），而括号右边的数字表示该终结符出现在哪条产
+ * 生式中（数字为产生式编号）。$end实际上是输入串的结尾符号$。
+ */
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NUM (258) 12
+LPAREN (259) 10
+RPAREN (260) 10
+ENTER (261) 3
+PLUS (262) 4
+MINUS (263) 5 11
+TIMES (264) 7
+DIVIDE (265) 8
+
+/* 下面这部分说明了文法的所有非终结符，括号内的数字表示该非终结符的内部编号，
+ * 括号外的部分表示该非终结符在哪个产生式中的哪个位置出现过。
+ * 例如：on left: 0 表示在编号为0的产生式左边出现过。
+ * $accept实际上是拓广文法中的S'。
+ */
+
+Nonterminals, with rules where they appear
+
+$accept (11)
+    on left: 0
+prog (12)
+    on left: 1 2, on right: 0 1
+expln (13)
+    on left: 3, on right: 1 2
+expr (14)
+    on left: 4 5 6, on right: 3 4 5 10
+term (15)
+    on left: 7 8 9, on right: 4 5 6 7 8
+factor (16)
+    on left: 10 11 12, on right: 7 8 9 11
+
+
+/* 下面这部分描述了识别活前缀的DFA。每个state i 表示 DFA 的状态i。
+ * 下面以状态0和1为例解释一下。
+ */
+
+
+state 0   /* 状态0 */
+
+    0 $accept: . prog $end	/* 状态0所代表的项目集的核心项目，前面的数字为产生式编号。*/
+
+    NUM     shift, and go to state 1	/* 在该状态下，遇到终结符NUM则移进，并且转到状态1。*/
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    prog    go to state 4		/* 在该状态下，如果遇到已归约为非终结符prog的串，则转到状态4。*/
+    expln   go to state 5
+    expr    go to state 6
+    term    go to state 7
+    factor  go to state 8
+
+
+state 1
+
+   12 factor: NUM .
+
+    $default  reduce using rule 12 (factor) /* 无论看见什么输入（$default）都按照产生式12归约（归约为factor） */
+
+
+state 2
+
+   10 factor: LPAREN . expr RPAREN
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr    go to state 9
+    term    go to state 7
+    factor  go to state 8
+
+
+state 3
+
+   11 factor: MINUS . factor
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    factor  go to state 10
+
+
+state 4
+
+    0 $accept: prog . $end
+    1 prog: prog . expln
+
+    $end    shift, and go to state 11
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expln   go to state 12
+    expr    go to state 6
+    term    go to state 7
+    factor  go to state 8
+
+
+state 5
+
+    2 prog: expln .
+
+    $default  reduce using rule 2 (prog)
+
+
+state 6
+
+    3 expln: expr . ENTER
+    4 expr: expr . PLUS term
+    5     | expr . MINUS term
+
+    ENTER  shift, and go to state 13
+    PLUS   shift, and go to state 14
+    MINUS  shift, and go to state 15
+
+
+state 7
+
+    6 expr: term .
+    7 term: term . TIMES factor
+    8     | term . DIVIDE factor
+
+    TIMES   shift, and go to state 16
+    DIVIDE  shift, and go to state 17
+
+    $default  reduce using rule 6 (expr)
+
+
+state 8
+
+    9 term: factor .
+
+    $default  reduce using rule 9 (term)
+
+
+state 9
+
+    4 expr: expr . PLUS term
+    5     | expr . MINUS term
+   10 factor: LPAREN expr . RPAREN
+
+    RPAREN  shift, and go to state 18
+    PLUS    shift, and go to state 14
+    MINUS   shift, and go to state 15
+
+
+state 10
+
+   11 factor: MINUS factor .
+
+    $default  reduce using rule 11 (factor)
+
+
+state 11
+
+    0 $accept: prog $end .
+
+    $default  accept
+
+
+state 12
+
+    1 prog: prog expln .
+
+    $default  reduce using rule 1 (prog)
+
+
+state 13
+
+    3 expln: expr ENTER .
+
+    $default  reduce using rule 3 (expln)
+
+
+state 14
+
+    4 expr: expr PLUS . term
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    term    go to state 19
+    factor  go to state 8
+
+
+state 15
+
+    5 expr: expr MINUS . term
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    term    go to state 20
+    factor  go to state 8
+
+
+state 16
+
+    7 term: term TIMES . factor
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    factor  go to state 21
+
+
+state 17
+
+    8 term: term DIVIDE . factor
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    factor  go to state 22
+
+
+state 18
+
+   10 factor: LPAREN expr RPAREN .
+
+    $default  reduce using rule 10 (factor)
+
+
+state 19
+
+    4 expr: expr PLUS term .
+    7 term: term . TIMES factor
+    8     | term . DIVIDE factor
+
+    TIMES   shift, and go to state 16
+    DIVIDE  shift, and go to state 17
+
+    $default  reduce using rule 4 (expr)
+
+
+state 20
+
+    5 expr: expr MINUS term .
+    7 term: term . TIMES factor
+    8     | term . DIVIDE factor
+
+    TIMES   shift, and go to state 16
+    DIVIDE  shift, and go to state 17
+
+    $default  reduce using rule 5 (expr)
+
+
+state 21
+
+    7 term: term TIMES factor .
+
+    $default  reduce using rule 7 (term)
+
+
+state 22
+
+    8 term: term DIVIDE factor .
+
+    $default  reduce using rule 8 (term)

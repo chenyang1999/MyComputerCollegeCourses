@@ -1,0 +1,4 @@
+(STRING,"string1") (STRING,"string2\\") (STRING,"string3\"") (STRING,"string4\n\'\0\a") (ERRORCHAR, """) 
+(ID, "string5") (ERRORCHAR, "\") (ERRORCHAR, """) (STRING,"string6") (ERRORCHAR, """) 
+(ERRORCHAR, """) (ID, "string7") (ERRORCHAR, """) (ERRORCHAR, """) (ID, "string8") 
+(ERRORCHAR, "'") (ERRORCHAR, """) 
