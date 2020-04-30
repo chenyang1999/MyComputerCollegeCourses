@@ -1,12 +1,12 @@
-# SQL
+# SQL笔记_1
 
-17150011001
+> MARCUS_YANG
 
 [toc]
 
 ## SQL基本概念
 
-SQL（Structured Query Language）结构化查询语言，是关系数据库的标准语言
+SQL（Structured Query Language）结构化查询语言，是关系数据库的标准语言特点:
 
 ```sql
 SELECT Sno, Grade
@@ -15,8 +15,6 @@ WHERE Cno= '3'
 ORDER BY Grade DESC;
 //从表 SC 中选取学号 Sno 和成绩 Grade 满足条件课程号 Cno=“3”按照成绩 Gradel 降序排列
 ```
-
-### 特点:
 
 - 综合统一:
 
@@ -342,7 +340,7 @@ MYSQL:https://www.runoob.com/mysql/mysql-data-types.html
 
 ---
 
-## 数据查询
+## 数据查询_1
 
 ### 单表查询
 
@@ -358,7 +356,7 @@ MYSQL:https://www.runoob.com/mysql/mysql-data-types.html
 - order  by  排序
 
 ---
-#### SELECT
+#### SELECT子句
 
 > [例3.16] 查询全体学生的学号与姓名。
 >
@@ -683,6 +681,9 @@ _:a_b表示以a开头，以b结尾的长度为3的任意字符串
 
 #### 聚集函数
 
+- DISTINCT 去重
+- ALL 所有(默认)
+
 - 统计元组个数COUNT(*)
 - 统计一列中值的个数COUNT([DISTINCT|ALL] <列名>)
 - 计算一列值的总和SUM([DISTINCT|ALL] <列名>)
@@ -944,11 +945,510 @@ HAVING 短语与 WHERE 子句的区别：
 >    WHERE Cno IN
 >    		(SELECT Cno //① 首先在Course关系中找出“信息系统”的课程号，为3号
 >      	FROM Course
->      	WHERE Cname= '信息系统'
->       )
+>      	WHERE Cname= '信息系统')
 >    );
 > ```
 >
-> 
+> 或:
+>
+> ```sql
+> SELECT Sno,Sname
+> FROM Student,SC,Course
+> WHERE Student.Sno = SC.Sno AND
+> 	SC.Cno = Course.Cno AND
+> 	Course.Cname='信息系统';
+> ```
+
+#### 带有比较运算符的子查询
+
+>  [例 3.55] 查询与“刘晨”在同一个系学习的学生。
+>
+>  ```sql
+>  SELECT Sno,Sname,Sdept
+>  FROM Student
+>  WHERE Sdept=
+>  	(SELECT Sdept/*由于一个学生只可能在一个系学习 , 用=代替*/
+>    FROM Student
+>    WHERE Sname= '刘晨');
+>  ```
+>
+>  [例 3.57 ]找出每个学生超过他选修课程平均成绩的课程号。(自身嵌套的例子)
+>
+>  ```sql
+>  SELECT Sno, Cno
+>  FROM SC x
+>  WHERE Grade >=(SELECT AVG（Grade）
+>  							 FROM SC y
+>                 WHERE y.Sno=x.Sno);
+>  ```
+>
+>  
+
+#### 带有 ANY (SOME）或 ALL 谓词的子査询
+
+- `> ANY 大于子查询结果中的某个值`
+- `> =ANY 大于等于子査询结果中的某个值`
+- `!=(或<>) ANY 不等于子査询结果中的某个值`
+- `!=(或<>) ALL 不等于子查询结果中的任何一个值`
+- ![image-20200430001129003](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-04-29-161129.png)
+
+> [例 3.58] 查询非计算机科学系中比计算机科学系任意一个 学生年龄小的学生姓名和年龄
+>
+> ```sql
+> SELECT Sname,Sage
+> FROM Student
+> WHERE Sage < ANY (SELECT Sage
+>                   FROM Student
+>                   WHERE Sdept= 'CS')
+> 	AND Sdept <> 'CS' ;/*父查询块中的条件 */
+> ```
+>
+> 或者使用聚集函数
+>
+> ```sql
+> SELECT Sname,Sage
+> FROM Student
+> WHERE Sage <(SELECT MAX（Sage）
+>              FROM Student
+>              WHERE Sdept= 'CS')
+> 	AND Sdept <> 'CS ';
+> ```
+>
+> [例 3.59] 查询非计算机科学系中比计算机科学系所有学 生年龄都小的学生姓名及年龄。
+>
+> ```sql
+> SELECT Sname,Sage
+> FROM Student
+> WHERE Sage < ALL(SELECT Sage
+>                  FROM Student
+>                  WHERE Sdept= 'CS')
+> 	AND Sdept <> 'CS’;
+> ```
+>
+> ```sql
+> SELECT Sname,Sage
+> FROM Student
+> WHERE Sage <(SELECT MIN(Sage)
+>              FROM Student
+>              WHERE Sdept= 'CS')
+> 	AND Sdept <>'CS';
+> ```
+
+#### 带有EXISTS谓词的子查询
+
+- 带有EXISTS谓词的子查询产生逻辑真值“true”或逻辑假值“false”。
+
+- 由 EXISTS引出的子查询，其目标列表达式通常都用 `*`
+
+- 可以把带有全称量词的谓词转换为等价的带有存在量词的谓词：
+
+    $$
+        (\forall x) P \equiv \neg(\exists x(\neg P))
+    $$
+- 可以利用谓词演算将逻辑蕴涵谓词等价转换为：
+    $$
+    p \rightarrow q \equiv \neg p \vee q
+    $$
+
+> [例 3.60]查询所有选修了1号课程的学生姓名。
+>
+> ```sql
+> SELECT Sname
+> FROM Student
+> WHERE EXISTS(SELECT *
+>           FROM SC
+>           WHERE Sno=Student.Sno AND Cno= ' 1 ');
+> ```
+>
+> [例 3.61] 查询没有选修1号课程的学生姓名。
+>
+> ```sql
+> SELECT Sname
+> FROM Student
+> WHERE NOT EXISTS(SELECT *
+>           FROM SC
+>           WHERE Sno=Student.Sno AND Cno= ' 1 ');
+> ```
+>
+> [例 3.55]查询与“刘晨”在同一个系学习的学生。
+>
+> ```sql
+> SELECT Sno,Sname,Sdept
+> FROM Student S1
+> WHERE EXISTS(SELECT *
+>           FROM Student S2
+>           WHERE S2.Sdept = S1.Sdept 
+>           AND S2.Sname = '刘晨');
+> ```
+>
+> **[例 3.62] 查询选修了全部课程的学生姓名。**
+>
+> ```sql
+> SELECT Sname
+> FROM Student
+> WHERE NOT EXISTS(SELECT *
+>               FROM Course
+>               WHERE NOT EXISTS(SELECT *
+>                                FROM SC
+>                                WHERE Sno= Student.Sno
+>                                AND Cno= Course.Cno)
+> 									);
+> ```
+>
+> **[例 3.63]查询至少选修了学生17150011001选修的全部课程的 学生号码。**
+>
+> 用逻辑蕴涵表达该查询：
+>
+> 用P表示谓词 “学生201215122选修了课程y”
+>
+> 用q表示谓词 “学生x选修了课程y”
+>
+> 则上述查询为: $(\forall y) p \rightarrow q$对
+> $$
+> \begin{aligned}(\forall y) & p \rightarrow q \equiv \neg(\exists y(\neg(p \rightarrow q))\\ & \equiv \neg(\exists y(\neg(\neg p \vee q))) \\ & \equiv \neg \exists y(p \wedge \neg q) \end{aligned}
+> $$
+>
+> ```sql
+> SELECT DISTINCT SCX.Sno
+> FROM SC SCX
+> WHERE NOT EXISTS(SELECT *
+>                  FROM SC SCY
+>                  WHERE SCY.Sno = '17150011001' AND
+>                  NOT EXISTS(SELECT *
+>                             FROM SC SCZ
+>                             WHERE SCZ.Sno=SCX.Sno 
+>                             AND SCZ.Cno=SCY.Cno));
+> ```
 >
 > 
+
+## 数据查询_2_
+
+### 集合查询
+
+- 并操作UNION
+    - UNION：将多个查询结果合并起来时，系统自动去掉重复元组(系统默认)
+    - UNION ALL：将多个查询结果合并起来时，保留重复元组
+- 交操作INTERSECT
+- 差操作EXCEPT
+
+!参加集合操作的各查询结果的列数必须相同;对应 项的数据类型也必须相同
+
+> [例 3.64] 查询计算机科学系的学生及年龄不大于19岁的学生。
+>
+> ```sql
+> SELECT *
+> FROM Student
+> WHERE Sdept= 'CS'
+> 
+> UNION
+> 
+> SELECT *
+> FROM Student
+> WHERE Sage<=19;
+> ```
+>
+> [例 3.65] 查询选修了课程1或者选修了课程2的学生。
+>
+> ```sql
+> SELECT Sno
+> FROM SC
+> WHERE Cno=' 1 '
+> 
+> UNION
+> 
+> SELECT Sno
+> FROM SC
+> WHERE Cno= ' 2 ';
+> ```
+>
+> [例3.66] 查询计算机科学系的学生与年龄不大于19岁的学生 的交集。
+>
+> ```sql
+> SELECT *
+> FROM Student
+> WHERE Sdept='CS'
+> 
+> INTERSECT
+> 
+> SELECT *
+> FROM Student
+> WHERE Sage<=19
+> ```
+>
+> [例 3.66] 实际上就是查询计算机科学系中年龄不大 于19岁的学生。
+>
+> ```sql
+> SELECT *
+> FROM Student
+> WHERE Sdept= 'CS' AND Sage<=19;
+> ```
+>
+> [例 3.67]查询既选修了课程1又选修了课程2的学生。
+>
+> ```sql
+> SELECT Sno
+> FROM SC
+> WHERE Cno=' 1 '
+> 
+> INTERSECT
+> 
+> SELECT Sno
+> FROM SC
+> WHERE Cno='2 ';
+> ```
+>
+> ```sql
+> SELECT Sno
+> FROM SC
+> WHERE Cno=' 1 ' AND Sno IN(SELECT Sno
+>                            FROM SC
+>                            WHERE Cno=' 2 ');
+> ```
+>
+> ```sql
+> //下面是一个典型的错误例子
+> SELECT Sno
+> FROM SC
+> WHERE Cno='1' and Cno='2'
+> ```
+>
+> [例 3.68] 查询计算机科学系的学生与年龄不大于19岁的 学生的差集。
+>
+> ```sql
+> SELECT *
+> FROM Student
+> WHERE Sdept='CS'
+> 
+> EXCEPT
+> 
+> SELECT *
+> FROM Student
+> WHERE Sage <=19;
+> ```
+>
+> ```sql
+> SELECT *
+> FROM Student
+> WHERE Sdept= 'CS' AND Sage>19;
+> ```
+
+## 数据更新
+
+### 插入数据
+
+#### 插入元组
+
+`INSERT INTO <表名> [(<属性列1>[,<属性列2 >…)] `
+
+`VALUES (<常量1> [,<常量2>]… );`
+
+
+
+##### INTO 子句
+
+四种情况:
+
+- 属性列的顺序可与表定义中的顺序不一致
+
+- 指定要插入数据的表名及属性列
+- 没有指定属性列：表示要插入的是一条完整的元组，且 属性列属性与表定义中的顺序一致
+- 指定部分属性列：插入的元组在其余属性列上取空值
+
+##### VALUES子句
+
+提供的值必须与INTO子句匹配
+
+> [例3.69]将一个新学生元组（学号：201215128;姓名：陈冬; 性别：男;所在系：IS;年龄：18岁）插入到Student表中。
+>
+> ```sql
+> INSERT INTO Student (Sno,Sname,Ssex,Sdept,Sage)
+> VALUES ('17150011001','陈扬','男','CS',21);
+> ```
+>
+> [例3.71] 插入一条选课记录（ '200215128','1 '）。
+>
+> ```sql
+> INSERT INTO SC(Sno,Cno)
+> VALUES ('201215128 ',' 1 ');
+> ```
+>
+> 或:
+>
+> ```sql
+> INSERT INTO SC
+> VALUES (' 201215128 ',' 1 ',NULL);
+> ```
+>
+> [例3.70]将学生张成民的信息插入到Student表中。
+>
+> ```sql
+> INSERT INTO Student
+> VALUES ('201215126','张成民','男’,18,'CS');
+> ```
+>
+> 在 student 后没有定义每个元素的意义,就必须和表一一对应
+
+
+
+#### 插入子查询结果
+
+`INSERT INTO <表名> [(<属性列1> [,<属性列2>… )]子查询;`
+
+> [例3.72] 对每一个系，求学生的平均年龄，并把结果存入数据库
+>
+> 建表:
+>
+> ```sql
+> CREATE TABLE Dept_age(Sdept CHAR(15)/*系名*/
+>                       Avg_age SMALLINT);/*学生平均年龄*/
+> ```
+>
+> 插入数据:
+>
+> ```sql
+> INSERT INTO Dept_age(Sdept,Avg_age)
+> 	SELECT Sdept，AVG(Sage)
+> 	FROM Student
+> 	GROUP BY Sdept;
+> ```
+>
+> 插入数据的时候会检测完整性:
+>
+> - 实体完整性
+> - 参照完整性
+> - 用户定义的完整性
+>     - NOT NULL约束
+>     - UNIQUE约束
+>     - 值域约束
+
+
+
+### 修改数据
+
+`UPDATE <表名>`
+
+`SET <列名>=<表达式>[,<列名>=<表达式>]…`
+
+`[WHERE <条件>];`
+
+三种修改方式:
+
+- 修改某一个元组的值
+- 修改多个元组的值
+- 带子查询的修改语句
+
+> [例3.73] 将学生201215121的年龄改为22岁
+>
+> ```sql
+> UPDATE Student
+> SET Sage=22
+> WHERE Sno=' 201215121 ';
+> ```
+>
+> **[例3.74] 将所有学生的年龄增加1岁。**
+>
+> ```sql
+> UPDATE Student
+> SET Sage= Sage+1;
+> ```
+>
+> [例3.75] 将计算机科学系全体学生的成绩置零。
+>
+> ```sql
+> UPDATE SC
+> SET Grade=0
+> WHERE Sno IN(SELETE Sno
+>              FROM Student
+>              WHERE Sdept= 'CS' );
+> ```
+>
+> 更新数据同样会检测完整性约束
+
+### 删除数据
+
+`DELETE FROM <表名>`
+
+`[WHERE <条件>];`
+
+**删除指定表中满足WHERE子句条件的元组,无该子句将会删除表中的全部元组**
+
+三种删除方式:
+
+- 删除某一个元组的值
+- 删除多个元组的值
+- 带子查询的删除语句
+
+> [例3.76] 删除学号为201215128的学生记录。
+>
+> ```sql
+> DELETE FROM Student
+> WHERE Sno= 201215128 ';
+> ```
+>
+> [例3.77] 删除所有的学生选课记录。
+>
+> ```sql
+> DELETE FROM SC;
+> ```
+>
+> [例3.78] 删除计算机科学系所有学生的选课记录。
+>
+> ```sql
+> DELETE
+> FROM SC
+> WHERE Sno IN(SELETE Sno
+>              FROM Student
+>              WHERE Sdept= 'CS') ;
+> ```
+>
+> 
+
+## 空值的处理
+
+空值不等于 NULL,表示本来应该有一个值,但是现在未知
+
+判断一个属性的值是否为空值，用IS NULL或IS NOT NULL来表示。
+
+>[例 3.81]找出漏填了性别或者年龄信息的记录
+>
+>```sql
+>SELECT *
+>FROM Student
+>WHERE Ssex IS NULL OR Sage IS NULL ；
+>```
+>
+>
+
+约束条件:
+
+- 有NOT NULL约束条件的不能取空值
+- 加了UNIQUE限制的属性不能取空值
+- 码属性不能取空值
+
+> [例3.82] 找出选修1号课程的不及格的学生。
+>
+> ```sql
+> SELECT Sno
+> FROM SC
+> WHERE Grade < 60 AND Cno='1';
+> ```
+>
+> [例 3.83] 选出选修1号课程的不及格的学生以及缺考的学生。
+>
+> ```sql
+> SELECT Sno
+> FROM SC
+> WHERE Cno='1' AND (Grade<60 OR Grade IS NULL);
+> ```
+
+
+
+
+
+
+
+
+
+
+
