@@ -456,7 +456,7 @@ MYSQL:https://www.runoob.com/mysql/mysql-data-types.html
 > ```sql
 > SELECT Sname, Ssex
 > FROM Student
-> WHERE Sdept IN ('CS','MA’,'IS' );
+> WHERE Sdept IN ('CS','MA','IS' );
 > ```
 >
 > [ 例 3.28] 查询既不是计算机科学系 、 数学系 ， 也不是信息系 的学生的姓名和性别。
@@ -533,7 +533,7 @@ _:a_b表示以a开头，以b结尾的长度为3的任意字符串
 >WHERE Cname LIKE 'DB\_%i_ _' ESCAPE '\ ' ;
 > ```
 > 
-> [例3.36] 某些学生选修课程后没有参加考试，所以有选课记 录，但没 有考试成绩。查询缺少成绩的学生的学号和相应 的课程号。
+> [例3.36] 某些学生选修课程后没有参加考试，所以有选课记录，但没 有考试成绩。查询缺少成绩的学生的学号和相应 的课程号。
 > 
 > ```sql
 >SELECT Sno，Cno
@@ -665,19 +665,21 @@ _:a_b表示以a开头，以b结尾的长度为3的任意字符串
 > [例3.39]查询选修了3号课程的学生的学号及其成绩，查询结 果按分数降序排列。
 >
 > ```sql
->SELECT Sno, Grade
+> SELECT Sno, Grade
 > FROM SC
->WHERE Cno= ' 3 '
+> WHERE Cno= ' 3 '
 > ORDER BY Grade DESC;
->```
-> 
+> ```
+>
 > [例3.40]查询全体学生情况，查询结果按所在系的系号升序 排列，同一系中的学生按年龄降序排列。
-> 
+>
 > ```sql
 > SELECT *
 > FROM Student
->ORDER BY Sdept, Sage DESC;
+> ORDER BY Sdept, Sage DESC;
 > ```
+>
+> 
 
 #### 聚集函数
 
@@ -729,6 +731,8 @@ _:a_b表示以a开头，以b结尾的长度为3的任意字符串
 > FROM SC,Course
 > WHERE Sno='201215012' AND SC.Cno=Course.Cno;
 > ```
+>
+> 
 
 GROUP BY 子句:细化聚集函数的作用对象
 
@@ -833,7 +837,7 @@ HAVING 短语与 WHERE 子句的区别：
 
 !!!**由于所有属性名都是同名属性，因此必须使用别名前缀**
 
-> **[例 3.52]查询每一门课的直接先修课的名称**
+> [例 3.52]查询每一门课的直接先修课的名称
 >
 > ```sql
 > SELECT FIRST.Cname ， SECOND.Cname
@@ -861,6 +865,8 @@ HAVING 短语与 WHERE 子句的区别：
 > FROM Student,SC
 > WHERE Student.Sno（+）=SC.Sno;
 > ```
+>
+> 
 
 ### 多表连接
 
@@ -915,9 +921,9 @@ HAVING 短语与 WHERE 子句的区别：
 > FROM Student
 > WHERE Sdept IN
 > 	(SELECT Sdept
->    FROM Student
->    WHERE Sname= '刘晨'
->   );
+> FROM Student
+> WHERE Sname= '刘晨'
+> );
 > 
 > ```
 >
@@ -942,11 +948,11 @@ HAVING 短语与 WHERE 子句的区别：
 > WHERE Sno IN
 > 	(SELECT Sno //② 然后在SC关系中找出选修了3号课程的学生学号
 > 	 FROM SC
->    WHERE Cno IN
->    		(SELECT Cno //① 首先在Course关系中找出“信息系统”的课程号，为3号
->      	FROM Course
->      	WHERE Cname= '信息系统')
->    );
+> WHERE Cno IN
+> 		(SELECT Cno //① 首先在Course关系中找出“信息系统”的课程号，为3号
+>   	FROM Course
+>   	WHERE Cname= '信息系统')
+> );
 > ```
 >
 > 或:
@@ -958,6 +964,8 @@ HAVING 短语与 WHERE 子句的区别：
 > 	SC.Cno = Course.Cno AND
 > 	Course.Cname='信息系统';
 > ```
+>
+> 
 
 #### 带有比较运算符的子查询
 
@@ -1680,3 +1688,4 @@ HAVING 短语与 WHERE 子句的区别：
 
 
 
+ 
