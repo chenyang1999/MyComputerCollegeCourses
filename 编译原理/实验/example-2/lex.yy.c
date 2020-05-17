@@ -372,13 +372,13 @@ struct yy_trans_info
 static yyconst flex_int16_t yy_accept[81] =
     {   0,
         0,    0,   35,   33,    1,    1,   33,   23,   24,   27,
-       25,   32,   26,   31,   28,   14,   29,   30,   16,   33,
-       20,   13,   13,   13,   13,   13,   13,   13,   13,   13,
-       13,    1,   19,   15,    0,   14,   22,   17,   18,   21,
-       13,   13,    7,   13,   13,    3,   13,   13,   13,   13,
-       13,   13,    0,   13,   13,   12,   13,   13,   13,   13,
-        8,   13,    0,   15,   13,    4,   13,   13,   11,    5,
-       13,    9,   13,   13,    6,   13,   13,   10,    2,    0
+       25,   32,   26,   31,   28,   13,   29,   30,   16,   33,
+       20,   15,   15,   15,   15,   15,   15,   15,   15,   15,
+       15,    1,   19,   14,    0,   13,   22,   17,   18,   21,
+       15,   15,    7,   15,   15,    3,   15,   15,   15,   15,
+       15,   15,    0,   15,   15,   12,   15,   15,   15,   15,
+        8,   15,    0,   14,   15,    4,   15,   15,   11,    5,
+       15,    9,   15,   15,    6,   15,   15,   10,    2,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -521,26 +521,38 @@ char *yytext;
 #define WHILE				17
 #define	DO					18
 
-#define PROGRAM				19
-#define ID          20
-#define FLOAT       21
-#define RELOP       22
-#define NEWLINE     23
-#define ERRORCHAR   24
-#define PLUS 		25
-#define MINUS 		26
-#define MULT	27
-#define DIV		28
+
+#define ID          19
+#define FLOAT       20
+#define RELOP       21
+#define NEWLINE     22
+#define ERRORCHAR   23
+
+#define PLUS 		24
+#define MINUS 		25
+#define MULT	26
+#define DIV		27
+
+#define PROGRAM				28
 #define VAR					29
 #define	BEG				30
 #define END					31
+
 #define THEN				32
 #define COMMA				33
 #define INT   				34
 #define INTEGER  			35
 #define REAL				36
-int yylval; 
-#line 544 "lex.yy.c"
+
+int yylval;
+typedef union{
+  int ival;
+  float fval;
+  char str[16];
+}Type;
+Type yylval_2;
+
+#line 556 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -722,10 +734,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 51 "lab2.l"
+#line 63 "lab2.l"
 
 
-#line 729 "lex.yy.c"
+#line 741 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -811,175 +823,175 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 53 "lab2.l"
+#line 65 "lab2.l"
 { ;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 54 "lab2.l"
+#line 66 "lab2.l"
 { return (PROGRAM);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 55 "lab2.l"
+#line 67 "lab2.l"
 { return (IF);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 56 "lab2.l"
+#line 68 "lab2.l"
 { return(ELSE);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 57 "lab2.l"
+#line 69 "lab2.l"
 { return (THEN);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 58 "lab2.l"
+#line 70 "lab2.l"
 { return (WHILE);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 59 "lab2.l"
+#line 71 "lab2.l"
 { return (DO);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 60 "lab2.l"
+#line 72 "lab2.l"
 { return (VAR); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 61 "lab2.l"
+#line 73 "lab2.l"
 { return (BEG);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 62 "lab2.l"
+#line 74 "lab2.l"
 { return (INTEGER);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 63 "lab2.l"
+#line 75 "lab2.l"
 { return (REAL);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 64 "lab2.l"
+#line 76 "lab2.l"
 { return (END);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 65 "lab2.l"
-{ return (ID);}
+#line 78 "lab2.l"
+{ yylval_2.ival=atoi(yytext);return (INT);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 66 "lab2.l"
-{ return (INT);}
+#line 79 "lab2.l"
+{ yylval_2.fval=atof(yytext);return (FLOAT);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 67 "lab2.l"
-{ return (FLOAT);}
+#line 80 "lab2.l"
+{ strcpy(yylval_2.str,yytext);return (ID);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 68 "lab2.l"
+#line 82 "lab2.l"
 { yylval=LT;return (RELOP);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 69 "lab2.l"
+#line 83 "lab2.l"
 { yylval=LE;return (RELOP);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 70 "lab2.l"
+#line 84 "lab2.l"
 { yylval=EQ;return (RELOP);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 71 "lab2.l"
+#line 85 "lab2.l"
 { yylval=NE;return (RELOP);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 72 "lab2.l"
+#line 86 "lab2.l"
 { yylval=GT;return (RELOP);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 73 "lab2.l"
+#line 87 "lab2.l"
 { yylval=GE;return (RELOP);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 74 "lab2.l"
+#line 88 "lab2.l"
 {	yylval=ASSIG;return (RELOP);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 75 "lab2.l"
+#line 89 "lab2.l"
 {	yylval=LLB;return (RELOP);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 76 "lab2.l"
+#line 90 "lab2.l"
 {	yylval=RLB;return (RELOP);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 77 "lab2.l"
-{	yylval=PLUS;return (RELOP);}
+#line 92 "lab2.l"
+{	yylval=PLUS;return (PLUS);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 78 "lab2.l"
-{	yylval=MINUS;return (RELOP);}
+#line 93 "lab2.l"
+{	yylval=MINUS;return (MINUS);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 79 "lab2.l"
-{	yylval=MULT;return (RELOP);}
+#line 94 "lab2.l"
+{	yylval=MULT;return (MULT);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 80 "lab2.l"
-{	yylval=DIV;return (RELOP);}
+#line 95 "lab2.l"
+{	yylval=DIV;return (DIV);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 81 "lab2.l"
+#line 97 "lab2.l"
 {	yylval=COLON;return (RELOP);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 82 "lab2.l"
+#line 98 "lab2.l"
 {	yylval=SEMIC;return (RELOP);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 83 "lab2.l"
+#line 99 "lab2.l"
 {	yylval=POINT;return (RELOP);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 84 "lab2.l"
+#line 100 "lab2.l"
 { yylval=COMMA;return (RELOP); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 85 "lab2.l"
+#line 101 "lab2.l"
 { return ERRORCHAR;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 88 "lab2.l"
+#line 104 "lab2.l"
 ECHO;
 	YY_BREAK
-#line 983 "lex.yy.c"
+#line 995 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1976,7 +1988,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 88 "lab2.l"
+#line 104 "lab2.l"
 
 
 
@@ -1986,22 +1998,30 @@ int yywrap (){
 
 void writeout(int c){
   switch(c){
-  	case ERRORCHAR: fprintf(yyout, "(ERRORCHAR, \"%s\") ", yytext);break;
-  	case RELOP: fprintf(yyout, "(RELOP, \"%s\") ", yytext);break;  	  
+    case ERRORCHAR: fprintf(yyout, "(ERRORCHAR, \"%s\") ", yytext);break;
+    case RELOP: fprintf(yyout, "(RELOP, \"%s\") ", yytext);break;  	  
+
+    case PLUS: fprintf(yyout, "(PLUS, \"%s\") ", yytext);break;  	  
+    case MINUS: fprintf(yyout, "(MINUS, \"%s\") ", yytext);break;  	  
+    case MULT: fprintf(yyout, "(MULT, \"%s\") ", yytext);break;  	  
+    case DIV: fprintf(yyout, "(DIV, \"%s\") ", yytext);break;  	
+      
     case WHILE: fprintf(yyout, "(WHILE, \"%s\") ", yytext);break;
     case DO: fprintf(yyout, "(DO, \"%s\") ", yytext);break;
     case IF: fprintf(yyout, "(IF, \"%s\") ", yytext);break;
     case ELSE: fprintf(yyout, "(ELSE, \"%s\") ", yytext);break;
     case THEN: fprintf(yyout, "(THEN, \"%s\") ", yytext);break;
-    case FLOAT: fprintf(yyout, "(FLOAT, \"%s\") ", yytext);break;
-    case ID: fprintf(yyout, "(ID, \"%s\") ", yytext);break;
     case NEWLINE: fprintf(yyout, "\n");break;
     case PROGRAM: fprintf(yyout, "(PROGRAM, \"%s\") ", yytext);break;
     case VAR: fprintf(yyout, "(VAR, \"%s\") ", yytext);break;
-    case INT: fprintf(yyout, "(INT, \"%s\") ", yytext);break;
     case END: fprintf(yyout, "(END, \"%s\") ", yytext);break;
     case INTEGER: fprintf(yyout, "(INTEGER, \"%s\") ", yytext);break;
     case REAL: fprintf(yyout, "(REAL, \"%s\") ", yytext);break;
+    
+    case INT: fprintf(yyout, "(INT, \"%s\" , value: %d)" , yytext,yylval_2.ival);break;
+    case FLOAT: fprintf(yyout, "(FLOAT, \"%s\" ,value: %f)", yytext,yylval_2.fval);break;
+    case ID: fprintf(yyout, "(ID, \"%s\" ,value: %s)", yytext,yylval_2.str);break;
+    
     default:break;
   }
   return;

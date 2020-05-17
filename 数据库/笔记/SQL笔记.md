@@ -1,4 +1,4 @@
-# SQL笔记
+# 门以上课程SQL笔记
 
 > MARCUS_YANG
 
@@ -680,6 +680,71 @@ _:a_b表示以a开头，以b结尾的长度为3的任意字符串
 > ```
 >
 > 
+
+#### GROUP BY
+
+Group By分组聚合是我们在使用过程中使用最多的SQL之一（另外一个使用最多的估计就是JOIN了吧），为了让大家详细了解Group By的计算执行过程，我们下面使用一张图来详细讲解一下。
+
+
+
+我们的数据就是左表，有name和score两列，我们要求每个name下，score的最大值，技术术语是：根据每个name进行分组，根据max函数进行聚合（我们和别人交流的时候，记得要这样子说）。
+
+Group by语句先会根据每个name进行分组，把每个name对应的score都放到一个地方，如中间的表格所示。例如，name为b的行，有三个对应的score，其他类推，每个数据库都会做好这一步的准备，也就是Group By操作执行之后，这个中间的数据体就会存在了，它等待着我们调用聚合函数去统计它。
+
+然后，我们的聚合函数要调用的是：max，也就是从一堆数据中，取出最大值的函数。聚合函数还有其他值，例如和最大值max对应的最小值min，求和sum等等，所有这些聚合函数，都是针对一个数组进行处理的，所谓的数据，就是b里面那三个值。
+
+yes，有了中间那个数据体，我们就可以非常简单地理解所谓的聚合函数了。OK，聚合函数执行完成后，把返回的值交给分组的字段，组合成一行记录，数据库等待所有的分组都执行完成，把数据组合起来，返回给我们。
+
+这个就是整个分组聚合的过程，如果你觉得还是不能理解，那么在本文下面回复吧。
+
+
+
+**什么是分组查询？**将查询结果按照1个或多个字段进行分组，字段值相同的为一组
+其实就是按照某一列进行分类**分组使用****SELECT gender from employee GROUP BY gender;**
+
+根据gender字段来分组，gender字段的全部值只有两个('男'和'女'),所以分为了两组
+当group by单独使用时，只显示出每一组的第一条记录
+所以group by单独使用时的实际意义不大![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122028.jpg)
+
+对这个表进行GROUP BY操作`SELECT * FROM employee;`![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122037.jpg)
+
+只显示了每一组第一条记录男生的第一个人是张三 女生的第一个人是王五![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122034.jpg)
+
+所以说GROUP BY 一般不单独使用
+**一般来说 你按照什么分组 就查询什么东西****比如：
+
+select department from employee group by department;
+
+![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122031.jpg)
+
+查询结果如上。**分完组然后呢？如何对分组后的结果进行查询？关键字：group_concat()**将职员表 按照部门分组 查询每个部门职员的姓名
+
+`select department,group_concat(name) from employee group by department;`
+
+结果如下：
+
+![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122033.jpg)
+
+GROUP BY + 聚合函数for example:**将职员表 按照部门分组 查询每个部门职员的薪水 和 **薪水总数*`select department,group_concat(salary),sum(salary) from employee group by department;`*
+
+![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122035.jpg)
+
+查询每个部门的名称 以及 每个部门的人数`select department,group_concat(name),count(*) from employee group by department;`查询每个部门的部门名称 以及 每个部门工资大于1500的人数PS：**先把大于1500的人查出来 再做分组**`select department,group_concat(salary),count(*) from employee group by department;`**group by + having**用来分组**查询后**制定一些条件来输出查询结果having的作用和where一样，但having只能用于group by查询工资总和大于9000的部门名称以及工资和`SELECT department,GROUP_CONCAT(salary),SUM(salary) FROM employee GROUP BY department HAVING SUM(salary) > 9000;`having和where的区别having是在分组后对数据进行过滤
+where是在分组前对数据进行过滤
+having后面可以使用分组函数（统计函数)
+where后面不可以使用分组函数
+where是对分组前记录的条件，如果某行记录没有满足where子句的条件，那么这行记录不会参加分组；而having是对分组后数据的约束
+查询工资和大于2000的 工资总和大于6000的部门名称以及工资和
+`SELECT department,GROUP_CONCAT(salary).SUM(salary) FROM employee WHERE salary > 2000 GROUP BY department HAVING SUNM(salary) > 9000 ORDER BY SUM(salary) DESC; //降序排列 `
+**书写顺序**
+
+![img](https://pic3.zhimg.com/v2-166d3cee10b01a68e90af2a5d5ed9866_b.jpg)**Limit的使用**
+
+![img](https://pic3.zhimg.com/v2-cc55920af6e230cfe251bf53dd35a9c6_b.jpg)
+
+SELECT * FROM employee LIMIT 3,3;
+
+从第三行开始 取三条数据PS：行是从0开始数的**![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122028.jpg)![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122036.jpg)**limit可以用于分页操作**![img](https://cy-1256894686.cos.ap-beijing.myqcloud.com/cy/2020-05-17-122032.jpg)
 
 #### 聚集函数
 

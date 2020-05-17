@@ -1,0 +1,303 @@
+/*警告 UMINUS这个终结符没有用到*/
+Terminals which are not used
+
+   UMINUS
+
+
+State 8 conflicts: 1 shift/reduce 	/* 在状态8有冲突，是一个移进-归约冲突 */
+State 17 conflicts: 4 shift/reduce
+State 18 conflicts: 1 shift/reduce
+State 19 conflicts: 1 shift/reduce
+State 20 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: prog $end
+
+    1 prog: prog exprp
+    2     | exprp
+
+    3 exprp: expr ENTER
+
+    4 expr: expr PLUS expr
+    5     | expr MINUS expr
+    6     | expr TIMES expr
+    7     | expr DIVIDE expr
+    8     | LPAREN expr RPAREN
+    9     | MINUS expr
+   10     | NUM
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NUM (258) 10
+LPAREN (259) 8
+RPAREN (260) 8
+ENTER (261) 3
+PLUS (262) 4
+MINUS (263) 5 9
+DIVIDE (264) 7
+TIMES (265) 6
+UMINUS (266)
+
+
+Nonterminals, with rules where they appear
+
+$accept (12)
+    on left: 0
+prog (13)
+    on left: 1 2, on right: 0 1
+exprp (14)
+    on left: 3, on right: 1 2
+expr (15)
+    on left: 4 5 6 7 8 9 10, on right: 3 4 5 6 7 8 9
+
+
+state 0
+
+    0 $accept: . prog $end
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    prog   go to state 4
+    exprp  go to state 5
+    expr   go to state 6
+
+
+state 1
+
+   10 expr: NUM .
+
+    $default  reduce using rule 10 (expr)
+
+
+state 2
+
+    8 expr: LPAREN . expr RPAREN
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 7
+
+
+state 3
+
+    9 expr: MINUS . expr
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 8
+
+
+state 4
+
+    0 $accept: prog . $end
+    1 prog: prog . exprp
+
+    $end    shift, and go to state 9
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    exprp  go to state 10
+    expr   go to state 6
+
+
+state 5
+
+    2 prog: exprp .
+
+    $default  reduce using rule 2 (prog)
+
+
+state 6
+
+    3 exprp: expr . ENTER
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+
+    ENTER   shift, and go to state 11
+    PLUS    shift, and go to state 12
+    MINUS   shift, and go to state 13
+    DIVIDE  shift, and go to state 14
+    TIMES   shift, and go to state 15
+
+
+state 7
+
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+    8     | LPAREN expr . RPAREN
+
+    RPAREN  shift, and go to state 16
+    PLUS    shift, and go to state 12
+    MINUS   shift, and go to state 13
+    DIVIDE  shift, and go to state 14
+    TIMES   shift, and go to state 15
+
+
+state 8
+
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+    9     | MINUS expr .
+
+    PLUS    shift, and go to state 12	/* 该状态下，遇到终结符PLUS则移进并进入状态12。*/
+    DIVIDE  shift, and go to state 14
+    TIMES   shift, and go to state 15
+
+    PLUS      [reduce using rule 9 (expr)] /* 该状态下，遇到终结符PLUS则按产生式9归约
+                                            *（显然与上面有移进-归约冲突，YACC会优先于移进） 
+                                            */
+    $default  reduce using rule 9 (expr)
+
+
+state 9
+
+    0 $accept: prog $end .
+
+    $default  accept
+
+
+state 10
+
+    1 prog: prog exprp .
+
+    $default  reduce using rule 1 (prog)
+
+
+state 11
+
+    3 exprp: expr ENTER .
+
+    $default  reduce using rule 3 (exprp)
+
+
+state 12
+
+    4 expr: expr PLUS . expr
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 17
+
+
+state 13
+
+    5 expr: expr MINUS . expr
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 18
+
+
+state 14
+
+    7 expr: expr DIVIDE . expr
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 19
+
+
+state 15
+
+    6 expr: expr TIMES . expr
+
+    NUM     shift, and go to state 1
+    LPAREN  shift, and go to state 2
+    MINUS   shift, and go to state 3
+
+    expr  go to state 20
+
+
+state 16
+
+    8 expr: LPAREN expr RPAREN .
+
+    $default  reduce using rule 8 (expr)
+
+
+state 17
+
+    4 expr: expr . PLUS expr
+    4     | expr PLUS expr .
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+
+    PLUS    shift, and go to state 12
+    MINUS   shift, and go to state 13
+    DIVIDE  shift, and go to state 14
+    TIMES   shift, and go to state 15
+
+    PLUS      [reduce using rule 4 (expr)]
+    MINUS     [reduce using rule 4 (expr)]
+    DIVIDE    [reduce using rule 4 (expr)]
+    TIMES     [reduce using rule 4 (expr)]
+    $default  reduce using rule 4 (expr)
+
+
+state 18
+
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    5     | expr MINUS expr .
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+
+    PLUS    shift, and go to state 12
+    DIVIDE  shift, and go to state 14
+    TIMES   shift, and go to state 15
+
+    PLUS      [reduce using rule 5 (expr)]
+    $default  reduce using rule 5 (expr)
+
+
+state 19
+
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    7     | expr . DIVIDE expr
+    7     | expr DIVIDE expr .
+
+    PLUS  shift, and go to state 12
+
+    PLUS      [reduce using rule 7 (expr)]
+    $default  reduce using rule 7 (expr)
+
+
+state 20
+
+    4 expr: expr . PLUS expr
+    5     | expr . MINUS expr
+    6     | expr . TIMES expr
+    6     | expr TIMES expr .
+    7     | expr . DIVIDE expr
+
+    PLUS  shift, and go to state 12
+
+    PLUS      [reduce using rule 6 (expr)]
+    $default  reduce using rule 6 (expr)
